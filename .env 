@@ -1,0 +1,3 @@
+
+SECRET_KEY=269N$bIV^p@UwWhIqv%9SxYG6MHviFES-Iee9*BERGOfQwi2DA
+DATABASE_URL=sqlite:///dev.db
