@@ -56,7 +56,6 @@ def single_post(post_id):
 @post_routes.route("/<post_id>/comments", methods=['POST'])
 def add_comment(post_id):
     comment_form = CommentForm()
-    print(comment_form.data)
 
     comment_form['csrf_token'].data = request.cookies['csrf_token']
     if comment_form.validate_on_submit():
