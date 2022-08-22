@@ -1,3 +1,4 @@
+from crypt import methods
 from flask import Blueprint, request, redirect
 from app.models import db, Comment
 from app.models.post import Post
@@ -78,3 +79,15 @@ def add_comment(post_id):
         return comment.to_dict()
     else:
         return "Didn't hit the if" #TODO error handling
+
+
+@post_routes.route("/<post_id>", methods=['DELETE'])
+def delete_post(post_id):
+    post = Post.query.get(post_id)
+
+    db.session.delete(post)
+    db.session.commit()
+
+    return "Successfully Deleted"
+
+    
