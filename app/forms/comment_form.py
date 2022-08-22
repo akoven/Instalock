@@ -7,4 +7,5 @@ from app.models import Post
 class CommentForm(FlaskForm):
   user_id = IntegerField("User_id", validators=[DataRequired()])
   post_id = IntegerField("Post_id", validators=[DataRequired()])
-  body = StringField("Body", validators=[DataRequired()])
+  content = StringField("Content", validators=[DataRequired()])
+  
