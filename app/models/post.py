@@ -10,7 +10,7 @@ class Post(db.Model):
     image_url = db.Column(db.String, nullable=False)
 
     user = db.relationship("User", back_populates="posts")
-    # comments = db.relationship("Comment", back_populates="post")
+    comments = db.relationship("Comment", back_populates="post")
 
     def to_dict(self):
         return {

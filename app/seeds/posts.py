@@ -8,7 +8,7 @@ def seed_posts():
     demo2 = Post(
         caption="Another Victory Royale! #fortnite", user_id=2, image_url="https://pbs.twimg.com/media/DiBaPYhX4AApm6Z.jpg")
     demo3 = Post(
-        caption="First win in Apex Legends! #onlyW's", user_id=3, image_url="https://i.redd.it/kgbhscpkapj11.png")
+        caption="First win in Apex Legends! #onlyW's", user_id=3, image_url="https://press-start.com.au/wp-content/uploads/2019/02/Champion-Apex-Legends.jpg")
     demo4 = Post(
         caption="This game has a very interesting story #hollowknight", user_id=1, image_url="https://static.wikia.nocookie.net/hollowknight/images/b/bb/Screenshot_HK_The_Pale_King_05.png")
     demo5 = Post(
