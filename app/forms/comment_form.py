@@ -4,7 +4,7 @@ from wtforms.validators import DataRequired
 from app.models import Post
 # img url, userId, caption
 
-class PostForm(FlaskForm):
+class CommentForm(FlaskForm):
   user_id = IntegerField("User_id", validators=[DataRequired()])
   post_id = IntegerField("Post_id", validators=[DataRequired()])
   body = StringField("Body", validators=[DataRequired()])
