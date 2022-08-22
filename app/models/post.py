@@ -10,22 +10,23 @@ class Post(db.Model):
     image_url = db.Column(db.String, nullable=False)
 
     user = db.relationship("User", back_populates="posts")
-    comments = db.Relation
+    comments = db.relationship("Comment", back_populates="post")
 
     def to_dict(self):
         return {
             "id": self.id,
             "caption": self.caption,
-            "user_id": self.user_id,
+            "user": self.user.to_dict(),
             "likes": self.likes,
             "image_url": self.image_url,
+            "comments": self.comments.to_dict()
         }
 
     def __repr__(self):
         return f"""
             < Post ID: {self.id}\n
               Caption: {self.caption}\n
-              User ID: {self.user_id}\n
+              User: {self.user.to_dict()}\n
               Likes: {self.likes}\n
               Image URL: {self.image_url} >
             """

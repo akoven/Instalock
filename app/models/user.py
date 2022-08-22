@@ -17,6 +17,7 @@ class User(db.Model, UserMixin):
     profile_image_url = db.Column(db.String())
 
     posts = db.relationship('Post', back_populates='user')
+    comments = db.relationship('Comment', back_populates='user')
 
     @property
     def password(self):
