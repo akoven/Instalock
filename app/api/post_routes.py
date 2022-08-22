@@ -1,5 +1,6 @@
 from flask import Blueprint, request
-from app.models import db, User, Post
+from app.models import db
+from app.models.post import Post, db
 from app.forms.post_form import PostForm
 from flask_login import current_user
 
