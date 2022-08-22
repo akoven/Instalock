@@ -1,10 +1,10 @@
-from app.models import db, User
+from ..models import db, User
 
 
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     demo = User(
-        username='Demo', email='demo@aa.io', password='password')
+        username='Demo', email='demo@aa.io', password='password', phone_number="1234567890", bio="This is the demo user's bio!")
     marnie = User(
         username='marnie', email='marnie@aa.io', password='password')
     bobbie = User(
