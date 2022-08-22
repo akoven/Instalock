@@ -1,3 +1,4 @@
+from sqlite3 import Row
 from flask import Blueprint
 from app.models import db
 from app.models.likes import Likes
