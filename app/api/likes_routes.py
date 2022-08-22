@@ -78,7 +78,7 @@ def delete_post_like(post_id):
     image_url = form.data['image_url']
     total_likes = Post.likes
 
-    if post_id:
+    if post_id and total_likes > 0:
         total_likes -= 1
 
         post = Post(
@@ -91,6 +91,7 @@ def delete_post_like(post_id):
         db.session.add(post)
         db.session.commit()
     else:
+        total_likes == 0
         return 'Something went wrong'
 
 @likes_routes.route('<comment_id>', methods=["DELETE"])
@@ -103,7 +104,7 @@ def delete_comment_like():
     comment_id = form.data['comment_id']
     total_likes = Comment.likes
 
-    if comment_id:
+    if comment_id and total_likes > 0:
         total_likes -= 1
         comment = Comment(
             content = content,
@@ -114,4 +115,5 @@ def delete_comment_like():
         db.session.add(comment)
         db.session.commit()
     else:
+        total_likes == 0
         return 'Something went wrong'
