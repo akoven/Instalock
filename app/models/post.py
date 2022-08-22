@@ -19,7 +19,7 @@ class Post(db.Model):
             "user": self.user.to_dict(),
             "likes": self.likes,
             "image_url": self.image_url,
-            "comments": self.comments.to_dict()
+            "comments": [comment.to_dict() for comment in self.comments]
         }
 
     def __repr__(self):
