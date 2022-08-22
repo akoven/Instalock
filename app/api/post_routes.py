@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from app.models import db
+from app.models import db, Comment
 from app.models.post import Post
 from app.forms.post_form import PostForm
 from flask_login import current_user
@@ -27,3 +27,25 @@ def user_posts(id):
 
     db.session.add(post)
     db.session.commit()
+
+@post_routes.route("/<id>/comments")
+def post_comments(id):
+    comments = Comment.query.filter(Comment.pokemon_id == id ).all()
+    return comments
+
+@post_routes.route("/<id>/comments", methods=['POST'])
+def add_comment(id):
+
+    content = request.data.content
+    user_id = request.data.user_id
+    post_id = request.data.pokemonId
+
+    comment = Comment(
+        content=content,
+        user_id=user_id,
+        post_id=post_id
+    )
+
+    db.session.add(comment)
+    db.session.commit()
+    return comment
