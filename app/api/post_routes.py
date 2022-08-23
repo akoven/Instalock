@@ -39,7 +39,7 @@ def user_posts():
         db.session.commit()
         return post.to_dict()
     else:
-        return '404: unauthorized user'
+        return '403: unauthorized user'
 
 
 @post_routes.route("/<post_id>/comments")
@@ -81,7 +81,7 @@ def add_comment(post_id):
         db.session.commit()
         return comment.to_dict()
     else:
-        return '404: unauthorized user'
+        return '403: unauthorized user'
 
 
 @post_routes.route("/<post_id>", methods=['DELETE'])
@@ -90,7 +90,7 @@ def delete_post(post_id):
     if User.id == user_post:
         post = Post.query.get(post_id)
     else:
-        return '404: unauthorized user'
+        return '403: unauthorized user'
 
     db.session.delete(post)
     db.session.commit()

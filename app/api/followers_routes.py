@@ -8,7 +8,7 @@ followers_routes = Blueprint("followers", __name__, url_prefix="/followers")
 @followers_routes.route('/', methods=['POST'])
 def follow():
     form = UserFollowerForm()
-    
+
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         user_id = form.data["user_id"]
@@ -32,7 +32,7 @@ def follow():
 
 @followers_routes.route('/<user_id>/<follower_id>', methods=['DELETE'])
 def unfollow(user_id, follower_id):
-    if current_user:
+    if current_user.is_authenticated:
         follow_log = UserFollower.query.filter(UserFollower.user_id == user_id).filter(UserFollower.follower_id == follower_id).first()
 
         db.session.delete(follow_log)
@@ -40,5 +40,4 @@ def unfollow(user_id, follower_id):
         return "Successfully unfollowed"
 
     else:
-        return "Please log in to unfollow this User", 404
-
+        return "Please log in to unfollow this User", 403

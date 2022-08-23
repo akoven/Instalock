@@ -58,7 +58,7 @@ def like():
             db.session.commit()
             return new_like.to_dict()
         else:
-            return '404: invalid form entry'
+            return '400: invalid form entry'
 
 
 @likes_routes.route('/<like_id>', methods=['DELETE'])
