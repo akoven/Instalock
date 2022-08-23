@@ -1,3 +1,5 @@
+from msilib.schema import Error
+from xml.dom import ValidationErr
 from flask import Blueprint, request
 from app.models import db, Comment, Post, Like
 from app.forms import LikeForm
@@ -19,7 +21,7 @@ likes_routes = Blueprint("likes", __name__, url_prefix="/likes")
 
 @likes_routes.route('/', methods=["POST"])
 def like():
-    if not current_user.is_authenticated: # beginning of error handling
+    if not current_user.is_authenticated: # beginning of error handling(is_authenticated is a boolean not a function)
         return { 'errors': ['Unauthorized, please log in'] }
 
     #TODO User validation
@@ -58,7 +60,7 @@ def like():
             db.session.commit()
             return new_like.to_dict()
         else:
-            return "Something happened, you're not supposed to see this!"
+            return Error('404: invalid form entry')
 
 
 @likes_routes.route('/<like_id>', methods=['DELETE'])
