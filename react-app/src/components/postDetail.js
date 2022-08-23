@@ -10,6 +10,7 @@ const PostDetail = () => {
     const post = useSelector((state) => (state.posts))
     const postsString = JSON.stringify(post)
     const comments = useSelector((state) => Object.values(state.comments))
+    console.log(comments, "comments")
 
 
     
@@ -24,14 +25,14 @@ const PostDetail = () => {
 
     console.log(post, "COMPONENT")
     console.log(postId, "COMPONENT")
-
-    const commentsForThisPost = 
+    
 
     return (
 
         <>
         <div>hi</div>
         <div>{posts?.caption}</div>
+        <div>{posts?.image_url}</div>
         {/* <div>{posts?.comments}</div> */}
 
 
