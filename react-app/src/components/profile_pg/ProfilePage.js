@@ -32,7 +32,7 @@ const ProfilePage = () => {
         <h3>{userProfile?.profile.username}</h3>
         <p>Followers: {userProfile?.follower_count}</p>
         <p>Following: {userProfile?.following_count}</p>
-        {/* <p>{userProfile.profile.bio}</p> */}
+        <p>{userProfile?.profile.bio}</p>
        </>
 
     )
