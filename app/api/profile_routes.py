@@ -14,19 +14,21 @@ def profile_info(user_id):
     follower_count = len(followers_id_list)
     followers = [User.query.get(id).to_dict() for id in followers_id_list]
 
-    find_following_connection = UserFollower.query.filter(UserFollower.user_id == user_id).all()
-    following_id_list = [connection.follower_id for connection in find_follower_connections]
+    find_following_connections = UserFollower.query.filter(UserFollower.user_id == user_id).all()
+    following_id_list = [connection.follower_id for connection in find_following_connections]
     following_count = len(following_id_list)
     following = [User.query.get(id).to_dict() for id in following_id_list]
 
     posts_list = Post.query.filter(Post.user_id == user_id).all()
     posts = [post.to_dict() for post in posts_list]
 
-    return {
-        'profile': profile,
+    result = {
+        'profile': profile.to_dict(),
         'followers': followers,
         'follower_count': follower_count,
         'following': following,
         'following_count': following_count,
         'posts': posts,
     }
+    
+    return result

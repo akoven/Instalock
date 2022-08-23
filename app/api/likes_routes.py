@@ -1,5 +1,3 @@
-from msilib.schema import Error
-from xml.dom import ValidationErr
 from flask import Blueprint, request
 from app.models import db, Comment, Post, Like
 from app.forms import LikeForm
