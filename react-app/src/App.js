@@ -9,7 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import SplashPage from './components/SplashPage';
-import PostDetail from './components/postDetail';
+import PostDetails from './components/postDetails.js/postDetail'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -39,7 +39,7 @@ function App() {
           <SignUpForm />
         </Route>
         <Route exact path="/posts/:postId">
-          <PostDetail />
+          <PostDetails />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
