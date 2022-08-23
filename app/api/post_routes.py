@@ -1,4 +1,3 @@
-from msilib.schema import Error
 from flask import Blueprint, request, redirect
 from app.models import db, Comment, User, Post
 from app.forms import PostForm, CommentForm
@@ -40,7 +39,7 @@ def user_posts():
         db.session.commit()
         return post.to_dict()
     else:
-        return Error('404: unauthorized user')
+        return '404: unauthorized user'
 
 
 @post_routes.route("/<post_id>/comments")
@@ -82,7 +81,7 @@ def add_comment(post_id):
         db.session.commit()
         return comment.to_dict()
     else:
-        return Error('404: unauthorized user')
+        return '404: unauthorized user'
 
 
 @post_routes.route("/<post_id>", methods=['DELETE'])
@@ -91,7 +90,7 @@ def delete_post(post_id):
     if User.id == user_post:
         post = Post.query.get(post_id)
     else:
-        return Error('404: unauthorized user')
+        return '404: unauthorized user'
 
     db.session.delete(post)
     db.session.commit()

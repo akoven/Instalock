@@ -1,5 +1,3 @@
-from msilib.schema import Error
-from xml.dom import ValidationErr
 from flask import Blueprint, request
 from app.models import db, Comment, Post, Like
 from app.forms import LikeForm
@@ -60,7 +58,7 @@ def like():
             db.session.commit()
             return new_like.to_dict()
         else:
-            return Error('404: invalid form entry')
+            return '404: invalid form entry'
 
 
 @likes_routes.route('/<like_id>', methods=['DELETE'])
