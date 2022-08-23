@@ -10,7 +10,7 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import ProfilePage from './components/profile_pg/ProfilePage';
 import SplashPage from './components/SplashPage';
-import PostDetails from './components/postDetails.js/postDetail'
+import PostDetails from './components/postDetails/postDetail'
 
 
 function App() {
