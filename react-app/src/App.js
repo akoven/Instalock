@@ -9,7 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import SplashPage from './components/SplashPage';
-import PostDetails from './components/postDetails.js/postDetail'
+import PostDetails from './components/postDetails/postDetail'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
