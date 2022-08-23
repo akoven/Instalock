@@ -1,5 +1,5 @@
 from flask import Blueprint, request, redirect
-from app.models import db, Comment, User, Post
+from app.models import db, Comment, Post
 from app.forms import PostForm, CommentForm
 from flask_login import current_user
 
@@ -28,7 +28,7 @@ def user_posts():
     caption = new_post.data['caption']
     image_url = new_post.data['image_url']
 
-    if new_post.validate_on_submit() and User.id == user_id:
+    if new_post.validate_on_submit() and current_user.id == user_id:
         post = Post(
             user_id = user_id,
             caption = caption,
@@ -65,7 +65,7 @@ def add_comment(post_id):
     post_id = comment_form.data['post_id']
 
     comment_form['csrf_token'].data = request.cookies['csrf_token']
-    if comment_form.validate_on_submit() and User.id == user_id:
+    if comment_form.validate_on_submit() and current_user.id == user_id:
 
         comment = Comment(
             content=content,
@@ -87,7 +87,7 @@ def add_comment(post_id):
 @post_routes.route("/<post_id>", methods=['DELETE'])
 def delete_post(post_id):
     user_post = Post.user_id
-    if User.id == user_post:
+    if current_user.id == user_post:
         post = Post.query.get(post_id)
     else:
         return '403: unauthorized user'
