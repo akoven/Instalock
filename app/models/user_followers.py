@@ -13,8 +13,6 @@ class UserFollower(db.Model):
     def to_dict(self):
         return {
             "id": self.id,
-            "user": self.user.to_dict(),
+            "user": self.user_id,
             "follower_id": self.follower_id
         }
-
-

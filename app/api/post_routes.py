@@ -1,4 +1,3 @@
-from crypt import methods
 from flask import Blueprint, request, redirect
 from app.models import db, Comment
 from app.models.post import Post
@@ -89,5 +88,3 @@ def delete_post(post_id):
     db.session.commit()
 
     return "Successfully Deleted"
-
-    
