@@ -1,10 +1,7 @@
 from sqlite3 import Row
 from flask import Blueprint
-from app.models import db
-from app.models import Comment, Post
-from app.models.likes import Like
-from app.models.post import Post
-from app.forms import LikeForm, PostForm
+from app.models import db, Comment, Post, Like
+from app.forms import LikeForm
 from flask_login import current_user
 likes_routes = Blueprint("likes",__name__,url_prefix="/likes")
 
@@ -20,100 +17,56 @@ likes_routes = Blueprint("likes",__name__,url_prefix="/likes")
 #         all_likes = Like.query.all()
 #         return all_likes
 
-@likes_routes.route('/<comment_id>', method=["POST"])
-def comment_likes(comment_id):
+@likes_routes.route('/', methods=["POST"])
+def like():
+    if not current_user.is_authenticated(): # beginning of error handling
+        return { 'errors': ['Unauthorized, please log in'] }
+
+
     form = LikeForm()
 
-    content = form.data['content']
     user_id = form.data['user_id']
     post_id = form.data['post_id']
     comment_id = form.data['comment_id']
-    total_likes = Comment.likes
 
-    if comment_id:
-        total_likes += 1
-        comment = Comment(
-            content = content,
-            user_id = user_id,
-            post_id = post_id,
-            likes = total_likes
-        )
+    if form.validate_on_submit():
+        if post_id and not comment_id:
+            post = Post.query.get(post_id)
+            post.likes += 1
 
-        db.session.add(comment)
-        db.session.commit()
-    else:
-        'something went wrong'
-@likes_routes.route('/<post_id>', method=["POST"])
-def post_likes(post_id):
-    form = Post()
+            new_like = Like(
+                user_id = user_id
+                post_id = post_id
+            )
 
-    caption = form.data['caption']
-    user_id = form.data['user_id']
-    likes = form.data['likes']
-    image_url = form.data['image_url']
-    total_likes = Post.likes
+            db.session.add(new_like)
+            db.session.commit()
+            return new_like.to_dict()
 
-    if post_id:
-        total_likes += 1
+        elif comment_id and not post_id:
+            comment = Comment.query.get(comment_id)
+            comment.likes += 1
 
-        post = Post(
-            caption = caption,
-            user_id = user_id,
-            likes = total_likes,
-            image_url = image_url,
-        )
+            new_like = Like(
+                user_id = user_id
+                comment_id = comment_id
+            )
 
-        db.session.add(post)
-        db.session.commit()
-    else:
-        'something went wrong'
+            db.session.add(new_like)
+            db.session.commit()
+            return new_like.to_dict()
+        else:
+            return "Something happened, you're not supposed to see this!"
 
-@likes_routes.route('<post_id>', methods=["DELETE"])
-def delete_post_like(post_id):
-    form = Post()
 
-    caption = form.data['caption']
-    user_id = form.data['user_id']
-    likes = form.data['likes']
-    image_url = form.data['image_url']
-    total_likes = Post.likes
+@likes_routes.route('/<like_id>', methods=['DELETE'])
+def remove_like(like_id):
+    if not current_user.is_authenticated(): # beginning of error handling
+        return { 'errors': ['Unauthorized, please log in'] }
 
-    if post_id and total_likes > 0:
-        total_likes -= 1
+    #TODO make sure it's their like to remove
 
-        post = Post(
-            caption = caption,
-            user_id = user_id,
-            likes = total_likes,
-            image_url = image_url,
-            total_likes = total_likes
-        )
-        db.session.add(post)
-        db.session.commit()
-    else:
-        total_likes == 0
-        return 'Something went wrong'
+    like = Like.query.get(like_id)
 
-@likes_routes.route('<comment_id>', methods=["DELETE"])
-def delete_comment_like():
-    form = LikeForm()
-
-    content = form.data['content']
-    user_id = form.data['user_id']
-    post_id = form.data['post_id']
-    comment_id = form.data['comment_id']
-    total_likes = Comment.likes
-
-    if comment_id and total_likes > 0:
-        total_likes -= 1
-        comment = Comment(
-            content = content,
-            user_id = user_id,
-            post_id = post_id,
-            likes = total_likes
-        )
-        db.session.add(comment)
-        db.session.commit()
-    else:
-        total_likes == 0
-        return 'Something went wrong'
+    db.session.delete(like)
+    db.session.commit()
