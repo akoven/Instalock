@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import SplashPage from './components/SplashPage';
+import PostDetail from './components/postDetail';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -37,6 +38,9 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
+        <Route exact path="/posts/:postId">
+          <PostDetail />
+        </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
         </ProtectedRoute>
@@ -47,6 +51,7 @@ function App() {
           <NavBar />
           <h1>My Home Page</h1>
         </ProtectedRoute>
+        
       </Switch>
     </BrowserRouter>
   );
