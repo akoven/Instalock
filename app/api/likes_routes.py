@@ -35,7 +35,7 @@ def like():
             post.likes += 1
 
             new_like = Like(
-                user_id = user_id
+                user_id = user_id,
                 post_id = post_id
             )
 
@@ -48,7 +48,7 @@ def like():
             comment.likes += 1
 
             new_like = Like(
-                user_id = user_id
+                user_id = user_id,
                 comment_id = comment_id
             )
 
