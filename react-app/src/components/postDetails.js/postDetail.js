@@ -28,9 +28,16 @@ const PostDetail = () => {
         <h3>Comments</h3>
         <div>
             {onePost?.comments && onePost?.comments.map((comment) => (
-                <div key={comment.id}>{comment.content}</div>
+                
+                <div className="comment" key={comment.id}>
+                    <div> Username: {comment.user.username}</div>
+                    <div> Comment: {comment.content}</div>
+                    <div>------------------</div>
+                </div>
+                
             ))}
         </div>
+        
 
 
         </>
