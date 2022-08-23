@@ -1,6 +1,5 @@
 from flask import Blueprint, request, redirect
-from app.models import db, Comment
-from app.models.post import Post
+from app.models import db, Comment, User, Post
 from app.forms import PostForm, CommentForm
 from flask_login import current_user
 
@@ -24,19 +23,23 @@ def user_posts():
     new_post = PostForm()
 
     new_post['csrf_token'].data = request.cookies['csrf_token']
-    if new_post.validate_on_submit():
+
+    user_id = new_post.data['user_id']
+    caption = new_post.data['caption']
+    image_url = new_post.data['image_url']
+
+    if new_post.validate_on_submit() and User.id == user_id:
         post = Post(
-            user_id = new_post.data['user_id'],
-            caption = new_post.data['caption'],
-            image_url = new_post.data['image_url']
+            user_id = user_id,
+            caption = caption,
+            image_url = image_url
         )
 
         db.session.add(post)
         db.session.commit()
         return post.to_dict()
     else:
-        return "Didn't hit the if"
-        #TODO error handling
+        return Error('404: unauthorized user')
 
 
 @post_routes.route("/<post_id>/comments")
@@ -57,11 +60,12 @@ def single_post(post_id):
 def add_comment(post_id):
     comment_form = CommentForm()
 
+    content = comment_form.data['content']
+    user_id = comment_form.data['user_id']
+    post_id = comment_form.data['post_id']
+
     comment_form['csrf_token'].data = request.cookies['csrf_token']
-    if comment_form.validate_on_submit():
-        content = comment_form.data["content"]
-        user_id = comment_form.data["user_id"]
-        post_id = comment_form.data["post_id"]
+    if comment_form.validate_on_submit() and User.id == user_id:
 
         comment = Comment(
             content=content,
@@ -77,12 +81,16 @@ def add_comment(post_id):
         db.session.commit()
         return comment.to_dict()
     else:
-        return "Didn't hit the if" #TODO error handling
+        return Error('404: unauthorized user')
 
 
 @post_routes.route("/<post_id>", methods=['DELETE'])
 def delete_post(post_id):
-    post = Post.query.get(post_id)
+    user_post = Post.user_id
+    if User.id == user_post:
+        post = Post.query.get(post_id)
+    else:
+        return Error('404: unauthorized user')
 
     db.session.delete(post)
     db.session.commit()
