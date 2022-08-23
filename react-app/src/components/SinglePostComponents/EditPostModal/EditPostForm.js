@@ -12,7 +12,7 @@ function EditPostForm() {
             </div>
             <div className='edit-post-img-cap-container'>
                 <div className='edit-img-container'>
-                    <
+                    <img src="do-the-store-stuff"/>
                 </div>
             </div>
         </div>
