@@ -5,11 +5,11 @@ import './PostOptions.css'
 function PostOptions() {
     const dispatch = useDispatch();
 
-    
+
 
     return (
         <div className='post-options-container'>
-            <DeletePostModal />
+            {/* <DeletePostModal /> */}
             <EditPostModal />
             <div>Turn off commenting</div>
             <div>Cancel</div>
