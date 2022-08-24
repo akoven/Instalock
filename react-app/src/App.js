@@ -67,6 +67,15 @@ function App() {
         <ProtectedRoute path='/profile_edit/edit' exact={true}>
           <EditProfileForm />
         </ProtectedRoute>
+        <Route path="/work-in-progress">
+          <div className="work">This Feature is Currently in Development</div>
+          <div className="back-to-homepage">
+            <img src="" />
+            <Link to="/">
+              Return To HomePage
+            </Link>
+          </div>
+        </Route>
           {/* <h1>My Home Page</h1> */}
 
       </Switch>
