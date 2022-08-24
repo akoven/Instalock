@@ -11,6 +11,7 @@ import { authenticate } from "./store/session";
 import ProfilePage from "./components/profile_pg/ProfilePage";
 import SplashPage from "./components/SplashPage";
 import PostDetails from "./components/postDetails/postDetail";
+import EditProfileForm from "./components/profile_pg/EditProfileForm";
 import Feed from "./components/Feed";
 import "./index.css";
 import { Link } from "react-router-dom";
