@@ -41,10 +41,33 @@ def user_posts():
     else:
         return '403: unauthorized user'
 
+@post_routes.route('/<post_id>', methods=['PUT'])
+def update_post(post_id):
+    post = Post.query.get(post_id)
+
+    if not post:
+        return "Error 404: The post you're looking for couldn't be found"
+
+    updated_post = PostForm()
+
+    updated_post['csrf_token'].data = request.cookies['csrf_token']
+    caption = updated_post.data['caption']
+    image_url = updated_post.data['image_url']
+
+    post.caption = caption
+    post.image_url = image_url
+
+    db.session.commit()
+    return post
+
 
 @post_routes.route("/<post_id>/comments")
 def post_comments(post_id):
     comments = Comment.query.filter(Comment.post_id == post_id ).all()
+
+    if not comments:
+        return "Error 404: The comments you're looking for couldn't be found"
+
     response = [comment.to_dict() for comment in comments]
     res = { "comments": response }
     return res
@@ -53,6 +76,10 @@ def post_comments(post_id):
 @post_routes.route("/<post_id>")
 def single_post(post_id):
     post = Post.query.get(post_id)
+
+    if not post:
+        return "Error 404: The post you're looking for couldn't be found"
+
     return post.to_dict()
 
 
@@ -86,8 +113,12 @@ def add_comment(post_id):
 
 @post_routes.route("/<post_id>", methods=['DELETE'])
 def delete_post(post_id):
-    user_post = Post.user_id
-    if current_user.id == user_post:
+    post = Post.query.get(post_id)
+
+    if not post:
+        return "Error 404: The post you're looking for couldn't be found"
+
+    if current_user.id == post.user.id:
         post = Post.query.get(post_id)
     else:
         return '403: unauthorized user'

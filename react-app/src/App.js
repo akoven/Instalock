@@ -14,6 +14,7 @@ import PostDetails from "./components/postDetails/postDetail";
 import Feed from "./components/Feed";
 import "./index.css";
 import { Link } from "react-router-dom";
+import EditPostModal from './components/SinglePostComponents/EditPostModal';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -45,8 +46,11 @@ function App() {
         <Route exact path="/posts/:postId">
           <PostDetails />
         </Route>
-        <ProtectedRoute path="/users" exact={true}>
-          <UsersList />
+        <Route exact path="/edit-post-trial">
+          <EditPostModal />
+        </Route>
+        <ProtectedRoute path='/users' exact={true} >
+          <UsersList/>
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId" exact={true}>
           <User />

@@ -1,0 +1,29 @@
+
+.edit-post-form-container {
+    width: 1212px;
+    display: flex;
+    flex-direction: column;
+    background-color: #fefefe;
+    border-radius: 10px;
+}
+
+.edit-post-top-bar {
+    display: flex;
+    height: 42px;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-bottom: 1px solid rgb(234, 234, 234)
+}
+
+.edit-post-top-bar > div {
+    font-size: 16px;
+}
+
+.edit-post-submit-button {
+    border: none;
+    background-color: transparent;
+    color: #0095F6;
+    font-size: 16px;
+}
