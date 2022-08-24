@@ -11,6 +11,7 @@ import { authenticate } from "./store/session";
 import ProfilePage from "./components/profile_pg/ProfilePage";
 import SplashPage from "./components/SplashPage";
 import PostDetails from "./components/postDetails/postDetail";
+import EditProfileForm from "./components/profile_pg/EditProfileForm";
 import Feed from "./components/Feed";
 import "./index.css";
 import { Link } from "react-router-dom";
@@ -59,18 +60,15 @@ function App() {
         <ProtectedRoute path="/" exact={true}>
           <NavBar />
           <Feed />
-          {/* <ProfilePage /> */}
-          {/* <h1>My Home Page</h1> */}
         </ProtectedRoute>
-        <Route path="/work-in-progress">
-          <div className="work"> This Feature Is Currently In Development </div>
-          <div className="back-to-homepage"> 
-          <img src=""></img>
-            <Link to="/">
-              Return To HomePage
-            </Link>
-          </div>
-        </Route>
+        <ProtectedRoute path='/profile_page/:userId' exact={true}>
+          <ProfilePage />
+        </ProtectedRoute>
+        <ProtectedRoute path='/profile_edit/edit' exact={true}>
+          <EditProfileForm />
+        </ProtectedRoute>
+          {/* <h1>My Home Page</h1> */}
+
       </Switch>
     </BrowserRouter>
   );

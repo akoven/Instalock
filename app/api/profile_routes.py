@@ -30,5 +30,7 @@ def profile_info(user_id):
         'following_count': following_count,
         'posts': posts,
     }
-    
+
     return result
+
+# @profile_routes.route('/edit/<>')
