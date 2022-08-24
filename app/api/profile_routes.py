@@ -33,4 +33,4 @@ def profile_info(user_id):
 
     return result
 
-@profile_routes.route('/edit/<>')
+# @profile_routes.route('/edit/<>')
