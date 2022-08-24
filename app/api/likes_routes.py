@@ -5,17 +5,12 @@ from flask_login import current_user
 
 likes_routes = Blueprint("likes", __name__, url_prefix="/likes")
 
-# @likes_routes.route('/<post_id>', methods=["POST"])
-# def post_likes():
-#     if current_user:
-#         all_likes = Like.query.all()
-#         return all_likes
 
-# @likes_routes.route('/<comment_id>', methods=["POST"])
-# def comment_likes():
-#     if current_user:
-#         all_likes = Like.query.all()
-#         return all_likes
+@likes_routes.route('/posts/<post_id>')
+def get_likes(post_id):
+    likes = Like.query.filter(Like.post_id == post_id).all()
+
+    return { 'likes': [like.to_dict() for like in likes] }
 
 @likes_routes.route('/', methods=["POST"])
 def like():
