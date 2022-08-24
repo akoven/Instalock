@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import {displayUserInfo} from '../../store/profile';
 
 const ProfilePage = () => {
 
     const userSession = useSelector(state => state.session.user)
     const dispatch = useDispatch();
-    // const {userId} = useParams();
+    const history = useHistory();
     const userProfile = useSelector(state => state.profile);
 
     // useEffect(() =>{
@@ -30,10 +30,13 @@ const ProfilePage = () => {
     return(
        <>
         <h3>{userProfile?.profile?.username}</h3>
-        <img src={userProfile?.profile_image_url} alt='image-here'/>
-        <p>Followers: {userProfile?.follower_count}</p>
-        <p>Following: {userProfile?.following_count}</p>
-        <p>{userProfile?.profile?.bio}</p>
+            <img src={userProfile?.profile?.profile_image_url} alt='image-here'/>
+            <p>Followers: {userProfile?.follower_count}</p>
+            <p>Following: {userProfile?.following_count}</p>
+            <p>{userProfile?.profile?.website}</p>
+            <p>{userProfile?.profile?.bio}</p>
+            <button onClick={() => history.push(`/profile_edit/edit`)}>Edit my profile</button>
+
        </>
     )
 }

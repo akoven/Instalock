@@ -59,18 +59,15 @@ function App() {
         <ProtectedRoute path="/" exact={true}>
           <NavBar />
           <Feed />
-          {/* <ProfilePage /> */}
-          {/* <h1>My Home Page</h1> */}
         </ProtectedRoute>
-        <Route path="/work-in-progress">
-          <div className="work"> This Feature Is Currently In Development </div>
-          <div className="back-to-homepage"> 
-          <img src=""></img>
-            <Link to="/">
-              Return To HomePage
-            </Link>
-          </div>
-        </Route>
+        <ProtectedRoute path='/profile_page/:userId' exact={true}>
+          <ProfilePage />
+        </ProtectedRoute>
+        <ProtectedRoute path='/profile_edit/edit' exact={true}>
+          <EditProfileForm />
+        </ProtectedRoute>
+          {/* <h1>My Home Page</h1> */}
+
       </Switch>
     </BrowserRouter>
   );
