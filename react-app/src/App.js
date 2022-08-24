@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import ProfilePage from './components/profile_pg/ProfilePage';
+import EditProfileForm from './components/profile_pg/EditProfileForm';
 import SplashPage from './components/SplashPage';
 import PostDetails from './components/postDetails/postDetail'
 import Feed from './components/Feed';
@@ -53,9 +54,14 @@ function App() {
         <ProtectedRoute path='/' exact={true} >
           <NavBar />
           <Feed />
-          {/* <ProfilePage /> */}
+        </ProtectedRoute>
+        <ProtectedRoute path='/profile_page/:userId' exact={true}>
+          <ProfilePage />
+        </ProtectedRoute>
+        <ProtectedRoute path='/profile_edit/edit' exact={true}>
+          <EditProfileForm />
+        </ProtectedRoute>
           {/* <h1>My Home Page</h1> */}
-          </ProtectedRoute>
 
       </Switch>
     </BrowserRouter>
