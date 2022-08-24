@@ -22,8 +22,8 @@ function EditPostForm({ post, onClick }) {
         let updatedPost = await dispatch(updatePostThunk(payload, post.id))
         if (updatedPost) {
             history.push('/edit-post-trial')
-            onClick() // close the modal
         }
+        onClick() // close the modal
     }
 
     return (
