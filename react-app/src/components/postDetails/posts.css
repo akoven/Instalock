@@ -1,14 +1,101 @@
-.img {
-    display: block;
-    background-size: cover;
-    border-radius: 33px;
+body{
+      background-color: rgba(243, 243, 243, 0.39) !important;
+
+}
+.nav-home{
+    background-color: white;
+}
+.post-details-container{
     display: flex;
+    justify-content: center;
+    width: max-content;
+    margin: 30px auto;
+    border: 1px solid rgba(167, 167, 167, 0.391);
+    background-color: white;
+}
+.left-details{
+    /* width: 336px;
+    height: 557px;
+    position: relative; */
+
+}
+.left-details > img{
+    width: 336px;
+    height: 600px;
     object-fit: cover;
-    width: 300px;
-    height: 300px;
-    background-size: cover;
-    border-radius: 33px;
+}
+.right-details{
+    padding-top: 15px;
+}
+.post-details-username{
+    margin-left: 5px;
+}
+.top-right-details{
+    padding-top: 5px;
+    padding-left: 15px;
     display: flex;
-    position: static;
-    margin-top: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.post-details-caption{
+    font-size: smaller;
+    color: rgba(0, 0, 0, 0.706);
+    padding-bottom: 100px;
+    padding-left: 45px;
+    border-bottom: 1px solid rgba(167, 167, 167, 0.391);
+
+
+}
+.pd-like-comment{
+    border-radius: 500px;
+}
+
+.middle-right-details{
+    margin-top: 40px;
+    padding-left: 15px;
+    padding-right: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(167, 167, 167, 0.391);
+    overflow-y: scroll;
+}
+.middle-right-details::-webkit-scrollbar {
+    display: none;
+    visibility: hidden;
+  }
+
+.comment-likes-section{
+    display: flex;
+    justify-content: space-between;
+}
+.heart{
+    font-size: 5px;
+}
+.comment-user-details{
+    display: flex;
+    /* align-items: center; */
+    justify-content: space-around;
+
+}
+.comment-user-details > *{
+    margin-right: 5px;
+}
+.comment-user-name{
+    font-weight: bold;
+}
+.comment-likes-section{
+    margin-left: 30px;
+    font-size: 15px;
+    color: gray;
+    display: flex;
+    align-items: center;
+}
+.post-likes-section{
+    padding-left: 35px;
+    margin-top: 20px;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* align-items: flex-start; */
+}
+.number-post-likes{
+    font-size: 25px;
 }
