@@ -8,10 +8,10 @@ const PostDetail = () => {
     const dispatch = useDispatch();
     let { postId } = useParams();
     postId = Number(postId)
+    // let { userId } = useParams();
+    // userId = Number(userId)
     const posts = useSelector((state) => (state.posts))
     const postsString = JSON.stringify(posts)
-    // const comments = useSelector((state) => (state.comments))
-    // console.log(comments, "comments")
 
     let onePost = posts[postId]
 
@@ -19,13 +19,14 @@ const PostDetail = () => {
         dispatch(getPosts(postId))
     }, [dispatch, postId, postsString])
 
-
+    
     return (
-
         <>
-        <div className="img"><img src= {onePost?.image_url} alt="" /></div>
-        <div>{onePost?.caption}</div>
-        <h3>Comments</h3>
+        <div className="main-container">
+        <div className="username">{onePost?.user.username}</div>
+        <div className="post-detail-img"><img src= {onePost?.image_url} alt="" /></div>
+        <div className = "caption">{onePost?.caption}</div>
+        <h3 className = "comments-header">Comments</h3>
         <div>
             {onePost?.comments && onePost?.comments.map((comment) => (
                 
@@ -34,8 +35,8 @@ const PostDetail = () => {
                     <div> Comment: {comment.content}</div>
                     <div>------------------</div>
                 </div>
-                
             ))}
+        </div>
         </div>
         
 
