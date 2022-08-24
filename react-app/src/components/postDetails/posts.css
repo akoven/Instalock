@@ -37,6 +37,10 @@ body{
     align-items: center;
     margin-bottom: 10px;
 }
+.post-options{
+    /* margin-left: 120px; */
+    cursor: pointer;
+}
 .post-details-caption{
     font-size: smaller;
     color: rgba(0, 0, 0, 0.706);
@@ -46,8 +50,18 @@ body{
 
 
 }
+.options-separator{
+    display: flex;
+    justify-content: space-around;
+}
 .pd-like-comment{
     border-radius: 500px;
+}
+.pd-edit-modal{
+    position: absolute;
+    /* width: 100%; */
+    /* height: 100%; */
+    margin: 0 auto;
 }
 
 .middle-right-details{
