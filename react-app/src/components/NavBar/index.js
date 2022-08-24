@@ -86,6 +86,7 @@ const NavBar = () => {
                 className="dropdown"
                 style={{ textDecoration: "none" }}
               >
+                <i class="fa fa-home"></i>
                 Profile
               </Link>
               <Link
