@@ -20,7 +20,7 @@ function EditPostModal() {
         <div className='edit-post-button' onClick={() => setShowModal(true)}>Edit</div>
         {showModal && (
             <Modal onClose={() => setShowModal(false)}>
-                <EditPostForm post={post} />
+                <EditPostForm post={post} onClick={() => setShowModal(false)} />
             </Modal>
         )}
         </>
