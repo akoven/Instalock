@@ -11,6 +11,7 @@ import { authenticate } from './store/session';
 import ProfilePage from './components/profile_pg/ProfilePage';
 import SplashPage from './components/SplashPage';
 import PostDetails from './components/postDetails/postDetail'
+import Feed from './components/Feed';
 
 
 function App() {
@@ -50,10 +51,11 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
-          <ProfilePage />
           <NavBar />
+          <Feed />
+          {/* <ProfilePage /> */}
           {/* <h1>My Home Page</h1> */}
-        </ProtectedRoute>
+          </ProtectedRoute>
 
       </Switch>
     </BrowserRouter>
