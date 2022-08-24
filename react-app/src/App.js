@@ -3,13 +3,16 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
-import NavBar from './components/NavBar';
+import NavBar from './components/NavBar/index';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
+import ProfilePage from './components/profile_pg/ProfilePage';
 import SplashPage from './components/SplashPage';
-import PostDetail from './components/postDetail';
+import PostDetails from './components/postDetails/postDetail'
+import Feed from './components/Feed';
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -39,7 +42,7 @@ function App() {
           <SignUpForm />
         </Route>
         <Route exact path="/posts/:postId">
-          <PostDetail />
+          <PostDetails />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
@@ -49,9 +52,11 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
           <NavBar />
-          <h1>My Home Page</h1>
-        </ProtectedRoute>
-        
+          <Feed />
+          {/* <ProfilePage /> */}
+          {/* <h1>My Home Page</h1> */}
+          </ProtectedRoute>
+
       </Switch>
     </BrowserRouter>
   );

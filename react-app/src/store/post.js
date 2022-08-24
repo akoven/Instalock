@@ -20,6 +20,13 @@ export const getPosts = () => async (dispatch) => {
 
     return {};
 }
+//Temporary thunk for testing below
+export const getPostsThunk = () => async dispatch => {
+    const res = await fetch('/api/posts')
+    const posts = await res.json();
+    dispatch(getAllPosts(posts));
+    return res;
+  }
 
 const initialState = {};
 const postsReducer = (state = initialState, action) => {
