@@ -18,9 +18,9 @@ export const getPostLikesThunk = (postId) => async dispatch => {
 }
 
 export default function reducer(state = {}, action) {
-    switch (action.type){
+    switch (action.type) {
         case GET_POST_LIKES:
-            newState = {}
+            let newState = {}
             action.likes.forEach(like => newState[like.id] = like)
             return newState
         default:

@@ -12,6 +12,7 @@ import ProfilePage from './components/profile_pg/ProfilePage';
 import SplashPage from './components/SplashPage';
 import PostDetails from './components/postDetails/postDetail'
 import Feed from './components/Feed';
+import EditPostModal from './components/SinglePostComponents/EditPostModal';
 
 
 function App() {
@@ -43,6 +44,9 @@ function App() {
         </Route>
         <Route exact path="/posts/:postId">
           <PostDetails />
+        </Route>
+        <Route exact path="/edit-post-trial">
+          <EditPostModal />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>

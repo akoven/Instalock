@@ -16,3 +16,5 @@ function EditPostModal() {
         </>
     )
 }
+
+export default EditPostModal
