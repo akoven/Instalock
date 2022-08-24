@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getPosts } from "../../store/post";
+import EditPostModal from "../SinglePostComponents/EditPostModal/index"
+import { useState } from "react";
 import "./posts.css"
 
 const PostDetail = () => {
@@ -15,26 +17,40 @@ const PostDetail = () => {
 
     let onePost = posts[postId]
 
+    const [showEditForm, setShowEditForm] = useState(false);
+
     useEffect(() => {
         dispatch(getPosts(postId))
     }, [dispatch, postId, postsString])
 
+    const postOptionsClick = () => {
+
+        setShowEditForm(true)
+    }
 
     return (
         <div className="post-details-container">
+            {showEditForm && (
+                <EditPostModal />
+            )}
             <div className="left-details">
                 <img src= {onePost?.image_url} alt="" />
             </div>
             <div className="right-details">
                 <div className="top-right-details">
 
-                {onePost?.user?.profile_image_url ? (
-                    <img className='user-post-image' src={onePost.user.profile_image_url} alt="" />
-                    ) : (
-                        <img src="https://img.icons8.com/plumpy/24/000000/user-male-circle.png" alt="Profile"/>
-                        )
-                    }
-                    <div className="post-details-username">{onePost?.user?.username}</div>
+                <div className="options-separator">
+                    {onePost?.user?.profile_image_url ? (
+                        <img className='user-post-image' src={onePost.user.profile_image_url} alt="" />
+                        ) : (
+                            <img src="https://img.icons8.com/plumpy/24/000000/user-male-circle.png" alt="Profile"/>
+                            )
+                        }
+                        <div className="post-details-username">{onePost?.user?.username}</div>
+                        <div onClick={() => postOptionsClick()} className="post-options">
+                            <img src="https://img.icons8.com/fluency-systems-filled/24/000000/dots-loading.png" alt=""/>
+                        </div>
+                </div>
                 </div>
                     <div className="post-details-caption">{onePost?.caption}</div>
                 <div className="middle-right-details">
@@ -56,7 +72,6 @@ const PostDetail = () => {
                             </div>
                             <div className="comment-likes-section">
                                 <div className="likes-info">{comment?.likes} likes</div>
-                                {/* <img className="pd-like-comment" src="https://img.icons8.com/small/15/000000/like--v1.png" alt=""/> */}
                                 <img className="heart" src="https://img.icons8.com/ios-glyphs/15/000000/like--v2.png" alt=""/>
                             </div>
                         </div>
