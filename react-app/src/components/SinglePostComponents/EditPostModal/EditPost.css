@@ -1,0 +1,17 @@
+
+.edit-post-form-container {
+    width: 1212px;
+    display: flex;
+    flex-direction: column;
+    background-color: lightblue;
+    border-radius: 10px;
+}
+
+.edit-post-top-bar {
+    display: flex;
+    height: 42px;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 15px;
+    padding-right: 15px;
+}
