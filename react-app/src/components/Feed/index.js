@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getPostsThunk } from '../../store/post'
+import CommentForm from '../CommentForm'
 import "./Feed.css"
 const Feed = () => {
 
@@ -69,13 +70,7 @@ const Feed = () => {
           </div>
           <div className="posts-comments">View all {post?.comments?.length} comment(s)</div>
           <div className="post-lower">
-            <form action="" className="comment-form" onSubmit={(e) => commentSubmit(e, post.id)}>
-              <input type="text"
-                     value={commentContent}
-                     onChange={updateComment}
-                     placeholder='Add a comment' />
-              <button type="submit">Post</button>
-            </form>
+            <CommentForm post={post} />
           </div>
         </div>
 
