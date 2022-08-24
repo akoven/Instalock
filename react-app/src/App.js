@@ -43,6 +43,7 @@ function App() {
           <SignUpForm />
         </Route>
         <Route exact path="/posts/:postId">
+          <NavBar />
           <PostDetails />
         </Route>
         <Route exact path="/edit-post-trial">
