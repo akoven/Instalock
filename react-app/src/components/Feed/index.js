@@ -9,27 +9,12 @@ const Feed = () => {
 
   const posts = useSelector(state => Object.values(state.posts))
 
-  const [commentContent, setCommentContent] = useState('');
-
-  const updateComment = (e) => setCommentContent(e.target.value)
-
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getPostsThunk())
   }, [dispatch])
 
-  const commentSubmit = (e, postId) => {
-    e.preventDefault();
-    console.log(postId)
-    console.log('sdfjuohsdkjfhsjlkdhf')
-    console.log('sdfjuohsdkjfhsjlkdhf')
-    console.log('sdfjuohsdkjfhsjlkdhf')
-    console.log('sdfjuohsdkjfhsjlkdhf')
-    const data = {
-      content: commentContent,
-    }
 
-  }
   return (
     <div className='feed'>
       {posts.map(post => (
