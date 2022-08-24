@@ -42,6 +42,7 @@ function App() {
           <SignUpForm />
         </Route>
         <Route exact path="/posts/:postId">
+          <NavBar />
           <PostDetails />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
