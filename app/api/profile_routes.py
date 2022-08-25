@@ -38,6 +38,9 @@ def profile_info(user_id):
 def edit_profile(user_id):
     profile = User.query.get(user_id)
 
+    if not profile:
+        return '404: the object you are looking for is not available'
+
     edited_profile = ProfileEditForm()
     edited_profile['csrf_token'].data = request.cookies['csrf_token']
 

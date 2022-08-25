@@ -6,8 +6,8 @@ import { editProfileParams } from "../../store/profile";
 const EditProfileForm = () =>{
     const dispatch = useDispatch();
     const history = useHistory();
-    const {userId} = useParams();
-    const currentUser = useSelector(state => state.session.user[userId]);
+    // const {userId} = useParams();
+    const currentUser = useSelector(state => state.session.user);
     const userProfile = useSelector(state => state.profile);
 
     const [username, setUsername] = useState(userProfile?.profile?.username)
@@ -27,7 +27,8 @@ const EditProfileForm = () =>{
             phoneNumber,
             gender
         }
-        const editedProfile = await dispatch(editProfileParams(payload));
+
+        const editedProfile = await dispatch(editProfileParams(payload, currentUser.id));
 
         if(editedProfile){
             history.push('/');
