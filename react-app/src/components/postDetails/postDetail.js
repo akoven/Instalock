@@ -16,14 +16,11 @@ const PostDetail = () => {
     const [ isLiked, setIsLiked ] = useState(() => {
         let result = false
         Object.values(likes).forEach(like => {
-            console.log(like.user.id)
-            console.log(user.id)
             if (like.user.id === user.id) {
                 result = true
                 return
             }
         })
-    console.log(result, "result")
         return result
     })
 
