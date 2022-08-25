@@ -37,9 +37,31 @@ export const deleteProfile = (userId) => async dispatch =>{
 
 export const editProfileParams = (userProfile, userId) => async dispatch =>{
     console.log('USER PROFILE: ', userProfile)
+    // const {
+    //     username,
+    //     website,
+    //     bio,
+    //     email,
+    //     phone,
+    //     gender
+    // } = userProfile
+
+    // const userProfileData = new FormData()
+
+    // userProfileData.append('username', username)
+    // userProfileData.append('website', website)
+    // userProfileData.append('bio', bio)
+    // userProfileData.append('email', email)
+    // userProfileData.append('phone', phone)
+    // userProfileData.append('gender', gender)
+
     const response = await fetch(`/api/profile/edit/${userId}`, {
+        headers: {
+            'Content-Type':'application/json'
+        },
         method: 'PUT',
         body: JSON.stringify(userProfile)
+        // body: userProfileData
     });
     console.log('RESPONSE:', response)
     if(response.ok){
