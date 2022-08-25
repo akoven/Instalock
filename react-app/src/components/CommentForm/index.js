@@ -1,26 +1,41 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import { createComment, getComments } from '../../store/comment';
 
 const CommentForm = ({ post }) => {
 const [commentContent, setCommentContent] = useState('');
 const updateComment = (e) => setCommentContent(e.target.value)
 
+const dispatch = useDispatch()
 const userSession = useSelector(state => state.session.user)
 
+const comments = useSelector((state) => {
 
+  if (!post.comments) return null;
 
-  const commentSubmit = (e, postId) => {
+  return post.comments.map(commentId => state.comments[commentId]);
+
+});
+
+  const commentSubmit = async(e) => {
     e.preventDefault();
     const data = {
       content: commentContent,
       post_id: post.id,
       user_id: userSession.id
     }
-    console.log(data, 'data')
+
+    let newComment = await dispatch(createComment(data))
+    if(newComment.id){
+      dispatch(getComments(post.id))
+    }
+    setCommentContent('')
+    return newComment
   }
+
   return (
-    <form action="" className="comment-form" onSubmit={(e) => commentSubmit(e, post.id)}>
-    <input type="text"
+    <form className="comment-form" onSubmit={commentSubmit}>
+        <input type="text"
            value={commentContent}
            onChange={updateComment}
            placeholder='Add a comment' />

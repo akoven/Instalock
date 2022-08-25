@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { getComments } from '../../store/comment'
 import { getPostsThunk } from '../../store/post'
 import CommentForm from '../CommentForm'
 import "./Feed.css"
@@ -13,6 +14,7 @@ const Feed = () => {
   useEffect(() => {
     dispatch(getPostsThunk())
   }, [dispatch])
+
 
 
   return (
