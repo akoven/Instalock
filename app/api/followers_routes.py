@@ -19,7 +19,9 @@ def get_followers(user_id):
 
     result = {
         'followers': followers,
-        'following': following
+        'follower_count': follower_count,
+        'following': following,
+        'following_count': following_count
     }
 
     return result
