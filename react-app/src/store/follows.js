@@ -13,6 +13,13 @@ const getFollowConnections = (followData) => {
     }
 }
 
+const removeFollow = (followId) => {
+    return {
+        type: REMOVE_FOLLOW,
+        followId
+    }
+}
+
 
 export const getFollowData = (userId) => async dispatch => {
     const res = await fetch(`/api/followers/${userId}`)
@@ -24,12 +31,30 @@ export const getFollowData = (userId) => async dispatch => {
     }
 }
 
+export const removeFollowThunk = (followId) => async dispatch => {
+    const res = await fetch(`/api/followers/${followId}`, { method: 'DELETE' })
+
+    if (res.ok) {
+        dispatch(removeFollow(followId))
+    }
+}
+
 
 export default function reducer (state = {}, action) {
-    let newState = {}
     switch (action.type) {
         case GET_FOLLOW_CONNECTIONS: {
+            let newState = {}
             newState = action.followData
+            return newState
+        }
+        case REMOVE_FOLLOW: {
+            let newState = {...state}
+            if (newState.followers[action.followId]) {
+                delete newState.followers[action.followId]
+            }
+            if (newState.following[action.followId]) {
+                delete newState.following[action.followId]
+            }
             return newState
         }
         default: {

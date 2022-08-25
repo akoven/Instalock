@@ -18,7 +18,7 @@ const LoginForm = () => {
     if (data) {
       setErrors(data);
     } else {
-      dispatch(getProfileThunk(user.id))
+      dispatch(getProfileThunk(user?.id))
     }
   };
 

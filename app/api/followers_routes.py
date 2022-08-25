@@ -53,10 +53,10 @@ def follow():
             return 'Already following this user'
 
 
-@followers_routes.route('/<user_id>/<follower_id>', methods=['DELETE'])
-def unfollow(user_id, follower_id):
+@followers_routes.route('/<follow_id>', methods=['DELETE'])
+def unfollow(follow_id):
     if current_user.is_authenticated:
-        follow_log = UserFollower.query.filter(UserFollower.user_id == user_id).filter(UserFollower.follower_id == follower_id).first()
+        follow_log = UserFollower.query.get(follow_id)
 
         db.session.delete(follow_log)
         db.session.commit()

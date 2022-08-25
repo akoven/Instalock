@@ -1,8 +1,10 @@
 import { useSelector } from "react-redux"
 import { NavLink } from "react-router-dom"
+import RemoveFollowerModal from "../RemoveFollowerModal"
 
 function FollowersDisplay({ onClick }) {
     const followers = useSelector(state => Object.entries(state.follows.followers))
+    const userProfile = useSelector(state => state.profile.profile)
 
     return (
         <div className="followers-display-container">
@@ -30,7 +32,7 @@ function FollowersDisplay({ onClick }) {
                                 <div>{follower.username}</div>
                             </div>
                         </NavLink>
-                        {/* <RemoveFollower /> */}
+                        <RemoveFollowerModal follower={follower} followId={follow[0]} />
                     </div>
                 )})}
             </div>
