@@ -108,7 +108,7 @@ export const getPosts = () => async (dispatch) => {
 
 //Temporary thunk for testing below
 export const getPostsThunk = () => async dispatch => {
-    const res = await fetch('/api/posts')
+    const res = await fetch('/api/posts/')
 
     if (res.ok) {
         const posts = await res.json();
