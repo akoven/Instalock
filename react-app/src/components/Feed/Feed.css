@@ -69,6 +69,9 @@ a {
 }
 .comment-form{
   display: flex;
+  /* justify-content: space-around; */
+  align-items: center;
+  position: relative;
 }
 .comment-form > button{
   background-color: white;
@@ -76,6 +79,9 @@ a {
   color: #0095F6;
   font-weight: 700;
   cursor: pointer;
+  position: absolute;
+  right: 9%;
+  /* top: 50%; */
 }
 .comment-form > input{
   width: 88%;
