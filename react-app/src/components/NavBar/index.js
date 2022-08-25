@@ -90,16 +90,8 @@ const NavBar = () => {
                 className="dropdown"
                 style={{ textDecoration: "none" }}
               >
-                {/* <i class="fa fa-home"></i> */}
                 Profile
               </Link>
-              {/* <Link
-                to="/work-in-progress"
-                className="dropdown"
-                style={{ textDecoration: "none" }}
-              >
-                Saved
-              </Link> */}
               <Link
                 to="/settings"
                 className="dropdown"

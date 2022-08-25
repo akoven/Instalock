@@ -6,8 +6,9 @@ import { getComments } from '../../store/comment'
 import { NavLink } from 'react-router-dom'
 import { getPostsThunk } from '../../store/post'
 import CommentForm from '../CommentForm'
-import { displayUserInfo } from '../../store/profile'
+import { getProfileThunk } from '../../store/profile'
 import "./Feed.css"
+import { getFollowData } from '../../store/follows'
 const Feed = () => {
 
   const posts = useSelector(state => Object.values(state.posts))
@@ -16,7 +17,8 @@ const Feed = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getPostsThunk())
-    dispatch(displayUserInfo(user.id))
+    dispatch(getProfileThunk(user.id))
+    dispatch(getFollowData(user.id))
   }, [dispatch])
 
 
@@ -24,9 +26,10 @@ const Feed = () => {
   return (
     <div className='feed'>
       {posts.map(post => (
-        <div id={post.id} className='post-container'>
+        <div id={post.id} className='post-container' key={post.id}>
           <NavLink to={`/posts/${post.id}`}>
           <div className="post-top">
+            <NavLink to={`/profile/${post.user.id}`}>
             <div className="user-post-info">
               {post.user.profile_image_url ? (
                 <img className='user-post-image' src={post.user.profile_image_url} alt="" />
@@ -35,9 +38,10 @@ const Feed = () => {
                 <img src="https://img.icons8.com/plumpy/24/000000/user-male-circle.png" alt="Profile"/>
 
               )
-            }
-              <div>{post.user.username}</div>
+              }
+            <div>{post.user.username}</div>
             </div>
+            </NavLink>
             <div className="user-post-options">
               <img src="https://img.icons8.com/fluency-systems-filled/24/000000/dots-loading.png" alt=""/>
             </div>

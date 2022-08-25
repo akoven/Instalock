@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getPosts, getPostsThunk } from "../../store/post";
 import PostOptionsModal from "../SinglePostComponents/PostOptionsModal";
@@ -19,14 +19,11 @@ const PostDetail = () => {
     const [ isLiked, setIsLiked ] = useState(() => {
         let result = false
         Object.values(likes).forEach(like => {
-            console.log(like.user.id)
-            console.log(user.id)
             if (like.user.id === user.id) {
                 result = true
                 return
             }
         })
-    console.log(result, "result")
         return result
     })
 
@@ -76,15 +73,17 @@ const PostDetail = () => {
             <div className="right-details">
                 <div className="top-right-details">
 
+                        <NavLink to={`/profile/${post?.user.id}`} >
                         {post?.user?.profile_image_url ? (
                             <img className='user-post-image' src={post.user.profile_image_url} alt="" />
-                            ) : (
-                                <img src="https://img.icons8.com/plumpy/24/000000/user-male-circle.png" alt="Profile"/>
-                                )
-                            }
-                            <div className="post-details-username">{post?.user?.username}</div>
-                            <PostOptionsModal post={post} />
-
+                        ) : (
+                            <img src="https://img.icons8.com/plumpy/24/000000/user-male-circle.png" alt="Profile"/>
+                            )
+                        }
+                        
+                        <div className="post-details-username">{post?.user?.username}</div>
+                        </NavLink>
+                        <PostOptionsModal post={post} />
                 </div>
                     <div className="post-details-caption">{post?.caption}</div>
                 <div className="middle-right-details">
@@ -114,7 +113,7 @@ const PostDetail = () => {
                 <div className="bottom-right-details">
                     <div className="post-likes-section">
                         <div className="like-post-btn">
-                        {!isLiked ? <i onClick={addLikePost}class="fa-regular fa-heart fa-xl"></i> : <i style={{'color': '#ED4956'}} onClick={removeLikePost} class="fa-solid fa-heart fa-xl"></i>}
+                        {!isLiked ? <i onClick={addLikePost} className="fa-regular fa-heart fa-xl"></i> : <i style={{'color': '#ED4956'}} onClick={removeLikePost} class="fa-solid fa-heart fa-xl"></i>}
                         </div>
                         <div className="number-post-likes">
                             {Object.keys(likes)?.length} likes

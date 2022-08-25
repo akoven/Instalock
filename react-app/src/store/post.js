@@ -42,7 +42,7 @@ const deletePost = (postId) => {
     }
 }
 
-  
+
 
 //Create A Post
 export const createPost = (data) => async (dispatch) => {
@@ -76,8 +76,8 @@ export const createPost = (data) => async (dispatch) => {
     //     dispatch(addPost(newPost))
     //     return newPost;
     // }
-    
-    
+
+
 }
 
 //Get All Posts
@@ -108,7 +108,7 @@ export const getPosts = () => async (dispatch) => {
 
 //Temporary thunk for testing below
 export const getPostsThunk = () => async dispatch => {
-    const res = await fetch('/api/posts')
+    const res = await fetch('/api/posts/')
 
     if (res.ok) {
         const posts = await res.json();
