@@ -52,7 +52,7 @@ def edit_profile(user_id):
     gender = edited_profile.data['gender']
 
     profile.username = username
-    profile.website = website
+    profile.website =  website
     profile.bio = bio
     profile.email = email
     profile.phone = phone
