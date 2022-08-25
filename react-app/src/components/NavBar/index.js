@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { NavLink, Link } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
 import "./NavBar.css";
 
 const NavBar = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const userId = useSelector(state => state.session.user.id)
   const openMenu = () => {
     if (showMenu) return;
     setShowMenu(true);
@@ -82,7 +84,7 @@ const NavBar = () => {
             <div className="menu">
               {/* <i className="fas fa-bars nav_bars_icon"></i> */}
               <Link
-                to="/profile"
+                to={`/profile/${userId}`}
                 className="dropdown"
                 style={{ textDecoration: "none" }}
               >
