@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getPosts, getPostsThunk } from "../../store/post";
 import PostOptionsModal from "../SinglePostComponents/PostOptionsModal";
@@ -64,14 +64,16 @@ const PostDetail = () => {
             <div className="right-details">
                 <div className="top-right-details">
                     <div className="options-separator">
+                        <NavLink to={`/profile/${post?.user.id}`} >
                         {post?.user?.profile_image_url ? (
                             <img className='user-post-image' src={post.user.profile_image_url} alt="" />
-                            ) : (
-                                <img src="https://img.icons8.com/plumpy/24/000000/user-male-circle.png" alt="Profile"/>
-                                )
-                            }
-                            <div className="post-details-username">{post?.user?.username}</div>
-                            <PostOptionsModal post={post} />
+                        ) : (
+                            <img src="https://img.icons8.com/plumpy/24/000000/user-male-circle.png" alt="Profile"/>
+                            )
+                        }
+                        </NavLink>
+                        <div className="post-details-username">{post?.user?.username}</div>
+                        <PostOptionsModal post={post} />
                     </div>
                 </div>
                     <div className="post-details-caption">{post?.caption}</div>
