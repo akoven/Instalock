@@ -10,7 +10,7 @@ function PostOptionsModal({ post }) {
         <div className='post-options-button' onClick={() => setShowModal(true)}><i className='fa-solid fa-ellipsis'></i></div>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <PostOptions post={post} />
+                    <PostOptions post={post} onClick={() => setShowModal(false)} />
                 </Modal>
             )}
         </>
