@@ -61,10 +61,10 @@ function App() {
           <NavBar />
           <Feed />
         </ProtectedRoute>
-        <ProtectedRoute path='/profile_page/:userId' exact={true}>
+        <ProtectedRoute path='/profile/:userId' exact={true}>
           <ProfilePage />
         </ProtectedRoute>
-        <ProtectedRoute path='/profile_edit/edit' exact={true}>
+        <ProtectedRoute path='/profile/edit/:userId' exact={true}>
           <EditProfileForm />
         </ProtectedRoute>
         <Route path="/work-in-progress">

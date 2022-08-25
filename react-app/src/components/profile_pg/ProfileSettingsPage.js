@@ -11,7 +11,7 @@ const ProfileSettingsPage = () =>{
 
     return(
         <>
-            <button onClick={() => history.push(`/profile_page/${userSession.id}`)}>Edit my profile</button>
+            <button onClick={() => history.push(`/profile/${userSession.id}`)}>Edit my profile</button>
             <button onClick={() => dispatch(deleteProfile(userProfile.id))}>Delete my profile</button>
         </>
     )
