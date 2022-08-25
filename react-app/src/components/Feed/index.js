@@ -8,6 +8,7 @@ import { getPostsThunk } from '../../store/post'
 import CommentForm from '../CommentForm'
 import { displayUserInfo } from '../../store/profile'
 import "./Feed.css"
+import { getFollowData } from '../../store/follows'
 const Feed = () => {
 
   const posts = useSelector(state => Object.values(state.posts))
@@ -17,6 +18,7 @@ const Feed = () => {
   useEffect(() => {
     dispatch(getPostsThunk())
     dispatch(displayUserInfo(user.id))
+    dispatch(getFollowData(user.id))
   }, [dispatch])
 
 

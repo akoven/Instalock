@@ -102,7 +102,7 @@ const PostDetail = () => {
                 <div className="bottom-right-details">
                     <div className="post-likes-section">
                         <div className="like-post-btn">
-                        {!isLiked ? <i onClick={addLikePost}class="fa-regular fa-heart fa-xl"></i> : <i style={{'color': '#ED4956'}} onClick={removeLikePost} class="fa-solid fa-heart fa-xl"></i>}
+                        {!isLiked ? <i onClick={addLikePost} className="fa-regular fa-heart fa-xl"></i> : <i style={{'color': '#ED4956'}} onClick={removeLikePost} class="fa-solid fa-heart fa-xl"></i>}
                         </div>
                         <div className="number-post-likes">
                             {Object.keys(likes)?.length} likes
