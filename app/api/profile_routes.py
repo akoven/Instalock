@@ -1,4 +1,5 @@
 from flask import Blueprint, request
+from app.forms.profile_form import ProfileEditForm
 from app.models import db, Post, User, UserFollower
 
 profile_routes = Blueprint("profile", __name__, url_prefix="/profile")
@@ -33,4 +34,26 @@ def profile_info(user_id):
 
     return result
 
-# @profile_routes.route('/edit/<>')
+@profile_routes.route('/edit/<user_id>', methods=["PUT"])
+def edit_profile(user_id):
+    profile = User.query.get(user_id)
+
+    edited_profile = ProfileEditForm()
+    edited_profile['csrf_token'].data = request.cookies['csrf_token']
+
+    username = edited_profile.data['username']
+    website = edited_profile.data['website']
+    bio = edited_profile.data['bio']
+    email = edited_profile.data['email']
+    phone = edited_profile.data['phone']
+    gender = edited_profile.data['gender']
+
+    profile.username = username
+    profile.website = website
+    profile.bio = bio
+    profile.email = email
+    profile.phone = phone
+    profile.gender = gender
+
+    db.session.commit()
+    return profile

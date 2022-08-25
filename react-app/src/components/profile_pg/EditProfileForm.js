@@ -20,7 +20,12 @@ const EditProfileForm = () =>{
     const handleSubmit = async e =>{
         e.preventDefault();
         const payload = {
-            ...userProfile
+            username,
+            website,
+            bio,
+            email,
+            phoneNumber,
+            gender
         }
         const editedProfile = await dispatch(editProfileParams(payload));
 
