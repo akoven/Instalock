@@ -45,14 +45,7 @@ def edit_profile(user_id):
     if not profile:
         return '404: the object you are looking for is not available'
 
-    print(edited_profile.data)
-    print(" -- -- -- -- -- -- -- -- --")
-    print(" -- -- -- -- -- -- -- -- --")
-    print(" -- -- -- -- -- -- -- -- --")
-    print(" -- -- -- -- -- -- -- -- --")
-    print(" -- -- -- -- -- -- -- -- --")
-
-    print('NEW PROFILE: ',edited_profile)
+    # print('NEW PROFILE: ',edited_profile)
 
     username = edited_profile.data['username']
     website = edited_profile.data['website']
@@ -68,5 +61,6 @@ def edit_profile(user_id):
     profile.phone = phone
     profile.gender = gender
 
+    print('PROFILE FROM BACKEND: ',profile)
     db.session.commit()
-    return profile
+    return profile.to_dict()
