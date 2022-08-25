@@ -37,7 +37,7 @@ const PostDetail = () => {
                 </div>
                     <div className="post-details-caption">{post?.caption}</div>
                 <div className="middle-right-details">
-                    {post?.comments && post?.comments.map((comment) => (
+                    {post && post.display_comments && post?.comments && post?.comments.map((comment) => (
                         <div className="comment-users-info">
                             <div className="comment-user-details">
                                 <div>
