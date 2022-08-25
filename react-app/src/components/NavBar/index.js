@@ -89,13 +89,13 @@ const NavBar = () => {
                 <i class="fa fa-home"></i>
                 Profile
               </Link>
-              <Link
+              {/* <Link
                 to="/work-in-progress"
                 className="dropdown"
                 style={{ textDecoration: "none" }}
               >
                 Saved
-              </Link>
+              </Link> */}
               <Link
                 to="/settings"
                 className="dropdown"
@@ -103,13 +103,13 @@ const NavBar = () => {
               >
                 Settings
               </Link>
-              <Link
+              {/* <Link
                 to="/work-in-progress"
                 className="dropdown"
                 style={{ textDecoration: "none" }}
               >
                 Switch Accounts
-              </Link>
+              </Link> */}
               <div className="logout-div">
                 <LogoutButton />
               </div>
