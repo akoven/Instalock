@@ -1,3 +1,5 @@
+import { ADD_COMMENT, LOAD_COMMENTS } from "./comment"
+
 const GET_ALL_POSTS = "posts/get-user-posts"
 const UPDATE_POST = "posts/update-post"
 const GET_PROFILE_NAME = "posts/get-profile-username"
@@ -10,6 +12,7 @@ const addPost = (post) => {
         post
     }
 }
+
 
 const getAllPosts = (allPosts) => {
     return {
@@ -160,6 +163,14 @@ const postsReducer = (state = initialState, action) => {
             action.profile.forEach((name) => newState[name.id] = name)
             return newState;
         }
+        case LOAD_COMMENTS:
+        return {
+            ...state,
+            [action.postId]: {
+              ...state[action.postId],
+              comments: action.comments.comments.map((comment) => comment.id),
+        },
+      };
         case DELETE_POST:
             newState = {...state}
             delete newState[action.postId]

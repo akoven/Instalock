@@ -3,6 +3,12 @@ body{
   /* background-color: purple; */
 
 }
+
+a {
+  text-decoration: none;
+  color: #333333;
+}
+
 .feed{
 
   background-color: rgba(243, 243, 243, 0.39);

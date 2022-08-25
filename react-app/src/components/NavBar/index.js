@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { NavLink, Link } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
 import "./NavBar.css";
@@ -6,6 +7,7 @@ import CreatePostModal from "../SinglePostComponents/CreatePostModal";
 
 const NavBar = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const userId = useSelector(state => state.session.user.id)
   const openMenu = () => {
     if (showMenu) return;
     setShowMenu(true);
@@ -84,20 +86,20 @@ const NavBar = () => {
             <div className="menu">
               {/* <i className="fas fa-bars nav_bars_icon"></i> */}
               <Link
-                to="/profile"
+                to={`/profile/${userId}`}
                 className="dropdown"
                 style={{ textDecoration: "none" }}
               >
-                <i class="fa fa-home"></i>
+                {/* <i class="fa fa-home"></i> */}
                 Profile
               </Link>
-              <Link
+              {/* <Link
                 to="/work-in-progress"
                 className="dropdown"
                 style={{ textDecoration: "none" }}
               >
                 Saved
-              </Link>
+              </Link> */}
               <Link
                 to="/settings"
                 className="dropdown"
@@ -105,13 +107,13 @@ const NavBar = () => {
               >
                 Settings
               </Link>
-              <Link
+              {/* <Link
                 to="/work-in-progress"
                 className="dropdown"
                 style={{ textDecoration: "none" }}
               >
                 Switch Accounts
-              </Link>
+              </Link> */}
               <div className="logout-div">
                 <LogoutButton />
               </div>

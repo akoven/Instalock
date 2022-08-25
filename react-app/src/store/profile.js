@@ -35,8 +35,9 @@ export const deleteProfile = (userId) => async dispatch =>{
     return response;
 }
 
-export const editProfileParams = (userProfile) => async dispatch =>{
-    const response = await fetch(`/api/profile/edit/${userProfile.id}`, {
+export const editProfileParams = (userProfile, userId) => async dispatch =>{
+    console.log('USER PROFILE: ', userProfile)
+    const response = await fetch(`/api/profile/edit/${userId}`, {
         method: 'PUT',
         body: JSON.stringify(userProfile)
     });
