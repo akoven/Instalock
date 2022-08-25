@@ -46,7 +46,7 @@ const EditProfileForm = () =>{
                         Username
                         <input
                         type="string"
-                        value={username}
+                        value={username?username:''}
                         onChange={e => setUsername(e.target.value)}
                         required/>
                     </label>
@@ -56,7 +56,7 @@ const EditProfileForm = () =>{
                         Website
                         <input
                         type="string"
-                        value={website}
+                        value={website?website:''}
                         onChange={e => setWebsite(e.target.value)}/>
                     </label>
                 </div>
@@ -65,7 +65,7 @@ const EditProfileForm = () =>{
                         Bio
                         <textarea
                         type="text"
-                        value={bio}
+                        value={bio?bio:''}
                         onChange={e => setBio(e.target.value)}/>
                 </label>
                 </div>
@@ -74,7 +74,7 @@ const EditProfileForm = () =>{
                         Email
                         <input
                         type="string"
-                        value={email}
+                        value={email?email:''}
                         onChange={e => setEmail(e.target.value)}
                         required/>
                     </label>
@@ -84,7 +84,7 @@ const EditProfileForm = () =>{
                         Phone Number
                         <input
                         type = "string"
-                        value={phoneNumber}
+                        value={phoneNumber?phoneNumber:''}
                         onChange={e => setPhoneNumber(e.target.value)}
                         />
                     </label>
