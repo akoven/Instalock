@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { login } from '../../store/session';
+import { login, demoLogin } from '../../store/session';
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -58,6 +58,9 @@ const LoginForm = () => {
           />
         </div>
           <button className='login-form-btn' type='submit'>Login</button>
+          <button className='demo-login-btn'onClick={() => {dispatch(demoLogin())}}>Demo Login</button>
+  
+
       </form>
       <div className="signup-section">
         Don't have an account?
