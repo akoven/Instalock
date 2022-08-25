@@ -73,7 +73,7 @@ function App() {
         <Route path="/work-in-progress">
           <div className="work">This Feature is Currently in Development</div>
           <div className="back-to-homepage">
-            <img src="" />
+            <img src="homepage" />
             <Link to="/">
               Return To HomePage
             </Link>
