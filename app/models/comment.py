@@ -1,3 +1,4 @@
+from turtle import back
 from .db import db
 
 class Comment(db.Model):
@@ -11,6 +12,7 @@ class Comment(db.Model):
 
     post = db.relationship("Post", back_populates="comments")
     user = db.relationship("User", back_populates="comments")
+    likes = db.relationship("Like", back_populates="comment", cascade="all, delete-orphan")
 
     def to_dict(self):
         return {

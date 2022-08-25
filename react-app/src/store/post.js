@@ -1,6 +1,7 @@
 const GET_ALL_POSTS = "posts/get-user-posts"
 const UPDATE_POST = "posts/update-post"
 const GET_PROFILE_NAME = "posts/get-profile-username"
+const DELETE_POST = "posts/delete-post"
 
 const getAllPosts = (allPosts) => {
     return {
@@ -20,6 +21,13 @@ const getName = (profile) => {
     return {
         type: GET_PROFILE_NAME,
         profile
+    }
+}
+
+const deletePost = (postId) => {
+    return {
+        type: DELETE_POST,
+        postId
     }
 }
 
@@ -71,9 +79,18 @@ export const updatePostThunk = (payload, postId) => async dispatch => {
     }
 }
 
+export const deletePostThunk = (postId) => async dispatch => {
+    const res = await fetch(`/api/posts/${postId}`, { method: 'DELETE' })
+
+    if (res.ok) {
+        dispatch(deletePost(postId))
+    }
+}
+
 
 const initialState = {};
 const postsReducer = (state = initialState, action) => {
+    let newState;
     switch (action.type) {
         case GET_ALL_POSTS: {
             const posts = {};
@@ -81,7 +98,7 @@ const postsReducer = (state = initialState, action) => {
             return posts;
         }
         case UPDATE_POST:
-            let newState = {...state};
+            newState = {...state};
             newState[action.post.id] = action.post;
             return newState;
         case GET_PROFILE_NAME: {
@@ -89,6 +106,10 @@ const postsReducer = (state = initialState, action) => {
             action.profile.forEach((name) => newState[name.id] = name)
             return newState;
         }
+        case DELETE_POST:
+            newState = {...state}
+            delete newState[action.postId]
+            return newState
         default:
             return state;
     }

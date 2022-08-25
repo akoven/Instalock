@@ -11,6 +11,8 @@ class Like(db.Model):
     comment_id = db.Column(db.Integer, db.ForeignKey('comments.id'), nullable=True)
 
     user = db.relationship('User', back_populates='likes')
+    post = db.relationship('Post', back_populates='likes')
+    comment = db.relationship('Comment', back_populates='likes')
 
     def to_dict(self):
         return {
