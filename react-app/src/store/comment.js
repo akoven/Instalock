@@ -1,6 +1,8 @@
 
 export const ADD_COMMENT = "comments/ADD_COMMENT";
 export const LOAD_COMMENTS = "comments/LOAD_COMMENTS";
+export const UPDATE_COMMENT = "comments/UPDATE_COMMENT";
+export const REMOVE_COMMENT = "comments/REMOVE_COMMENT";
 
 const add = (comment) => ({
   type: ADD_COMMENT,
@@ -9,6 +11,15 @@ const add = (comment) => ({
 const load = (comments, postId) => ({
   type: LOAD_COMMENTS,
   comments,
+  postId
+});
+const update = (comment) => ({
+  type: UPDATE_COMMENT,
+  comment
+});
+const remove = (commentId, postId) => ({
+  type: REMOVE_COMMENT,
+  commentId,
   postId
 });
 
@@ -49,6 +60,19 @@ export const createComment = (data) => async (dispatch) => {
     return newComment
 
 }
+
+export const deleteComment = (commentId, postId) => async dispatch => {
+  const response = await fetch(`/api/posts/${postId}/comments/${commentId}`, {
+    method: 'delete',
+  });
+
+  if (response.ok) {
+    const { id: deletedCommentId } = await response.json();
+    dispatch(remove(deletedCommentId, postId));
+
+  }
+};
+
 const initialState = {};
 
 const commentsReducer = (state = initialState, action) => {
