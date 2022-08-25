@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login, demoLogin } from '../../store/session';
+import { displayUserInfo } from '../../store/profile';
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -16,6 +17,8 @@ const LoginForm = () => {
     const data = await dispatch(login(email, password));
     if (data) {
       setErrors(data);
+    } else {
+      dispatch(displayUserInfo(user.id))
     }
   };
 
@@ -59,7 +62,7 @@ const LoginForm = () => {
         </div>
           <button className='login-form-btn' type='submit'>Login</button>
           <button className='demo-login-btn'onClick={() => {dispatch(demoLogin())}}>Demo Login</button>
-  
+
 
       </form>
       <div className="signup-section">
