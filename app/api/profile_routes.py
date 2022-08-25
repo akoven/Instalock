@@ -52,6 +52,8 @@ def edit_profile(user_id):
     print(" -- -- -- -- -- -- -- -- --")
     print(" -- -- -- -- -- -- -- -- --")
 
+    print('NEW PROFILE: ',edited_profile)
+
     username = edited_profile.data['username']
     website = edited_profile.data['website']
     bio = edited_profile.data['bio']
@@ -60,7 +62,7 @@ def edit_profile(user_id):
     gender = edited_profile.data['gender']
 
     profile.username = username
-    profile.website = website
+    profile.website =  website
     profile.bio = bio
     profile.email = email
     profile.phone = phone
