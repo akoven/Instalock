@@ -2,22 +2,27 @@ import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { NavLink } from 'react-router-dom'
 import { getPostsThunk } from '../../store/post'
 import CommentForm from '../CommentForm'
+import { displayUserInfo } from '../../store/profile'
 import "./Feed.css"
 const Feed = () => {
 
   const posts = useSelector(state => Object.values(state.posts))
+  const user = useSelector(state => state.session.user)
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getPostsThunk())
+    dispatch(displayUserInfo(user.id))
   }, [dispatch])
 
 
   return (
     <div className='feed'>
       {posts.map(post => (
+        <NavLink to={`/posts/${post.id}`}>
         <div id={post.id} className='post-container'>
           <div className="post-top">
             <div className="user-post-info">
@@ -58,7 +63,7 @@ const Feed = () => {
             <CommentForm post={post} />
           </div>
         </div>
-
+        </NavLink>
       ))}
     </div>
   )
