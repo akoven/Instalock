@@ -36,6 +36,7 @@ def profile_info(user_id):
 
 @profile_routes.route('/edit/<user_id>', methods=["PUT"])
 def edit_profile(user_id):
+    print('HHHEEEEELLLLLOOOOOOOO!!!!!!!!')
     profile = User.query.get(user_id)
 
     if not profile:
