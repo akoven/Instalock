@@ -1,3 +1,4 @@
+from dis import dis
 from flask import Blueprint, request, redirect
 from app.models import db, Comment, Post
 from app.forms import PostForm, CommentForm
@@ -53,9 +54,11 @@ def update_post(post_id):
     updated_post['csrf_token'].data = request.cookies['csrf_token']
     caption = updated_post.data['caption']
     image_url = updated_post.data['image_url']
+    display_comments = updated_post.data['display_comments']
 
     post.caption = caption
     post.image_url = image_url
+    post.display_comments = display_comments
 
     db.session.commit()
     return post.to_dict()
