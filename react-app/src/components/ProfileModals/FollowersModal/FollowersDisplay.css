@@ -1,0 +1,40 @@
+.followers-display-container {
+    width: 400px;
+}
+
+.followers-display-top {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 15px;
+    border-bottom: 1px solid #DBDBDB;
+}
+
+.followers-display-top > div {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+}
+
+.followers-display-bottom {
+    width: 100%;
+    height: 200px;
+}
+
+.follower-item {
+    width: 383px;
+    height: 46px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 10px;
+    padding-right: 15px;
+    display: flex;
+    flex-direction: row;
+}
+
+.follower-link {
+
+}

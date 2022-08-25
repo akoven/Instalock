@@ -17,7 +17,7 @@ export const delProfile = (user) => ({
     payload: user
 });
 
-export const displayUserInfo = (userId) => async dispatch =>{
+export const getProfileThunk = (userId) => async dispatch =>{
     const response = await fetch(`/api/profile/${userId}`);
     // console.log('RESPONSE:', response)
     if(response.ok){

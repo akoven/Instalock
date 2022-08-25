@@ -7,7 +7,7 @@ function FollowersDisplay({ onClick }) {
     return (
         <div className="followers-display-container">
             <div className="followers-display-top">
-                <div>Followers</div>
+                <div>  Followers</div>
                 <i onClick={onClick} class="fa-solid fa-xmark"></i>
             </div>
             <div className="followers-display-bottom">
@@ -15,10 +15,12 @@ function FollowersDisplay({ onClick }) {
                     let follower = follow[1]
                     return (
                     <div className="follower-item">
-                        <NavLink to={`/profile/${follower.id}`}>
+                        <NavLink onClick={onClick} to={`/profile/${follower.id}`} className="follower-link">
                             <div className="follow-display-profpic-container">
                                 <img src={follower.profile_image_url} alt="ProfilePic" />
                             </div>
+                        </NavLink>
+                        <NavLink onClick={onClick} to={`/profile/${follower.id}`} className="follower-link">
                             <div>
                                 <div>{follower.username}</div>
                             </div>
