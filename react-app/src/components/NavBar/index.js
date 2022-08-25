@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
 import "./NavBar.css";
+import CreatePostModal from "../SinglePostComponents/CreatePostModal";
 
 const NavBar = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -64,12 +65,13 @@ const NavBar = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink exact to="/create">
+          {/* <NavLink exact to="/posts/create/new">
             <img
               src="https://img.icons8.com/ios/24/000000/plus-2-math.png"
               alt="Create"
             />
-          </NavLink>
+          </NavLink> */}
+          <CreatePostModal />
         </li>
         <div>
           <button className="nav-bar-button" onClick={openMenu}>
