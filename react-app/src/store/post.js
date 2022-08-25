@@ -4,6 +4,14 @@ const GET_ALL_POSTS = "posts/get-user-posts"
 const UPDATE_POST = "posts/update-post"
 const GET_PROFILE_NAME = "posts/get-profile-username"
 const DELETE_POST = "posts/delete-post"
+const CREATE_POST = "posts/create-post"
+
+const addPost = (post) => {
+    return {
+        type: CREATE_POST,
+        post
+    }
+}
 
 
 const getAllPosts = (allPosts) => {
@@ -32,6 +40,44 @@ const deletePost = (postId) => {
         type: DELETE_POST,
         postId
     }
+}
+
+  
+
+//Create A Post
+export const createPost = (data) => async (dispatch) => {
+    const {
+        caption,
+        image_url,
+        user_id
+    } = data
+
+    const formData = new FormData()
+
+    formData.append('caption', caption)
+    formData.append('user_id', user_id)
+    formData.append('image_url', image_url)
+
+    const response = await fetch(`/api/posts/`, {
+        method: 'POST',
+        body: formData
+    });
+    const newPost = await response.json()
+    dispatch(addPost(newPost))
+    return newPost
+
+
+    // const response = await fetch('/api/posts/', {
+    //     method: "POST",
+    //     body: JSON.stringify(post)
+    // });
+    // if (response.ok) {
+    //     const newPost = await response.json();
+    //     dispatch(addPost(newPost))
+    //     return newPost;
+    // }
+    
+    
 }
 
 //Get All Posts
@@ -102,6 +148,11 @@ const postsReducer = (state = initialState, action) => {
             const posts = {};
             action.allPosts.posts.forEach((post) => posts[post.id] = post)
             return posts;
+        }
+        case CREATE_POST: {
+            let newState = {...state}
+            newState[action.post.id] = action.post;
+            return newState;
         }
         case UPDATE_POST:
             newState = {...state};
