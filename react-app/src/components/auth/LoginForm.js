@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login, demoLogin } from '../../store/session';
-import { displayUserInfo } from '../../store/profile';
+import { getProfileThunk } from '../../store/profile';
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -18,7 +18,7 @@ const LoginForm = () => {
     if (data) {
       setErrors(data);
     } else {
-      dispatch(displayUserInfo(user.id))
+      dispatch(getProfileThunk(user.id))
     }
   };
 

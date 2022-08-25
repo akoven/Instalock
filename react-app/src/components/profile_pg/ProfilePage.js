@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import {displayUserInfo} from '../../store/profile';
+import { getProfileThunk } from '../../store/profile';
 import FollowersDisplayModal from '../ProfileModals/FollowersModal';
 import FollowingDisplayModal from '../ProfileModals/FollowingModal';
 
@@ -23,14 +23,15 @@ const ProfilePage = () => {
     // }, [userId])
 
     useEffect(() =>{
-
-        dispatch(displayUserInfo(userSession.id))
-
+            
+        dispatch(getProfileThunk(userSession.id))
     }, [dispatch, userSession])
 
 
     return(
        <>
+       <FollowersDisplayModal />
+       <FollowingDisplayModal />
         <h3>{userProfile?.profile?.username}</h3>
             <img src={userProfile?.profile?.profile_image_url} alt='image-here'/>
             <p>Followers: {userProfile?.follower_count}</p>
