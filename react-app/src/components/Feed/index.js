@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { getComments } from '../../store/comment'
 import { NavLink } from 'react-router-dom'
 import { getPostsThunk } from '../../store/post'
 import CommentForm from '../CommentForm'
@@ -19,11 +20,12 @@ const Feed = () => {
   }, [dispatch])
 
 
+
   return (
     <div className='feed'>
       {posts.map(post => (
-        <NavLink to={`/posts/${post.id}`}>
         <div id={post.id} className='post-container'>
+          <NavLink to={`/posts/${post.id}`}>
           <div className="post-top">
             <div className="user-post-info">
               {post.user.profile_image_url ? (
@@ -59,11 +61,11 @@ const Feed = () => {
             <div>{post.caption}</div>
           </div>
           <div className="posts-comments">View all {post?.comments?.length} comment(s)</div>
+          </NavLink>
           <div className="post-lower">
             <CommentForm post={post} />
           </div>
         </div>
-        </NavLink>
       ))}
     </div>
   )

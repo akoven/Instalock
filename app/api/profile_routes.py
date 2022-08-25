@@ -44,6 +44,8 @@ def edit_profile(user_id):
     edited_profile = ProfileEditForm()
     edited_profile['csrf_token'].data = request.cookies['csrf_token']
 
+    print('NEW PROFILE: ',edited_profile)
+
     username = edited_profile.data['username']
     website = edited_profile.data['website']
     bio = edited_profile.data['bio']
