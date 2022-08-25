@@ -60,5 +60,6 @@ def edit_profile(user_id):
     profile.phone = phone
     profile.gender = gender
 
+    print('PROFILE FROM BACKEND: ',profile)
     db.session.commit()
     return profile

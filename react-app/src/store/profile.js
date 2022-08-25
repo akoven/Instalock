@@ -56,6 +56,9 @@ export const editProfileParams = (userProfile, userId) => async dispatch =>{
     // userProfileData.append('gender', gender)
 
     const response = await fetch(`/api/profile/edit/${userId}`, {
+        headers: {
+            'Content-Type':'application/json'
+        },
         method: 'PUT',
         body: JSON.stringify(userProfile)
         // body: userProfileData
