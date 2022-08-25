@@ -35,7 +35,7 @@ const ProfilePage = () => {
             <p>Following: {userProfile?.following_count}</p>
             <p>{userProfile?.profile?.website}</p>
             <p>{userProfile?.profile?.bio}</p>
-            <button onClick={() => history.push(`/profile_edit/edit`)}>Edit my profile</button>
+            <button onClick={() => history.push(`/profile/edit/${userSession.id}`)}>Edit my profile</button>
 
        </>
     )

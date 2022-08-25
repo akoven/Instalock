@@ -4,7 +4,7 @@ const SplashPage = () => {
   return (
     <div className='splash-container'>
       <div className='splash-image'>
-
+        
       </div>
     </div>
   )

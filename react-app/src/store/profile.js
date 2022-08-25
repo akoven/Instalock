@@ -35,8 +35,8 @@ export const deleteProfile = (userId) => async dispatch =>{
     return response;
 }
 
-export const editProfileParams = (userProfile) => async dispatch =>{
-    const response = await fetch(`/api/profile/${userProfile.id}`, {
+export const editProfileParams = (userProfile, userId) => async dispatch =>{
+    const response = await fetch(`/api/profile/edit/${userId}`, {
         method: 'PUT',
         body: JSON.stringify(userProfile)
     });
@@ -55,10 +55,9 @@ const profileReducer = (state = {}, action) =>{
             newState = action.payload;
             return newState;
         case DELETE_PROFILE:
-            delete action.payload
+            delete newState[action.payload.id]
         case EDIT_PROFILE:
             newState = action.payload;
-            newState[action.user.id] = action.user;
             return newState;
 
         default:
