@@ -26,6 +26,7 @@ body{
 }
 .right-details{
     padding-top: 15px;
+    position: relative;
 }
 .post-details-username{
     margin-left: 5px;
@@ -36,6 +37,7 @@ body{
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+    position: relative;
 }
 .post-options{
     /* margin-left: 120px; */
@@ -44,15 +46,20 @@ body{
 .post-details-caption{
     font-size: smaller;
     color: rgba(0, 0, 0, 0.706);
-    padding-bottom: 100px;
+    padding-bottom: 50px;
     padding-left: 45px;
     border-bottom: 1px solid rgba(167, 167, 167, 0.391);
 
 
 }
+.post-options-button{
+    position: absolute;
+    right: 35px;
+}
 .options-separator{
-    display: flex;
-    justify-content: space-around;
+    /* display: flex;
+    justify-content: space-around; */
+    /* align-items: center; */
 }
 .pd-like-comment{
     border-radius: 500px;
@@ -63,18 +70,30 @@ body{
     /* height: 100%; */
     margin: 0 auto;
 }
-
+.comment-content{
+    overflow-wrap: break-word;
+    width: 200px;
+}
 .middle-right-details{
-    margin-top: 40px;
+    /* margin-top: 30px; */
+    padding-top: 15px;
     padding-left: 15px;
-    padding-right: 40px;
+    padding-right: 10px;
     padding-bottom: 40px;
     border-bottom: 1px solid rgba(167, 167, 167, 0.391);
     overflow-y: scroll;
+    overflow-x: hidden;
+    overflow-wrap: break-word;
+    max-height: 350px;
+}
+.middle-right-details > *{
+    max-width: 300px;
+    padding-top: 15px;
+
 }
 .middle-right-details::-webkit-scrollbar {
-    display: none;
-    visibility: hidden;
+    /* display: none; */
+    /* visibility: hidden; */
   }
 
 .comment-likes-section{
@@ -87,14 +106,18 @@ body{
 .comment-user-details{
     display: flex;
     /* align-items: center; */
-    justify-content: space-around;
+    /* justify-content: space-around; */
 
 }
 .comment-user-details > *{
     margin-right: 5px;
+
 }
 .comment-user-name{
     font-weight: bold;
+    word-wrap: normal;
+    overflow-x: hidden;
+
 }
 .comment-likes-section{
     margin-left: 30px;
@@ -104,12 +127,28 @@ body{
     align-items: center;
 }
 .post-likes-section{
-    padding-left: 35px;
-    margin-top: 20px;
-    /* display: flex; */
+    padding-left: 23px;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     /* flex-direction: column; */
     /* align-items: flex-start; */
+    position: relative;
 }
 .number-post-likes{
     font-size: 25px;
+}
+.like-post-btn{
+    position: absolute;
+    right: 30px;
+}
+.post-comment-form{
+    /* position: absolute; */
+    margin-left: 15px;
+    bottom: 0;
+
+}
+.post-comment-form > *{
+    /* background-color: blue; */
 }

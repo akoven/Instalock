@@ -6,11 +6,14 @@ import PostOptionsModal from "../SinglePostComponents/PostOptionsModal";
 import { useState } from "react";
 import "./posts.css"
 import { addLikeThunk, getPostLikesThunk, removeLikeThunk } from "../../store/likes";
-
+import { getComments } from "../../store/comment";
+import CommentForm from "../CommentForm";
 const PostDetail = () => {
     const dispatch = useDispatch();
     let { postId } = useParams();
+
     const post = useSelector(state => state.posts[postId])
+    console.log(post)
     const user = useSelector(state => state.session.user)
     const likes = useSelector(state => state.likes)
     const [ isLiked, setIsLiked ] = useState(() => {
@@ -33,6 +36,15 @@ const PostDetail = () => {
         dispatch(getPosts(postId))
         dispatch(getPostLikesThunk(postId))
     }, [dispatch])
+    useEffect(() => {
+        dispatch(getComments(postId))
+
+    }, [dispatch]);
+
+    const comments = useSelector(state => state.comments)
+
+    const postsComments = Object.values(comments).filter(comment => comment.post === post.id)
+
 
     const addLikePost = async () => {
         const payload = {
@@ -63,7 +75,7 @@ const PostDetail = () => {
             </div>
             <div className="right-details">
                 <div className="top-right-details">
-                    <div className="options-separator">
+
                         {post?.user?.profile_image_url ? (
                             <img className='user-post-image' src={post.user.profile_image_url} alt="" />
                             ) : (
@@ -72,11 +84,11 @@ const PostDetail = () => {
                             }
                             <div className="post-details-username">{post?.user?.username}</div>
                             <PostOptionsModal post={post} />
-                    </div>
+
                 </div>
                     <div className="post-details-caption">{post?.caption}</div>
                 <div className="middle-right-details">
-                    {post && post.display_comments && post?.comments && post?.comments.map((comment) => (
+                    {post && post.display_comments && postsComments && postsComments.map((comment) => (
                         <div className="comment-users-info">
                             <div className="comment-user-details">
                                 <div>
@@ -90,7 +102,7 @@ const PostDetail = () => {
                                 <div className="comment-user-name">
                                     {comment?.user?.username}
                                 </div>
-                              <div>{comment?.content}</div>
+                              <div className="comment-content">{comment?.content}</div>
                             </div>
                             <div className="comment-likes-section">
                                 <div className="likes-info">{comment?.likes} likes</div>
@@ -109,29 +121,13 @@ const PostDetail = () => {
                         </div>
                     </div>
                 </div>
+                <div className="post-comment-form">
+                    <CommentForm post={post}/>
+                </div>
             </div>
         </div>
         )
 }
-
-
-// {/* <div className="main-container">
-// <div className="username">{onePost?.user.username}</div>
-// <div className="post-detail-img"><img src= {onePost?.image_url} alt="" /></div>
-// <div className = "caption">{onePost?.caption}</div>
-// <h3 className = "comments-header">Comments</h3>
-// <div>
-    // {onePost?.comments && onePost?.comments.map((comment) => (
-
-    //     <div className="comment" key={comment.id}>
-    //         <div> Username: {comment.user.username}</div>
-    //         <div> Comment: {comment.content}</div>
-    //         <div>------------------</div>
-    //     </div>
-    // ))}
-// </div>
-// </div> */}
-
 
 
 
