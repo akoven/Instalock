@@ -1,23 +1,23 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Modal } from '../../../context/Modal'
-import EditPostForm from './EditPostForm'
-import './EditPost.css'
+import DeletePost from './DeletePost'
+import './DeletePost.css'
 
-function EditPostModal({ post }) {
+function DeletePostModal({ post }) {
     const dispatch = useDispatch()
     const [showModal, setShowModal] = useState(false)
 
     return (
         <>
-        <div className='edit-post-button' onClick={() => setShowModal(true)}>Edit</div>
+        <div className='delete-post-button' onClick={() => setShowModal(true)}>Delete</div>
         {showModal && (
             <Modal onClose={() => setShowModal(false)}>
-                <EditPostForm post={post} onClick={() => setShowModal(false)} />
+                <DeletePost post={post} onClick={() => setShowModal(false)} />
             </Modal>
         )}
         </>
     )
 }
 
-export default EditPostModal
+export default DeletePostModal

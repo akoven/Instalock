@@ -2,64 +2,47 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getPosts } from "../../store/post";
-import EditPostModal from "../SinglePostComponents/EditPostModal/index"
+import PostOptionsModal from "../SinglePostComponents/PostOptionsModal";
 import { useState } from "react";
 import "./posts.css"
 
 const PostDetail = () => {
     const dispatch = useDispatch();
     let { postId } = useParams();
-    postId = Number(postId)
-    // let { userId } = useParams();
-    // userId = Number(userId)
-    const posts = useSelector((state) => (state.posts))
-    const postsString = JSON.stringify(posts)
+    const post = useSelector((state) => (state.posts[postId]))
 
-    let onePost = posts[postId]
-
-    const [showEditForm, setShowEditForm] = useState(false);
+    // const [showEditForm, setShowEditForm] = useState(false);
 
     useEffect(() => {
         dispatch(getPosts(postId))
-    }, [dispatch, postId, postsString])
-
-    const postOptionsClick = () => {
-
-        setShowEditForm(true)
-    }
+    }, [dispatch])
 
     return (
         <div className="post-details-container">
-            {showEditForm && (
-                <EditPostModal />
-            )}
             <div className="left-details">
-                <img src= {onePost?.image_url} alt="" />
+                <img src= {post?.image_url} alt="" />
             </div>
             <div className="right-details">
                 <div className="top-right-details">
-
-                <div className="options-separator">
-                    {onePost?.user?.profile_image_url ? (
-                        <img className='user-post-image' src={onePost.user.profile_image_url} alt="" />
-                        ) : (
-                            <img src="https://img.icons8.com/plumpy/24/000000/user-male-circle.png" alt="Profile"/>
-                            )
-                        }
-                        <div className="post-details-username">{onePost?.user?.username}</div>
-                        <div onClick={() => postOptionsClick()} className="post-options">
-                            <img src="https://img.icons8.com/fluency-systems-filled/24/000000/dots-loading.png" alt=""/>
-                        </div>
+                    <div className="options-separator">
+                        {post?.user?.profile_image_url ? (
+                            <img className='user-post-image' src={post.user.profile_image_url} alt="" />
+                            ) : (
+                                <img src="https://img.icons8.com/plumpy/24/000000/user-male-circle.png" alt="Profile"/>
+                                )
+                            }
+                            <div className="post-details-username">{post?.user?.username}</div>
+                            <PostOptionsModal post={post} />
+                    </div>
                 </div>
-                </div>
-                    <div className="post-details-caption">{onePost?.caption}</div>
+                    <div className="post-details-caption">{post?.caption}</div>
                 <div className="middle-right-details">
-                    {onePost?.comments && onePost?.comments.map((comment) => (
+                    {post?.comments && post?.comments.map((comment) => (
                         <div className="comment-users-info">
                             <div className="comment-user-details">
                                 <div>
-                                {onePost?.user?.profile_image_url ? (
-                                    <img className='user-post-image' src={onePost.user.profile_image_url} alt="" />
+                                {post?.user?.profile_image_url ? (
+                                    <img className='user-post-image' src={post.user.profile_image_url} alt="" />
                                 ) : (
                                     <img src="https://img.icons8.com/plumpy/24/000000/user-male-circle.png" alt="Profile"/>
                                     )
@@ -83,7 +66,7 @@ const PostDetail = () => {
                         <img className="heart" src="https://img.icons8.com/ios-glyphs/30/000000/like--v2.png" alt=""/>
                         </div>
                         <div className="number-post-likes">
-                            {onePost?.likes} likes
+                            {post?.likes} likes
                         </div>
                     </div>
                 </div>
