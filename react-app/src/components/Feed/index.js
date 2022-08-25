@@ -29,6 +29,7 @@ const Feed = () => {
         <div id={post.id} className='post-container'>
           <NavLink to={`/posts/${post.id}`}>
           <div className="post-top">
+            <NavLink to={`/profile/${post.user.id}`}>
             <div className="user-post-info">
               {post.user.profile_image_url ? (
                 <img className='user-post-image' src={post.user.profile_image_url} alt="" />
@@ -40,6 +41,7 @@ const Feed = () => {
             }
               <div>{post.user.username}</div>
             </div>
+            </NavLink>
             <div className="user-post-options">
               <img src="https://img.icons8.com/fluency-systems-filled/24/000000/dots-loading.png" alt=""/>
             </div>
