@@ -16,6 +16,7 @@ import Feed from "./components/Feed";
 import "./index.css";
 import { Link } from "react-router-dom";
 import EditPostModal from './components/SinglePostComponents/EditPostModal';
+import CreatePostForm from "./components/SinglePostComponents/CreatePostModal/CreatePostForm";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -47,6 +48,9 @@ function App() {
         <Route exact path="/posts/:postId">
           <NavBar />
           <PostDetails />
+        </Route>
+        <Route exact path="/posts/create/new">
+          <CreatePostForm />
         </Route>
         <Route exact path="/edit-post-trial">
           <EditPostModal />

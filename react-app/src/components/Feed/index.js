@@ -2,11 +2,13 @@ import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { getComments } from '../../store/comment'
 import { NavLink } from 'react-router-dom'
 import { getPostsThunk } from '../../store/post'
 import CommentForm from '../CommentForm'
 import { displayUserInfo } from '../../store/profile'
 import "./Feed.css"
+import { getFollowData } from '../../store/follows'
 const Feed = () => {
 
   const posts = useSelector(state => Object.values(state.posts))
@@ -16,15 +18,18 @@ const Feed = () => {
   useEffect(() => {
     dispatch(getPostsThunk())
     dispatch(displayUserInfo(user.id))
+    dispatch(getFollowData(user.id))
   }, [dispatch])
+
 
 
   return (
     <div className='feed'>
       {posts.map(post => (
-        <NavLink to={`/posts/${post.id}`}>
         <div id={post.id} className='post-container'>
+          <NavLink to={`/posts/${post.id}`}>
           <div className="post-top">
+            <NavLink to={`/profile/${post.user.id}`}>
             <div className="user-post-info">
               {post.user.profile_image_url ? (
                 <img className='user-post-image' src={post.user.profile_image_url} alt="" />
@@ -36,6 +41,7 @@ const Feed = () => {
             }
               <div>{post.user.username}</div>
             </div>
+            </NavLink>
             <div className="user-post-options">
               <img src="https://img.icons8.com/fluency-systems-filled/24/000000/dots-loading.png" alt=""/>
             </div>
@@ -59,11 +65,11 @@ const Feed = () => {
             <div>{post.caption}</div>
           </div>
           <div className="posts-comments">View all {post?.comments?.length} comment(s)</div>
+          </NavLink>
           <div className="post-lower">
             <CommentForm post={post} />
           </div>
         </div>
-        </NavLink>
       ))}
     </div>
   )

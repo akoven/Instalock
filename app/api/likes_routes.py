@@ -6,7 +6,7 @@ from flask_login import current_user
 likes_routes = Blueprint("likes", __name__, url_prefix="/likes")
 
 
-@likes_routes.route('/posts/<post_id>')
+@likes_routes.route('/post/<post_id>')
 def get_likes(post_id):
     likes = Like.query.filter(Like.post_id == post_id).all()
 
@@ -28,6 +28,13 @@ def like():
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         if post_id and not comment_id:
+
+            all_likes = Like.query.filter(Like.post_id == post_id).all()
+
+            for like in all_likes:
+                if like.user_id == user_id:
+                    return "Error: You have already liked this post"
+
             post = Post.query.get(post_id)
             post.likes += 1
 
@@ -41,6 +48,12 @@ def like():
             return new_like.to_dict()
 
         elif comment_id and not post_id:
+            all_likes = Like.query.filter(Like.comment_id == comment_id).all()
+
+            for like in all_likes:
+                if like.user_id == user_id:
+                    return "Error: You have already liked this comment"
+
             comment = Comment.query.get(comment_id)
             comment.likes += 1
 
@@ -64,7 +77,12 @@ def remove_like(like_id):
     #TODO User validation
     #TODO error handling if like not found
 
+
     like = Like.query.get(like_id)
+
+    post = Post.query.get(like.post_id)
+
+    post.likes -= 1
 
     db.session.delete(like)
     db.session.commit()

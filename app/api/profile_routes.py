@@ -36,14 +36,15 @@ def profile_info(user_id):
 
 @profile_routes.route('/edit/<user_id>', methods=["PUT"])
 def edit_profile(user_id):
-    print('HHHEEEEELLLLLOOOOOOOO!!!!!!!!')
+
+    edited_profile = ProfileEditForm()
+    edited_profile['csrf_token'].data = request.cookies['csrf_token']
+
     profile = User.query.get(user_id)
 
     if not profile:
         return '404: the object you are looking for is not available'
 
-    edited_profile = ProfileEditForm()
-    edited_profile['csrf_token'].data = request.cookies['csrf_token']
 
     print('NEW PROFILE: ',edited_profile)
 
@@ -51,11 +52,11 @@ def edit_profile(user_id):
     website = edited_profile.data['website']
     bio = edited_profile.data['bio']
     email = edited_profile.data['email']
-    phone = edited_profile.data['phone']
+    phone = edited_profile.data['phone_number']
     gender = edited_profile.data['gender']
 
     profile.username = username
-    profile.website = website
+    profile.website =  website
     profile.bio = bio
     profile.email = email
     profile.phone = phone

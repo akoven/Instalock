@@ -5,7 +5,6 @@ import DeletePost from './DeletePost'
 import './DeletePost.css'
 
 function DeletePostModal({ post }) {
-    const dispatch = useDispatch()
     const [showModal, setShowModal] = useState(false)
 
     return (
