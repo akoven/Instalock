@@ -3,32 +3,18 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getPostsThunk } from '../../store/post'
+import CommentForm from '../CommentForm'
 import "./Feed.css"
 const Feed = () => {
 
   const posts = useSelector(state => Object.values(state.posts))
-
-  const [commentContent, setCommentContent] = useState('');
-
-  const updateComment = (e) => setCommentContent(e.target.value)
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getPostsThunk())
   }, [dispatch])
 
-  const commentSubmit = (e, postId) => {
-    e.preventDefault();
-    console.log(postId)
-    console.log('sdfjuohsdkjfhsjlkdhf')
-    console.log('sdfjuohsdkjfhsjlkdhf')
-    console.log('sdfjuohsdkjfhsjlkdhf')
-    console.log('sdfjuohsdkjfhsjlkdhf')
-    const data = {
-      content: commentContent,
-    }
 
-  }
   return (
     <div className='feed'>
       {posts.map(post => (
@@ -69,13 +55,7 @@ const Feed = () => {
           </div>
           <div className="posts-comments">View all {post?.comments?.length} comment(s)</div>
           <div className="post-lower">
-            <form action="" className="comment-form" onSubmit={(e) => commentSubmit(e, post.id)}>
-              <input type="text"
-                     value={commentContent}
-                     onChange={updateComment}
-                     placeholder='Add a comment' />
-              <button type="submit">Post</button>
-            </form>
+            <CommentForm post={post} />
           </div>
         </div>
 
