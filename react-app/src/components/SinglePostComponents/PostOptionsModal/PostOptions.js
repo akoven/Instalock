@@ -30,9 +30,6 @@ function PostOptions({ post, onClick }) {
         }
     }
 
-    console.log(user?.id, 'user id')
-    console.log(post?.user?.id, 'post user id')
-
     return (
         <div className='post-options-container'>
         {user && user.id == post.user.id ? (
