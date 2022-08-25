@@ -35,7 +35,6 @@ function App() {
 
   return (
     <BrowserRouter>
-          <NavBar />
       <Switch>
         <Route path="/login" exact={true}>
           <div className="splash-login">
@@ -47,13 +46,12 @@ function App() {
           <SignUpForm />
         </Route>
         <Route exact path="/posts/:postId">
+          <NavBar />
           <PostDetails />
         </Route>
         <Route exact path="/posts/create/new">
+          <NavBar />
           <CreatePostForm />
-        </Route>
-        <Route exact path="/edit-post-trial">
-          <EditPostModal />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
@@ -62,12 +60,15 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true}>
+          <NavBar />
           <Feed />
         </ProtectedRoute>
         <ProtectedRoute path='/profile/:userId' exact={true}>
+          <NavBar />
           <ProfilePage />
         </ProtectedRoute>
         <ProtectedRoute path='/profile/edit/:userId' exact={true}>
+          <NavBar />
           <EditProfileForm />
         </ProtectedRoute>
         <Route path="/work-in-progress">

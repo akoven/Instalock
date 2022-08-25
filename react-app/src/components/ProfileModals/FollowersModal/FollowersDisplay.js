@@ -17,7 +17,12 @@ function FollowersDisplay({ onClick }) {
                     <div className="follower-item">
                         <NavLink onClick={onClick} to={`/profile/${follower.id}`} className="follower-link">
                             <div className="follow-display-profpic-container">
-                                <img src={follower.profile_image_url} alt="ProfilePic" />
+                            {follower.profile_image_url ? (
+                                <img className='user-post-image' src={follower.profile_image_url} alt="" />
+                                ) : (
+                                <img src="https://img.icons8.com/plumpy/24/000000/user-male-circle.png" alt="Profile"/>
+                                )
+                            }
                             </div>
                         </NavLink>
                         <NavLink onClick={onClick} to={`/profile/${follower.id}`} className="follower-link">
