@@ -7,5 +7,5 @@ class ProfileEditForm(FlaskForm):
     website = StringField("Website")
     bio = TextAreaField("Bio")
     email = StringField("Email", validators=[DataRequired()])
-    phone = StringField("Phone Number")
+    phone_number = StringField("Phone Number")
     gender = RadioField("Gender")
