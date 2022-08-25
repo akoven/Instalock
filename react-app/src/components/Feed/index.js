@@ -24,7 +24,7 @@ const Feed = () => {
   return (
     <div className='feed'>
       {posts.map(post => (
-        <div id={post.id} className='post-container'>
+        <div id={post.id} className='post-container' key={post.id}>
           <NavLink to={`/posts/${post.id}`}>
           <div className="post-top">
             <div className="user-post-info">

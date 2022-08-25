@@ -1,0 +1,84 @@
+.create-post-form-container {
+  width: 745px;
+  height: 427px;
+  display: flex;
+  flex-direction: column;
+  background-color: #fefefe;
+  border-radius: 10px;
+}
+
+.create-post-top-bar {
+  display: flex;
+  flex-direction: row;
+  height: 42px;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-bottom: 1px solid rgb(234, 234, 234);
+}
+
+.create-post-top-bar > div {
+  font-size: 16px;
+}
+
+.create-post,
+.cancel-button {
+  border: none;
+  background-color: transparent;
+  color: #0095f6;
+  font-size: 16px;
+  transition-duration: 0.4s;
+}
+
+.create-post-form label {
+  width: 100%;
+  margin: 8px 0;
+  display: flex;
+  float: left;
+  padding: 0px;
+}
+
+.create-post-form input {
+  height: 30px;
+  border: #d3d3d3 1.5px solid;
+  width: 75%;
+  border-radius: 5px;
+  color: gray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.create-post-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.preview-image {
+    height: 348px;
+    width: 50%;
+    object-fit: cover;
+}
+
+.create-img-container {
+    height: 348px;
+    width: 100%;
+    object-fit: cover;
+    display: flex;
+    justify-content: space-between;
+}
+
+.post-form {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center;
+    align-items: center; */
+}
+
+.post-form > div {
+    height: 100px;
+}
