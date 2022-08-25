@@ -62,4 +62,4 @@ def edit_profile(user_id):
 
     print('PROFILE FROM BACKEND: ',profile)
     db.session.commit()
-    return profile
+    return profile.to_dict()
