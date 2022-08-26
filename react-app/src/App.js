@@ -14,7 +14,6 @@ import PostDetails from "./components/postDetails/postDetail";
 import EditProfileForm from "./components/profile_pg/EditProfileForm";
 import Feed from "./components/Feed";
 import "./index.css";
-import { Link } from "react-router-dom";
 import CreatePostForm from "./components/SinglePostComponents/CreatePostModal/CreatePostForm";
 
 function App() {
@@ -70,7 +69,7 @@ function App() {
           <NavBar />
           <EditProfileForm />
         </ProtectedRoute>
-        <Route path="/work-in-progress">
+        {/* <Route path="/work-in-progress">
           <div className="work">This Feature is Currently in Development</div>
           <div className="back-to-homepage">
             <img src="homepage" />
@@ -78,7 +77,7 @@ function App() {
               Return To HomePage
             </Link>
           </div>
-        </Route>
+        </Route> */}
           {/* <h1>My Home Page</h1> */}
 
       </Switch>

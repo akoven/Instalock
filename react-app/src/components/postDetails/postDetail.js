@@ -35,7 +35,7 @@ const PostDetail = () => {
         dispatch(getPosts(postId))
         dispatch(getPostLikesThunk(postId))
         dispatch(getComments(postId))
-    }, [dispatch])
+    }, [dispatch, postId])
 
     useEffect(() => {
         // console.log(likes, "likes")
@@ -45,7 +45,7 @@ const PostDetail = () => {
                 return
             }
         })
-    }, [likes])
+    }, [likes, user.id])
 
     const comments = useSelector(state => state.comments)
 
@@ -91,7 +91,7 @@ const PostDetail = () => {
                         {post?.user?.profile_image_url ? (
                             <img className='user-post-image' src={post.user.profile_image_url} alt="" />
                         ) : (
-                            <img className="user-post-image" src="https://im3.ezgif.com/tmp/ezgif-3-ad34d23b51.png" alt="Profile"/>
+                            <img className="user-post-image" src="https://i.imgur.com/vF8FTS2.png" alt="Profile"/>
                             )
                         }
 
@@ -109,7 +109,7 @@ const PostDetail = () => {
                                 {post?.user?.profile_image_url ? (
                                     <img className='user-post-image' src={post.user.profile_image_url} alt="" />
                                 ) : (
-                                    <img className="user-post-image" src="https://im3.ezgif.com/tmp/ezgif-3-ad34d23b51.png" alt="Profile"/>
+                                    <img className="user-post-image" src="https://i.imgur.com/vF8FTS2.png" alt="Profile"/>
                                     )
                                 }
                                 </div>

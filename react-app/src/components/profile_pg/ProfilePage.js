@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { getProfileThunk } from '../../store/profile';
@@ -17,7 +17,7 @@ const ProfilePage = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const { userId } = useParams();
-    const [ isFollowing, setIsFollowing ] = useState(false)
+    // const [ isFollowing, setIsFollowing ] = useState(false)
 
     const postImages = userProfile.posts;
     const postImgArr = Object.values(postImages||{});
@@ -71,27 +71,42 @@ const ProfilePage = () => {
             dispatch(getFollowData(userId))
         }
     }
-    console.dir(ProfilePage)
-    // console.log(userProfile.posts.length)
+    console.log(userProfile)
     return(
+
         <div className="profile-main-container">
             <div className="profile-top-section">
                 <div className="profile-page-user-image">
                     {userProfile?.profile?.profile_image_url ? (
                         <img className='pp-user-image' src={userProfile?.profile?.profile_image_url} alt="" />
                     ) : (
-                        <img className='pp-user-image' src="https://im3.ezgif.com/tmp/ezgif-3-ad34d23b51.png" alt="Profile"/>
+                        <img className='pp-user-image' src="https://i.imgur.com/vF8FTS2.png" alt="Profile"/>
                     )
                     }
                 </div>
                 <div className="profile-page-user-info">
                     <div className="pp-username">{userProfile?.profile?.username}</div>
                     <div className="pp-num-posts-and-followings">
-                        <div className="pp-num-posts">{userProfile?.posts?.length} <span className='user-info-text'>Posts</span></div>
-                        <div className='followers'>{userProfile?.follower_count} <span className='user-info-text'>Followers</span></div>
-                        <div className='following'>{userProfile?.following_count} <span className='user-info-text'>Following</span></div>
+                        <div className="pp-num-posts">{userProfile?.posts?.length} <span className='user-info-text'>posts</span></div>
+                        <div className="followers-div">
+                            <div className='followers'>
+                                {userProfile.follower_count}
+                            </div>
+                            <div className='user-info-text'>
+                                <FollowersDisplayModal />
+                            </div>
+                        </div>
+                        <div className="followers-div">
+                            <div className='followers'>
+                                {userProfile.following_count}
+                            </div>
+                            <div className='user-info-text'>
+                                <FollowingDisplayModal />
+                            </div>
+                        </div>
                     </div>
                     <div className="pp-user-bio">{userProfile?.profile?.bio}</div>
+
                 </div>
             </div>
             <p className='pp-post-display-header'>POSTS</p>

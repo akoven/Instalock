@@ -52,11 +52,7 @@
     font-size: 25px;
     margin-left: 40px;
 }
-.user-info-text{
-    color: rgba(0, 0, 0, 0.653);
-    font-size: 20px;
 
-}
 .pp-num-posts-and-followings{
     display: flex;
     justify-content: space-between;
@@ -93,4 +89,27 @@
 .pp-post-display-header{
     text-align: center;
     margin-top: 10px;
+}
+
+.followers-div{
+    display: flex;
+    align-items: center;
+    padding-bottom: 23px;
+}
+.user-info-text{
+    color: rgba(0, 0, 0, 0.653);
+    font-size: 20px;
+}
+.followers-button{
+    margin-top: 5px;
+    margin-left: 5px;
+}
+.following-button{
+    margin-top: 5px;
+    margin-left: 5px;
+
+}
+.followers{
+    /* margin-left: 20px; */
+    margin-top: 1px;
 }

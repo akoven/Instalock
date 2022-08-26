@@ -10,7 +10,7 @@ function FollowersDisplayModal() {
 
     return (
         <>
-        <div className='followers-button' onClick={() => setShowModal(true)}>{`${followerCount}`} followers</div>
+        <div className='followers-button' onClick={() => setShowModal(true)}>followers</div>
         {showModal && (
             <Modal onClose={() => setShowModal(false)}>
                 <FollowersDisplay onClick={() => setShowModal(false)} />

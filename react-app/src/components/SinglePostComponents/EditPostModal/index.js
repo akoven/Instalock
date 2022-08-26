@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { Modal } from '../../../context/Modal'
 import EditPostForm from './EditPostForm'
 import './EditPost.css'
 
 function EditPostModal({ post }) {
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
     const [showModal, setShowModal] = useState(false)
 
     return (

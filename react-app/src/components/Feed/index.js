@@ -1,8 +1,8 @@
 import React from 'react'
-import { useState } from 'react'
+// import { useState } from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getComments } from '../../store/comment'
+// import { getComments } from '../../store/comment'
 import { NavLink } from 'react-router-dom'
 import { getPostsThunk } from '../../store/post'
 import CommentForm from '../CommentForm'
@@ -23,7 +23,7 @@ const Feed = () => {
     dispatch(getPostsThunk())
     dispatch(getProfileThunk(user.id))
     dispatch(getFollowData(user.id))
-  }, [dispatch])
+  }, [dispatch, user.id])
 
 //   useEffect(() => {
 //     Object.values(likes).forEach(like => {
@@ -79,7 +79,7 @@ const removeLikePost = async (isLiked, likes) => {
                 <img className='user-post-image' src={post.user.profile_image_url} alt="" />
 
               ) : (
-                <img className='user-post-image' src="https://im3.ezgif.com/tmp/ezgif-3-ad34d23b51.png" alt="Profile"/>
+                <img className='user-post-image' src="https://i.imgur.com/vF8FTS2.png" alt="Profile"/>
 
               )
               }

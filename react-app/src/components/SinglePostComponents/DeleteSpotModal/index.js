@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+// import { useDispatch, useSelector } from 'react-redux'
 import { Modal } from '../../../context/Modal'
 import DeletePost from './DeletePost'
 import './DeletePost.css'
