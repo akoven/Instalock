@@ -15,12 +15,11 @@ const SignUpForm = () => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password))
+      const data = await dispatch(signUp(username, email, password));
       if (data) {
         setErrors(data)
       }
     }
-
   };
 
   const updateUsername = (e) => {
@@ -46,12 +45,12 @@ const SignUpForm = () => {
   return (
     <div className='signup-page'>
       <form className='signup-form' onSubmit={onSignUp}>
+          <p className='signup-text'>Sign up to see photos and videos from your friends.</p>
         <div>
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
           ))}
         </div>
-        <p className='signup-text'>Sign up to see photos and videos from your friends.</p>
         <div>
           <input
             type='text'
@@ -64,7 +63,7 @@ const SignUpForm = () => {
         </div>
         <div>
           <input
-            type='text'
+            type='email'
             name='email'
             onChange={updateEmail}
             value={email}
