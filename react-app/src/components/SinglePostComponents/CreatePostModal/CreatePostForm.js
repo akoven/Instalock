@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createPost } from "../../../store/post";
@@ -10,23 +10,57 @@ function CreatePostForm({ post, onClick }) {
   const [caption, setCaption] = useState(post?.caption);
   const [imageUrl, setImageUrl] = useState(post?.image_url);
   const user = useSelector((state) => state.session.user);
+  const [errors, setErrors] = useState([]);
+  const [showModal, setShowModal] = useState(true);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+
+  const validations = () => {
+    let errors = [];
+    if (!caption) errors.push("Please enter a caption");
+    if (!imageUrl) errors.push("Please enter an image URL");
+    if (caption.length > 30)
+      errors.push("Character limit of 30 has been reached.");
+    // if (imageUrl.length > 255)
+    //   errors.push(
+    //     "Please include a different image URL that is less than 255 characters"
+    //   );
+    return errors;
+  };
+
+  useEffect(() => {
+    
+  })
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setErrors([]);
     const payload = {
       user_id: user.id,
       caption: caption,
       image_url: imageUrl,
     };
 
-    let updatedPost = await dispatch(createPost(payload));
-    if (updatedPost) {
-      history.push(`/`);
+    const validationErrors = validations();
+    if (validationErrors.length > 0) {
+      setErrors(validationErrors);
+      return;
     }
-  };
+    onClick();
+    return dispatch(createPost(payload))
+      .then(async (res) => {
+        setSubmitSuccess(true);
+      })
+      .then(setShowModal(false))
+      .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      });
 
-  console.log(user, "POST");
+    // let updatedPost = await dispatch(createPost(payload));
+    // if (updatedPost) {
+    //   history.push(`/`);
+    // }
+  };
 
   return (
     <>
@@ -37,30 +71,45 @@ function CreatePostForm({ post, onClick }) {
           </button>
           <div>Create New Post</div>
           <div className="buttonContainer">
-            <button className="create-post" type="submit">
+            <button
+              onClick={handleSubmit}
+              className="create-post"
+              type="submit"
+            >
               Share
             </button>
           </div>
         </div>
         <div className="create-img-container">
-          <img className="preview-image" src={imageUrl} alt="postImage" />
+          <img
+            className="preview-image"
+            src={imageUrl}
+            alt="Your Image Will Load Here!"
+          />
           <div className="post-form">
-        <div className="user-post-info">
-          {user.profile_image_url ? (
-            <img
-              className="user-post-image"
-              src={user.profile_image_url}
-              alt=""
-            />
-          ) : (
-            <img
-              src="https://img.icons8.com/plumpy/24/000000/user-male-circle.png"
-              alt="Profile"
-            />
-          )}
-          <div>{user.username}</div>
-        </div>
+            <div className="user-post-info">
+              {user.profile_image_url ? (
+                <img
+                  className="user-post-image"
+                  src={user.profile_image_url}
+                  alt=""
+                />
+              ) : (
+                <img
+                  src="https://img.icons8.com/plumpy/24/000000/user-male-circle.png"
+                  alt="Profile"
+                />
+              )}
+              <div>{user.username}</div>
+            </div>
             <form className="create-post-form" onSubmit={handleSubmit}>
+              {errors ?? (
+                <ul>
+                  {errors.map((error, idx) => (
+                    <li key={idx}>{error}</li>
+                  ))}
+                </ul>
+              )}
               <div>
                 <label>Image:</label>
                 <input

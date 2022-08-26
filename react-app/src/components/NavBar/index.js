@@ -97,7 +97,7 @@ const NavBar = () => {
                 Profile
               </Link>
               <Link
-                to="/settings"
+                to="/profile/edit/:userId"
                 className="dropdown"
                 style={{ textDecoration: "none" }}
               >
