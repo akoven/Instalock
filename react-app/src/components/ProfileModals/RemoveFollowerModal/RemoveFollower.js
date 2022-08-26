@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { useParams } from "react-router-dom";
 import { getFollowData, removeFollowThunk } from "../../../store/follows";
 import { getProfileThunk } from "../../../store/profile";

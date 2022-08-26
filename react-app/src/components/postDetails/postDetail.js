@@ -35,7 +35,7 @@ const PostDetail = () => {
         dispatch(getPosts(postId))
         dispatch(getPostLikesThunk(postId))
         dispatch(getComments(postId))
-    }, [dispatch])
+    }, [dispatch, postId])
 
     useEffect(() => {
         // console.log(likes, "likes")
@@ -45,7 +45,7 @@ const PostDetail = () => {
                 return
             }
         })
-    }, [likes])
+    }, [likes, user.id])
 
     const comments = useSelector(state => state.comments)
 
