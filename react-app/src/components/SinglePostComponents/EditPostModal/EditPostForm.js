@@ -25,41 +25,52 @@ function EditPostForm({ post, onClick }) {
         }
         onClick() // close the modal
     }
-
+    console.log(post)
     return (
-        <form className='edit-post-form-container' onSubmit={handleSubmit}>
-            <div className='edit-post-top-bar'>
+        <div className="edit-post-container">
+            <div className="edit-post-top-bar">
                 <div onClick={() => onClick()}>Cancel</div>
                 <div style={{'font-weight': 'bold'}}>Edit info</div>
-                <button className='edit-post-submit-button' type='submit'>Done</button>
+                <button onClick={handleSubmit} className='edit-post-submit-button' type='submit'>Done</button>
             </div>
-            {post && (
-            <div className='edit-post-img-cap-container'>
-                <div className='edit-img-container'>
-                    <img src={imageUrl} alt="There might be something wrong with your image url!" />
+            <div className="main-edit-container">
+                <div className="left-edit-container">
+                    <img className='edit-img' src={imageUrl} alt=""/>
                 </div>
-                <div className='edit-post-form-container'>
-                    <div className='edit-post-form-name-display'>
-                        <img src={`${post.user.profile_image_url}`} />
-                        <div>{post.user.username}</div>
-                    </div>
-                    <div className='edit-post-form'>
-                        <textarea
-                            placeholder='Write a caption...'
-                            value={caption}
-                            onChange={e => setCaption(e.target.value)}
-                        />
-                        <input
-                            type='text'
-                            placeholder="Image URL here..."
-                            value={imageUrl}
-                            onChange={e => setImageUrl(e.target.value)}
-                        />
-                    </div>
+
+                <div className="right-edit-container">
+                    <form className='edit-post-form-container' onSubmit={handleSubmit}>
+                        <div className="user-info-modal">
+                            {post?.user?.profile_image_url ? (
+                                <img className='user-post-image' src={post.user.profile_image_url} alt="" />
+                            ) : (
+                                <img src="https://img.icons8.com/plumpy/24/000000/user-male-circle.png" alt="Profile"/>
+                                )
+                            }
+                            <div className='user-post-username'>{post.user.username}</div>
+                        </div>
+                        <div className='post-caption-edit'>
+                            <textarea
+                                placeholder='Write a caption...'
+                                value={caption}
+                                onChange={e => setCaption(e.target.value)}
+                                minlength="20"
+                                maxlength="2200"
+                                required
+                            />
+                        </div>
+                        <div className="image-url-edit">
+                            <input
+                                type='text'
+                                placeholder="Image URL here..."
+                                value={imageUrl}
+                                onChange={e => setImageUrl(e.target.value)}
+                            />
+                        </div>
+                    </form>
                 </div>
             </div>
-            )}
-        </form>
+        </div>
     )
 }
 

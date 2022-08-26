@@ -15,7 +15,6 @@ import EditProfileForm from "./components/profile_pg/EditProfileForm";
 import Feed from "./components/Feed";
 import "./index.css";
 import { Link } from "react-router-dom";
-import EditPostModal from './components/SinglePostComponents/EditPostModal';
 import CreatePostForm from "./components/SinglePostComponents/CreatePostModal/CreatePostForm";
 
 function App() {
@@ -50,10 +49,8 @@ function App() {
           <PostDetails />
         </Route>
         <Route exact path="/posts/create/new">
+          <NavBar />
           <CreatePostForm />
-        </Route>
-        <Route exact path="/edit-post-trial">
-          <EditPostModal />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
@@ -66,15 +63,17 @@ function App() {
           <Feed />
         </ProtectedRoute>
         <ProtectedRoute path='/profile/:userId' exact={true}>
+          <NavBar />
           <ProfilePage />
         </ProtectedRoute>
         <ProtectedRoute path='/profile/edit/:userId' exact={true}>
+          <NavBar />
           <EditProfileForm />
         </ProtectedRoute>
         <Route path="/work-in-progress">
           <div className="work">This Feature is Currently in Development</div>
           <div className="back-to-homepage">
-            <img src="" />
+            <img src="homepage" />
             <Link to="/">
               Return To HomePage
             </Link>

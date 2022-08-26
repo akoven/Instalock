@@ -9,13 +9,8 @@ const updateComment = (e) => setCommentContent(e.target.value)
 const dispatch = useDispatch()
 const userSession = useSelector(state => state.session.user)
 
-const comments = useSelector((state) => {
 
-  if (!post.comments) return null;
 
-  return post.comments.map(commentId => state.comments[commentId]);
-
-});
 
   const commentSubmit = async(e) => {
     e.preventDefault();

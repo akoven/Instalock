@@ -14,6 +14,10 @@ const NavBar = () => {
   };
 
   useEffect(() => {
+    
+  })
+
+  useEffect(() => {
     if (!showMenu) return;
     const closeMenu = () => {
       setShowMenu(false);
@@ -97,7 +101,7 @@ const NavBar = () => {
                 className="dropdown"
                 style={{ textDecoration: "none" }}
               >
-                Settings
+                Edit Profile
               </Link>
               {/* <Link
                 to="/work-in-progress"
