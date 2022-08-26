@@ -42,17 +42,18 @@ const EditProfileForm = () =>{
             console.log('userId: ', currentUser.id)
         }
     }
+    // <div className="side-bar">
+    //             <ul>
+    //                 <li><NavLink to={`/profile/edit/${userId}`}>Edit Profile</NavLink></li>
+    //                 {/* <li>test</li>
+    //                 <li>test</li>
+    //                 <li>test</li> */}
+    //             </ul>
+    //     </div>
 
     return(
         <>
-        <div className="side-bar">
-                <ul>
-                    <li><NavLink to={`/profile/edit/${userId}`}>Edit Profile</NavLink></li>
-                    {/* <li>test</li>
-                    <li>test</li>
-                    <li>test</li> */}
-                </ul>
-        </div>
+
         <div className="main-form">
             <div className="profile-header">
                 <div className="profile-img">
@@ -149,7 +150,7 @@ const EditProfileForm = () =>{
                 <div>
                     <span className="submit-and-delete-buttons">
                         <button type="submit"><div className="submit">Submit</div></button>
-                        <button onClick={() => deleteProfile(currentUser.id)} disabled={true}><div className="delete">Delete</div></button>
+                        {/* <button onClick={() => deleteProfile(currentUser.id)} disabled={true}><div className="delete">Delete</div></button> */}
                     </span>
                     {/* <span className="delete-button">
                     </span> */}

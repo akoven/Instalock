@@ -28,7 +28,7 @@ let errors = [];
       setErrorValidators(errors);
     }
 
-    if(newComment.id){
+    if(newComment.id && errorValidators.length !== 0){
       dispatch(getComments(post.id))
     }
     setCommentContent('')
