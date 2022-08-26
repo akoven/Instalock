@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { NavLink, Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
@@ -11,7 +11,7 @@ const SignUpForm = () => {
   const [repeatPassword, setRepeatPassword] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
-
+  
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
@@ -58,7 +58,6 @@ const SignUpForm = () => {
             onChange={updateUsername}
             value={username}
             placeholder="Username"
-            required
           ></input>
         </div>
         <div>
@@ -68,7 +67,6 @@ const SignUpForm = () => {
             onChange={updateEmail}
             value={email}
             placeholder="Email"
-            required
           ></input>
         </div>
         <div>
@@ -78,7 +76,6 @@ const SignUpForm = () => {
             onChange={updatePassword}
             value={password}
             placeholder="Password"
-            required
           ></input>
         </div>
         <div>
