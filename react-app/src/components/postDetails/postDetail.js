@@ -91,7 +91,7 @@ const PostDetail = () => {
                         {post?.user?.profile_image_url ? (
                             <img className='user-post-image' src={post.user.profile_image_url} alt="" />
                         ) : (
-                            <img src="https://img.icons8.com/plumpy/24/000000/user-male-circle.png" alt="Profile"/>
+                            <img className="user-post-image" src="https://im3.ezgif.com/tmp/ezgif-3-ad34d23b51.png" alt="Profile"/>
                             )
                         }
 
@@ -109,7 +109,7 @@ const PostDetail = () => {
                                 {post?.user?.profile_image_url ? (
                                     <img className='user-post-image' src={post.user.profile_image_url} alt="" />
                                 ) : (
-                                    <img src="https://img.icons8.com/plumpy/24/000000/user-male-circle.png" alt="Profile"/>
+                                    <img className="user-post-image" src="https://im3.ezgif.com/tmp/ezgif-3-ad34d23b51.png" alt="Profile"/>
                                     )
                                 }
                                 </div>

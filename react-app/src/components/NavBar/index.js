@@ -7,14 +7,14 @@ import CreatePostModal from "../SinglePostComponents/CreatePostModal";
 
 const NavBar = () => {
   const [showMenu, setShowMenu] = useState(false);
-  const userId = useSelector(state => state.session.user.id)
+  const user = useSelector(state => state.session.user)
   const openMenu = () => {
     if (showMenu) return;
     setShowMenu(true);
   };
 
   useEffect(() => {
-    
+
   })
 
   useEffect(() => {
@@ -25,7 +25,7 @@ const NavBar = () => {
     document.addEventListener("click", closeMenu);
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
-
+  console.log(user)
   return (
     // <nav className='nav-home'>
     //   <ul>
@@ -61,7 +61,7 @@ const NavBar = () => {
         </Link>
       </div>
       {/* <h2 className='nav-header'>Instagram</h2> */}
-      <ul>
+      <ul className="nav-right">
         <li>
           <NavLink to="/" exact={true} activeClassName="active">
             <img
@@ -77,27 +77,34 @@ const NavBar = () => {
               alt="Create"
             />
           </NavLink> */}
-          <CreatePostModal />
+          <div className="create-post-modal-div">
+            <CreatePostModal />
+          </div>
         </li>
-        <div>
+        <li>
           <button className="nav-bar-button" onClick={openMenu}>
-            <img
-              src="https://img.icons8.com/plumpy/24/000000/user-male-circle.png"
-              alt="Profile"
-            />
+            {user.profile_image_url ? (
+              <img src={user.profile_image_url} alt="profile-pic"/>
+            ) : (
+
+              <img className="user-post-image"
+                src="https://im3.ezgif.com/tmp/ezgif-3-ad34d23b51.png"
+                alt="Profile"
+              />
+            )}
           </button>
           {showMenu && (
             <div className="menu">
               {/* <i className="fas fa-bars nav_bars_icon"></i> */}
               <Link
-                to={`/profile/${userId}`}
+                to={`/profile/${user.id}`}
                 className="dropdown"
                 style={{ textDecoration: "none" }}
               >
                 Profile
               </Link>
               <Link
-                to="/profile/edit/:userId"
+                to="/profile/edit/:user.id"
                 className="dropdown"
                 style={{ textDecoration: "none" }}
               >
@@ -115,7 +122,7 @@ const NavBar = () => {
               </div>
             </div>
           )}
-        </div>
+        </li>
       </ul>
     </nav>
   );

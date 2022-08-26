@@ -76,3 +76,11 @@
   border: 10px solid black;
   object-fit: cover;
 }
+.nav-right{
+display: flex;
+align-items: center;
+}
+
+.create-post-modal-div{
+padding-bottom: 3px;
+}
