@@ -9,6 +9,8 @@ import CommentForm from '../CommentForm'
 import { getProfileThunk } from '../../store/profile'
 import "./Feed.css"
 import { getFollowData } from '../../store/follows'
+import PostOptionsModal from '../SinglePostComponents/PostOptionsModal'
+
 const Feed = () => {
 
   const posts = useSelector(state => Object.values(state.posts))
@@ -27,7 +29,6 @@ const Feed = () => {
     <div className='feed'>
       {posts.map(post => (
         <div id={post.id} className='post-container' key={post.id}>
-          <NavLink to={`/posts/${post.id}`}>
           <div className="post-top">
             <NavLink to={`/profile/${post.user.id}`}>
             <div className="user-post-info">
@@ -42,29 +43,28 @@ const Feed = () => {
             <div>{post.user.username}</div>
             </div>
             </NavLink>
-            <div className="user-post-options">
-              <img src="https://img.icons8.com/fluency-systems-filled/24/000000/dots-loading.png" alt=""/>
+            <PostOptionsModal post={post} />
+          </div>
+          <NavLink to={`/posts/${post.id}`}>
+            <div>
+              <img className="post-image" src={post.image_url} alt="" />
             </div>
-          </div>
-          <div>
-            <img className="post-image" src={post.image_url} alt="" />
-          </div>
-          <div className="post-mid">
-            <div className="like-button">
+            <div className="post-mid">
+              <div className="like-button">
+
+              </div>
+              <div className="comment-button">
+
+              </div>
+            </div>
+            <div className="posts-likes">
 
             </div>
-            <div className="comment-button">
-
+            <div className="post-user-caption">
+              <div className='post-user-username'>{post.user.username}</div>
+              <div>{post.caption}</div>
             </div>
-          </div>
-          <div className="posts-likes">
-
-          </div>
-          <div className="post-user-caption">
-            <div className='post-user-username'>{post.user.username}</div>
-            <div>{post.caption}</div>
-          </div>
-          <div className="posts-comments">View all {post?.comments?.length} comment(s)</div>
+            <div className="posts-comments">View all {post?.comments?.length} comment(s)</div>
           </NavLink>
           <div className="post-lower">
             <CommentForm post={post} />
