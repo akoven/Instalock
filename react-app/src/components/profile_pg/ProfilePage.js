@@ -74,13 +74,14 @@ const ProfilePage = () => {
     console.dir(ProfilePage)
     // console.log(userProfile.posts.length)
     return(
+
         <div className="profile-main-container">
             <div className="profile-top-section">
                 <div className="profile-page-user-image">
                     {userProfile?.profile?.profile_image_url ? (
                         <img className='pp-user-image' src={userProfile?.profile?.profile_image_url} alt="" />
                     ) : (
-                        <img className='pp-user-image' src="https://im3.ezgif.com/tmp/ezgif-3-ad34d23b51.png" alt="Profile"/>
+                        <img className='pp-user-image' src="https://i.imgur.com/vF8FTS2.png" alt="Profile"/>
                     )
                     }
                 </div>
@@ -92,6 +93,7 @@ const ProfilePage = () => {
                         <div className='following'><span className='user-info-text'><FollowingDisplayModal /></span></div>
                     </div>
                     <div className="pp-user-bio">{userProfile?.profile?.bio}</div>
+
                 </div>
             </div>
             <p className='pp-post-display-header'>POSTS</p>
