@@ -1,0 +1,184 @@
+.side-bar{
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+    height: 630px;
+    margin-left: 70px;
+    border: 1px solid rgba(167, 167, 167, 0.391);
+    position: absolute;
+    border-right: 0.5px solid rgba(167, 167, 167, 0.391);
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    font-weight: bold;
+
+
+}
+
+ul{
+    list-style-type: none;
+}
+
+li{
+    margin-left: 8px;
+    margin-top: 3px
+}
+
+input{
+ height: 25px;
+ width: auto;
+}
+
+.main-form{
+    /* background-color: fuchsia; */
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    margin-top: 25px;
+    margin-left: 170px;
+    height: 630px;
+    width: 700px;
+    border: 1px solid rgba(167, 167, 167, 0.391);
+    border-left: 0.5px;
+    border-radius: 5px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+
+}
+
+.profile-header{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.image{
+    margin-right: 20px;
+}
+
+.username{
+    display:flex;
+    margin-left: 70px;
+    margin-top: 20px;
+    height: 70px;
+    font-weight: bold;
+
+}
+
+.user-label{
+    margin-right: 15px;
+}
+
+.website{
+    display:flex;
+    margin-top: 10px;
+    height: 70px;
+    margin-left: 70px;
+    font-weight: bold;
+
+}
+
+.website-label{
+    margin-right: 15px;
+}
+
+.bio{
+    display:flex;
+    margin-top: 10px;
+    margin-left: 70px;
+    height: 70px;
+    font-weight: bold;
+
+}
+
+.bio-label{
+    margin-right: 15px;
+}
+
+.email{
+    display:flex;
+    margin-top: 10px;
+    margin-left: 70px;
+    height: 70px;
+    font-weight: bold;
+
+}
+
+.email-label{
+    margin-right: 15px;
+}
+
+.phone{
+    display:flex;
+    margin-top: 10px;
+    margin-left: 70px;
+    height: 70px;
+    font-weight: bold;
+
+}
+
+.phone-label{
+    margin-right: 15px;
+    margin-bottom: 10px;
+}
+
+.gender{
+    display:flex;
+    margin-top: 10px;
+    margin-left: 50px;
+    height: 70px;
+
+}
+
+.gender-label{
+    margin-right: 15px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.submit-and-delete-buttons{
+    display: flex;
+    margin-left: 80px;
+    margin-top: 10px;
+}
+
+/* .delete-button{
+    dis
+} */
+button{
+    border: none;
+    background-color: white;
+}
+.Female,.Male,.Custom{
+    margin-right: 15px
+}
+
+.submit{
+    background-color: rgb(69,142,255);
+    border-color:  rgb(69,142,255);
+    padding: 10px;
+    padding-left: 10px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    box-shadow: none;
+
+}
+
+.delete{
+    background-color: rgb(251,57,88);
+    border-color: rgb(251,57,88);
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    margin-left: 300px;
+}
+
+img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
