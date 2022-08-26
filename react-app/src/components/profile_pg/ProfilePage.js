@@ -16,7 +16,6 @@ const ProfilePage = () => {
     const history = useHistory();
     const { userId } = useParams();
     const [ isFollowing, setIsFollowing ] = useState(false)
-    const [ followId, setFollowId ] = useState(null)
 
     // useEffect(() =>{
     //     if(userSession){
@@ -35,12 +34,15 @@ const ProfilePage = () => {
 
 
     const unfollow = async () => {
+        let followId = null;
+
         Object.entries(followers).forEach(follower => {
             if (follower[1].id === userSession.id) {
-                setFollowId(follower[0])
+                console.log("inside the if")
+                followId = Number(follower[0])
             }
         })
-        console.log(followId, "followId")
+
         const success = await dispatch(removeFollowThunk(followId))
 
         if (success) {
