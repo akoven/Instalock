@@ -14,7 +14,7 @@ const PostDetail = () => {
     let { postId } = useParams();
 
     const post = useSelector(state => state.posts[postId])
-    console.log(post)
+    // console.log(post)
     const user = useSelector(state => state.session.user)
     const likes = useSelector(state => state.likes)
     // const [ isLiked, setIsLiked ] = useState(() => {
@@ -38,7 +38,7 @@ const PostDetail = () => {
     }, [dispatch])
 
     useEffect(() => {
-        console.log(likes, "likes")
+        // console.log(likes, "likes")
         Object.values(likes).forEach(like => {
             if (like.user.id === user.id) {
                 setIsLiked(true)
@@ -75,10 +75,10 @@ const PostDetail = () => {
     }
 
     const handleDel = async (commentId) => {
-        console.log('before dispatch')
+        // console.log('before dispatch')
         await dispatch(deleteComment(commentId, postId))
         dispatch(getComments(postId))
-        console.log('after dispatch')
+        // console.log('after dispatch')
     }
     return (
         <div className="post-details-container">

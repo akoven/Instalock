@@ -25,7 +25,7 @@ function EditPostForm({ post, onClick }) {
         }
         onClick() // close the modal
     }
-    console.log(post)
+    // console.log(post)
     return (
         <div className="edit-post-container">
             <div className="edit-post-top-bar">

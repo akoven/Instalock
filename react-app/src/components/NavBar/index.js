@@ -25,7 +25,7 @@ const NavBar = () => {
     document.addEventListener("click", closeMenu);
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
-  console.log(user)
+  // console.log(user)
   return (
     // <nav className='nav-home'>
     //   <ul>

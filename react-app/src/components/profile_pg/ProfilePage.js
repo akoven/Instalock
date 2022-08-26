@@ -45,7 +45,7 @@ const ProfilePage = () => {
 
         Object.entries(followers).forEach(follower => {
             if (follower[1].id === userSession.id) {
-                console.log("inside the if")
+                // console.log("inside the if")
                 followId = Number(follower[0])
             }
         })
@@ -72,7 +72,7 @@ const ProfilePage = () => {
         }
     }
     console.dir(ProfilePage)
-    console.log(userProfile.posts.length)
+    // console.log(userProfile.posts.length)
     return(
        <div className="profile-main-container">
         <div className="profile-top-section">
@@ -85,7 +85,7 @@ const ProfilePage = () => {
                   }
             </div>
             <div className="profile-page-user-info">
-                <div className="pp-username">{userProfile.profile.username}</div>
+                <div className="pp-username">{userProfile?.profile?.username}</div>
                 <div className="pp-num-posts-and-followings">
                     <div className="pp-num-posts">{userProfile.posts.length} <span className='user-info-text'>Posts</span></div>
                     <div className='followers'>{userProfile?.follower_count} <span className='user-info-text'>Followers</span></div>

@@ -22,7 +22,7 @@ export const getProfileThunk = (userId) => async dispatch =>{
     // console.log('RESPONSE:', response)
     if(response.ok){
         const userProfile = await response.json();
-        console.log('USER PROFILE:',userProfile)
+        // console.log('USER PROFILE:',userProfile)
         dispatch(getProfile(userProfile))
     }
 }
@@ -36,7 +36,7 @@ export const deleteProfile = (userId) => async dispatch =>{
 }
 
 export const editProfileParams = (userProfile, userId) => async dispatch =>{
-    console.log('USER PROFILE: ', userProfile)
+    // console.log('USER PROFILE: ', userProfile)
     // const {
     //     username,
     //     website,
@@ -65,7 +65,7 @@ export const editProfileParams = (userProfile, userId) => async dispatch =>{
         body: JSON.stringify(userProfile)
         // body: userProfileData
     });
-    console.log('RESPONSE:', response)
+    // console.log('RESPONSE:', response)
     if(response.ok){
         const editedProfile = await response.json();
         dispatch(editProfile(editedProfile));
