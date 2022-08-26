@@ -27,6 +27,7 @@ body{
 .right-details{
     padding-top: 15px;
     position: relative;
+    width: 340px;
 }
 .post-details-username{
     margin-left: 5px;
@@ -39,7 +40,11 @@ body{
     margin-bottom: 10px;
     position: relative;
 }
-.post-options{
+.top-right-details > a{
+    display: flex;
+    align-items: center;
+}
+.post-options-button{
     /* margin-left: 120px; */
     cursor: pointer;
 }
@@ -84,7 +89,8 @@ body{
     overflow-y: scroll;
     overflow-x: hidden;
     overflow-wrap: break-word;
-    max-height: 350px;
+    /* height: 350px; */
+    height: 62%;
 }
 .middle-right-details > *{
     max-width: 300px;
@@ -99,6 +105,7 @@ body{
 .comment-likes-section{
     display: flex;
     justify-content: space-between;
+
 }
 .heart{
     font-size: 5px;
@@ -107,6 +114,7 @@ body{
     display: flex;
     /* align-items: center; */
     /* justify-content: space-around; */
+    position: relative;
 
 }
 .comment-user-details > *{
@@ -118,6 +126,10 @@ body{
     word-wrap: normal;
     overflow-x: hidden;
 
+}
+.no-comments-message{
+    font-size: 40px;
+    text-align: center;
 }
 .comment-likes-section{
     margin-left: 30px;
@@ -150,5 +162,15 @@ body{
 
 }
 .post-comment-form > *{
-    /* background-color: blue; */
+    position: absolute;
+    bottom: 0;
+
+}
+.comment-del-btn{
+    /* border: 1px solid black; */
+    /* margin-left: 200px; */
+    /* background-color: black; */
+    position: absolute;
+    right: -5px;
+    top: 7px;
 }
