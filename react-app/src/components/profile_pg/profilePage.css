@@ -1,0 +1,30 @@
+.profile-username{
+    display: flex;
+    margin-left: 500px;
+    margin-bottom: 10px;
+    font-weight: lighter;
+    font-size: 40px;
+
+}
+
+.profile-img{
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    margin-top: 25px;
+    margin-left: 200px;
+}
+
+.edit-profile-button{
+    margin-left: 30px;
+    font-weight: bold;
+    font-size: 15px;
+    border: 1px solid rgba(167, 167, 167, 0.391);
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.biography{
+    margin-left: 500px;
+    font-size: 105%;
+}

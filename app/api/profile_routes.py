@@ -68,3 +68,13 @@ def edit_profile(user_id):
     db.session.commit()
     print('***********************PROFILE*****************************')
     return profile.to_dict()
+
+@profile_routes.route('/edit/<user_id>', methods=['DELETE'])
+def deleting_profile(user_id):
+    profile = User.query.get(user_id)
+
+    if not profile:
+        return '404: the object you are looking for is not available'
+
+    db.session.delete(profile)
+    db.session.commit()
