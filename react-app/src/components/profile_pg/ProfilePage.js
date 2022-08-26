@@ -80,7 +80,7 @@ const ProfilePage = () => {
                 {userProfile.profile.profile_image_url ? (
                     <img className='pp-user-image' src={userProfile.profile.profile_image_url} alt="" />
                   ) : (
-                    <img className='pp-user-image' src="https://im3.ezgif.com/tmp/ezgif-3-ad34d23b51.png" alt="Profile"/>
+                    <img className='pp-user-image' src="https://i.imgur.com/vF8FTS2.png" alt="Profile"/>
                   )
                   }
             </div>

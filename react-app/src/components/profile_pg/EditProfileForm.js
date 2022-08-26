@@ -57,7 +57,12 @@ const EditProfileForm = () =>{
         <div className="main-form">
             <div className="profile-header">
                 <div className="profile-img">
-                    <img className="profileEdit-image" src='https://www.slashfilm.com/img/gallery/14-shows-like-rick-morty-that-are-worth-your-time/intro-1628182486.webp' alt="image-here" />
+                    {userProfile.profile.profile_image_url ? (
+                        <img className='profileEdit-image' src={userProfile.profile.profile_image_url} alt="" />
+                      ) : (
+                        <img className='profileEdit-image' src="https://i.imgur.com/vF8FTS2.png" alt="Profile"/>
+                      )
+                      }
                 </div>
                 {currentUser.username}
             </div>
