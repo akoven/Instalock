@@ -4,6 +4,7 @@ import { NavLink, Link } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
 import "./NavBar.css";
 import CreatePostModal from "../SinglePostComponents/CreatePostModal";
+// import 'instalock_logo.jpg' from '../../images/instalock_logo.jpg'
 
 const NavBar = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -57,7 +58,7 @@ const NavBar = () => {
     <nav className="nav-home">
       <div className="nav-logo">
         <Link exact to="/">
-          Our Logo Here
+          <img className="logo-img" src="https://i.imgur.com/w6gGyUO.jpeg" alt="Our Logo Here" />
         </Link>
       </div>
       {/* <h2 className='nav-header'>Instagram</h2> */}

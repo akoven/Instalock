@@ -6,6 +6,10 @@
   align-items: center;
   border: 1px solid rgba(167, 167, 167, 0.391);
 }
+
+.logo-img {
+  height: 40px;
+}
 .nav-home ul{
   display: flex;
   width: 10em;
