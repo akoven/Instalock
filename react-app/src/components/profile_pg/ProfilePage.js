@@ -71,21 +71,45 @@ const ProfilePage = () => {
             dispatch(getFollowData(userId))
         }
     }
-
+    console.dir(ProfilePage)
+    console.log(userProfile.posts.length)
     return(
-       <>
-        {userSession.id == userId ? '' : <div>{followers && Object.values(followers).filter(follow => follow.id === userSession.id).length > 0 ? <button onClick={unfollow}>Unfollow</button> : <button onClick={follow}>Follow</button> }</div>}
-        <FollowersDisplayModal />
-        <FollowingDisplayModal />
-        <img className='profile-img' src='https://www.slashfilm.com/img/gallery/14-shows-like-rick-morty-that-are-worth-your-time/intro-1628182486.webp' alt='image-here'/>
-        <p className='profile-username'>{userProfile?.profile?.username} <span><button  className='edit-profile-button' onClick={() => history.push(`/profile/edit/${userSession.id}`)}>Edit profile</button></span></p>
-            {/* <p className='followers'>Followers: {userProfile?.follower_count}</p>
-            <p className='following'>Following: {userProfile?.following_count}</p> */}
-            <p className='website-url'>{userProfile?.profile?.website}</p>
-            <p className='biography'>{userProfile?.profile?.bio}</p>
-            {postImages.map(image =><div><img className='postImgs' src={image.image_url} /></div>)}
-       </>
+       <div className="profile-main-container">
+        <div className="profile-top-section">
+            <div className="profile-page-user-image">
+                {userProfile.profile.profile_image_url ? (
+                    <img className='pp-user-image' src={userProfile.profile.profile_image_url} alt="" />
+                  ) : (
+                    <img className='pp-user-image' src="https://img.icons8.com/plumpy/24/000000/user-male-circle.png" alt="Profile"/>
+                  )
+                  }
+            </div>
+            <div className="profile-page-user-info">
+                <div className="pp-username">{userProfile.profile.username}</div>
+                <div className="pp-num-posts-and-followings">
+                    <div className="pp-num-posts">{userProfile.posts.length} <span className='user-info-text'>Posts</span></div>
+                    <div className='followers'>{userProfile?.follower_count} <span className='user-info-text'>Followers</span></div>
+                    <div className='following'>{userProfile?.following_count} <span className='user-info-text'>Following</span></div>
+                </div>
+                <div className="pp-user-bio">{userProfile?.profile?.bio}</div>
+            </div>
+        </div>
+        <p className='pp-post-display-header'>POSTS</p>
+        <div className="pp-user-post-display">
+            {postImages.map(image => <div className='pp-user-post'><img className='pp-user-post-image' src={image.image_url} alt=""/></div>)}
+        </div>
+       </div>
     )
 }
+// {userSession.id == userId ? '' : <div>{followers && Object.values(followers).filter(follow => follow.id === userSession.id).length > 0 ? <button onClick={unfollow}>Unfollow</button> : <button onClick={follow}>Follow</button> }</div>}
+// <FollowersDisplayModal />
+// <FollowingDisplayModal />
+// <img className='profile-img' src='https://www.slashfilm.com/img/gallery/14-shows-like-rick-morty-that-are-worth-your-time/intro-1628182486.webp' alt='profile-pic'/>
+// <p className='profile-username'>{userProfile?.profile?.username} <span><button  className='edit-profile-button' onClick={() => history.push(`/profile/edit/${userSession.id}`)}>Edit profile</button></span></p>
+//     {/* <p className='followers'>Followers: {userProfile?.follower_count}</p>
+//     <p className='following'>Following: {userProfile?.following_count}</p> */}
+//     <p className='website-url'>{userProfile?.profile?.website}</p>
+//     <p className='biography'>{userProfile?.profile?.bio}</p>
+//     {postImages.map(image =><div><img className='postImgs' src={image.image_url} /></div>)}
 
 export default ProfilePage;
