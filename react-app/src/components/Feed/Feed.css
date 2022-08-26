@@ -16,7 +16,7 @@ a {
 }
 .post-container{
   margin: 0px auto;
-  width: 402px;
+  width: 472px;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -40,8 +40,16 @@ a {
 .user-post-image{
   /* object-position: cover; */
 }
-.post-image{
-  width: 400px;
+
+.post-image-container {
+  width: 470px;
+}
+
+.post-image-container > img {
+  object-fit: contain;
+  width: 100%;
+  min-height: 225px;
+  object-fit: cover;
 }
 .post-top{
   display: flex;

@@ -24,7 +24,6 @@ const Feed = () => {
   }, [dispatch])
 
 
-
   return (
     <div className='feed'>
       {posts.map(post => (
@@ -46,7 +45,7 @@ const Feed = () => {
             <PostOptionsModal post={post} />
           </div>
           <NavLink to={`/posts/${post.id}`}>
-            <div>
+            <div className='post-image-container'>
               <img className="post-image" src={post.image_url} alt="" />
             </div>
             <div className="post-mid">
