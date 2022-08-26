@@ -25,6 +25,7 @@ let errors = [];
     let newComment = await dispatch(createComment(data))
     if(commentContent.length === 0){
       errors.push('Your comment needs at least one character')
+      setErrorValidators(errors);
     }
 
     if(newComment.id && errors.length !== 0){
