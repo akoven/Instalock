@@ -16,12 +16,12 @@ function CreatePostForm({ post, onClick }) {
 
   useEffect(() => {
     const newErrors = [];
-    if (caption.length > 30) {
-      newErrors.push("Caption character limit of 30 exceeded");
-    }
-    if (imageUrl.length > 255) {
-      newErrors.push("Image URL character limit of 255 exceeded.");
-    }
+    // if (post?.caption.length > 30) {
+    //   newErrors.push("Caption character limit of 30 exceeded");
+    // }
+    // if (imageUrl.length > 255) {
+    //   newErrors.push("Image URL character limit of 255 exceeded.");
+    // }
     if (!caption) {
       newErrors.push("Caption is required!");
     }
@@ -103,7 +103,7 @@ function CreatePostForm({ post, onClick }) {
               <div>{user.username}</div>
             </div>
             <form className="create-post-form" onSubmit={handleSubmit}>
-              {errors.length > 0 && (
+              {errors && (
                 <ul className="create-post-form-errors">
                   {errors.map((error) => {
                     return <li>{`${error}`}</li>;
