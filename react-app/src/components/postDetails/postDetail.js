@@ -138,9 +138,9 @@ const PostDetail = () => {
                         </div>
                     </div>
                 </div>
-                <div className="post-comment-form">
+                {post && post.display_comments && <div className="post-comment-form">
                     <CommentForm post={post}/>
-                </div>
+                </div>}
             </div>
         </div>
         )
