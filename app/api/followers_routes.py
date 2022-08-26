@@ -33,9 +33,12 @@ def follow():
     form = UserFollowerForm()
 
     form['csrf_token'].data = request.cookies['csrf_token']
+    user_id = form.data["user_id"]
+    follower_id = form.data["follower_id"]
+
+    
+    print(form.data)
     if form.validate_on_submit():
-        user_id = form.data["user_id"]
-        follower_id = form.data["follower_id"]
 
         follow_log = UserFollower.query.filter(UserFollower.user_id == user_id).filter(UserFollower.follower_id == follower_id).first()
 
@@ -51,6 +54,8 @@ def follow():
             return new_follow.to_dict()
         else:
             return 'Already following this user'
+    else:
+        return "Form error"
 
 
 @followers_routes.route('/<follow_id>', methods=['DELETE'])

@@ -32,20 +32,19 @@
 }
 
 .create-post-form label {
-  width: 100%;
-  /* margin: 8px 0; */
-  /* display: flex; */
-  /* float: left; */
-  padding: 0px;
-  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .create-post-form input {
   height: 30px;
   border: #d3d3d3 1.5px solid;
-  width: 200px;
+  width: 250px;
   border-radius: 5px;
   color: gray;
+  display: flex;
+  align-items: center;
   /* display: flex; */
   /* align-items: center; */
   /* justify-content: center; */
@@ -77,17 +76,25 @@
   justify-content: space-between;
 }
 
-.post-form {
+/* .post-form {
   width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-    align-items: center;
+  align-items: center;
+  height: 100%;
+} */
+
+.post-form {
+  width: 50%;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.post-form > div {
+/* .post-form > div {
   height: 100px;
-}
+} */
 
 .user-post-info {
   display: flex;
