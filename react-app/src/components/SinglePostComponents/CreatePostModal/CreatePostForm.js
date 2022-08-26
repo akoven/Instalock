@@ -26,6 +26,8 @@ function CreatePostForm({ post, onClick }) {
     }
   };
 
+  console.log(user, "POST");
+
   return (
     <>
       <div className="create-post-form-container">
@@ -40,37 +42,46 @@ function CreatePostForm({ post, onClick }) {
             </button>
           </div>
         </div>
-        <div>
-          <div className="edit-post-form-name-display">
-            <img src={`${post?.user.profile_image_url}`} />
-            <div>{post?.user.username}</div>
-          </div>
-          <div className="create-img-container">
-            <img className="preview-image" src={imageUrl} alt="postImage" />
-            <div className="post-form">
-              <form className="create-post-form" onSubmit={handleSubmit}>
-                <div>
-                  <label>Image:</label>
-                  <input
-                    type="text"
-                    placeholder="Image URL here..."
-                    value={imageUrl}
-                    onChange={(e) => setImageUrl(e.target.value)}
-                    required
-                  />
-                </div>
-                <div>
-                  <label>Caption:</label>
-                  <input
-                    type="text"
-                    placeholder="Write a caption..."
-                    value={caption}
-                    onChange={(e) => setCaption(e.target.value)}
-                    required
-                  />
-                </div>
-              </form>
-            </div>
+        <div className="create-img-container">
+          <img className="preview-image" src={imageUrl} alt="postImage" />
+          <div className="post-form">
+        <div className="user-post-info">
+          {user.profile_image_url ? (
+            <img
+              className="user-post-image"
+              src={user.profile_image_url}
+              alt=""
+            />
+          ) : (
+            <img
+              src="https://img.icons8.com/plumpy/24/000000/user-male-circle.png"
+              alt="Profile"
+            />
+          )}
+          <div>{user.username}</div>
+        </div>
+            <form className="create-post-form" onSubmit={handleSubmit}>
+              <div>
+                <label>Image:</label>
+                <input
+                  type="text"
+                  placeholder="Image URL here..."
+                  value={imageUrl}
+                  onChange={(e) => setImageUrl(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="caption-div">
+                <label>Caption:</label>
+                <input
+                  type="text"
+                  placeholder="Write a caption..."
+                  value={caption}
+                  onChange={(e) => setCaption(e.target.value)}
+                  required
+                />
+              </div>
+            </form>
           </div>
         </div>
       </div>

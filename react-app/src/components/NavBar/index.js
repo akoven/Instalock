@@ -101,7 +101,7 @@ const NavBar = () => {
                 className="dropdown"
                 style={{ textDecoration: "none" }}
               >
-                Settings
+                Edit Profile
               </Link>
               {/* <Link
                 to="/work-in-progress"
