@@ -31,8 +31,8 @@ const ProfilePage = () => {
     useEffect(() =>{
         dispatch(getFollowData(userId))
         dispatch(getProfileThunk(userId))
-        console.log('user posts: ',userProfile.posts)
-        console.log('user post images: ', Object.values(userProfile.posts))
+        // console.log('user posts: ',userProfile.posts)
+        // console.log('user post images: ',userProfile.posts[0].image_url)
     }, [dispatch])
 
 
@@ -50,7 +50,7 @@ const ProfilePage = () => {
             <p className='following'>Following: {userProfile?.following_count}</p> */}
             <p className='website-url'>{userProfile?.profile?.website}</p>
             <p className='biography'>{userProfile?.profile?.bio}</p>
-            {}
+            {postImages.map(image =><div><img className='postImgs' src={image.image_url} /></div>)}
 
 
        </>
