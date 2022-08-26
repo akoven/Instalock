@@ -11,22 +11,20 @@ function CreatePostForm({ post, onClick }) {
   const [imageUrl, setImageUrl] = useState(post?.image_url);
   const user = useSelector((state) => state.session.user);
   const [errors, setErrors] = useState([]);
-  const [showModal, setShowModal] = useState(true);
-  const [submitSuccess, setSubmitSuccess] = useState(false);
 
   useEffect(() => {
     const newErrors = [];
-    if (caption.length > 30) {
-      newErrors.push("Caption character limit of 30 exceeded");
+    if (caption?.length > 2200) {
+      newErrors.push("Caption character limit of 2200 exceeded.");
     }
-    if (imageUrl.length > 255) {
+    if (imageUrl?.length > 255) {
       newErrors.push("Image URL character limit of 255 exceeded.");
-    }
-    if (!caption) {
-      newErrors.push("Caption is required!");
     }
     if (!imageUrl) {
       newErrors.push("Image URL is required!");
+    }
+    if (!caption) {
+      newErrors.push("Caption is required!");
     }
 
     if (newErrors.length) {
@@ -103,7 +101,7 @@ function CreatePostForm({ post, onClick }) {
               <div>{user.username}</div>
             </div>
             <form className="create-post-form" onSubmit={handleSubmit}>
-              {errors.length > 0 && (
+              {errors && (
                 <ul className="create-post-form-errors">
                   {errors.map((error) => {
                     return <li>{`${error}`}</li>;
@@ -123,7 +121,7 @@ function CreatePostForm({ post, onClick }) {
               <div className="caption-div">
                 <label>Caption:</label>
                 <input
-                  type="text"
+                  type="textarea"
                   placeholder="Write a caption..."
                   value={caption}
                   onChange={(e) => setCaption(e.target.value)}
