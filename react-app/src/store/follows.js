@@ -3,7 +3,10 @@ const GET_FOLLOW_CONNECTIONS = 'follows/get_follow_connections'
 const REMOVE_FOLLOW = 'follows/remove_follow'
 
 const addFollow = (follow) => {
-
+    return {
+        type: ADD_FOLLOW,
+        follow
+    }
 }
 
 const getFollowConnections = (followData) => {
@@ -28,6 +31,21 @@ export const getFollowData = (userId) => async dispatch => {
         const followData = await res.json();
         dispatch(getFollowConnections(followData))
         return followData
+    }
+}
+
+export const addFollowThunk = (payload) => async dispatch => {
+    console.log(payload, "payload")
+    const res = await fetch(`/api/followers/`, {
+        method: 'POST',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+    })
+
+    if (res.ok) {
+        const follow = await res.json();
+        dispatch(addFollow(follow))
+        return follow
     }
 }
 
@@ -56,6 +74,11 @@ export default function reducer (state = {}, action) {
             // if (newState.following[action.followId]) {
                 delete newState.following[action.followId]
             }
+            return newState
+        }
+        case ADD_FOLLOW: {
+            let newState = {...state}
+            newState.followers[action.follow.id] = action.follow.user
             return newState
         }
         default: {

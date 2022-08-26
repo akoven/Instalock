@@ -17,27 +17,35 @@ const PostDetail = () => {
     console.log(post)
     const user = useSelector(state => state.session.user)
     const likes = useSelector(state => state.likes)
-    const [ isLiked, setIsLiked ] = useState(() => {
-        let result = false
-        Object.values(likes).forEach(like => {
-            if (like.user.id === user.id) {
-                result = true
-                return
-            }
-        })
-        return result
-    })
+    // const [ isLiked, setIsLiked ] = useState(() => {
+    //     let result = false
+    //     Object.values(likes).forEach(like => {
+    //         if (like.user.id === user.id) {
+    //             result = true
+    //             return
+    //         }
+    //     })
+    //     return result
+    // })
+    const [ isLiked, setIsLiked ] = useState(false)
 
     // const [showEditForm, setShowEditForm] = useState(false);
 
     useEffect(() => {
         dispatch(getPosts(postId))
         dispatch(getPostLikesThunk(postId))
-    }, [dispatch])
-    useEffect(() => {
         dispatch(getComments(postId))
+    }, [dispatch])
 
-    }, [dispatch]);
+    useEffect(() => {
+        console.log(likes, "likes")
+        Object.values(likes).forEach(like => {
+            if (like.user.id === user.id) {
+                setIsLiked(true)
+                return
+            }
+        })
+    }, [likes])
 
     const comments = useSelector(state => state.comments)
 
@@ -79,8 +87,7 @@ const PostDetail = () => {
             </div>
             <div className="right-details">
                 <div className="top-right-details">
-
-                        <NavLink to={`/profile/${post?.user.id}`} >
+                        <NavLink to={`/profile/${post?.user?.id}`} >
                         {post?.user?.profile_image_url ? (
                             <img className='user-post-image' src={post.user.profile_image_url} alt="" />
                         ) : (
@@ -124,7 +131,7 @@ const PostDetail = () => {
                 <div className="bottom-right-details">
                     <div className="post-likes-section">
                         <div className="like-post-btn">
-                        {!isLiked ? <i onClick={addLikePost} className="fa-regular fa-heart fa-xl"></i> : <i style={{'color': '#ED4956'}} onClick={removeLikePost} class="fa-solid fa-heart fa-xl"></i>}
+                        {likes && !isLiked ? <i onClick={addLikePost} className="fa-regular fa-heart fa-xl"></i> : <i style={{'color': '#ED4956'}} onClick={removeLikePost} class="fa-solid fa-heart fa-xl"></i>}
                         </div>
                         <div className="number-post-likes">
                             {Object.keys(likes)?.length} likes

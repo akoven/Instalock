@@ -4,15 +4,18 @@ import { useHistory, useParams } from 'react-router-dom';
 import { getProfileThunk } from '../../store/profile';
 import FollowersDisplayModal from '../ProfileModals/FollowersModal';
 import FollowingDisplayModal from '../ProfileModals/FollowingModal';
-import { getFollowData } from '../../store/follows';
+import { addFollowThunk, getFollowData } from '../../store/follows';
+import { removeFollowThunk } from '../../store/follows';
 
 const ProfilePage = () => {
 
     const userSession = useSelector(state => state.session.user)
+    const userProfile = useSelector(state => state.profile);
+    const followers = useSelector(state => state.follows.followers)
     const dispatch = useDispatch();
     const history = useHistory();
     const { userId } = useParams();
-    const userProfile = useSelector(state => state.profile);
+    const [ isFollowing, setIsFollowing ] = useState(false)
 
     // useEffect(() =>{
     //     if(userSession){
@@ -30,10 +33,43 @@ const ProfilePage = () => {
     }, [dispatch])
 
 
+    const unfollow = async () => {
+        let followId = null;
+
+        Object.entries(followers).forEach(follower => {
+            if (follower[1].id === userSession.id) {
+                console.log("inside the if")
+                followId = Number(follower[0])
+            }
+        })
+
+        const success = await dispatch(removeFollowThunk(followId))
+
+        if (success) {
+            dispatch(getProfileThunk(userId))
+            dispatch(getFollowData(userId))
+        }
+    }
+
+    const follow = async () => {
+        const payload = {
+            user_id: userSession.id,
+            follower_id: userProfile.profile.id
+        }
+
+        const success = await dispatch(addFollowThunk(payload))
+
+        if (success) {
+            dispatch(getProfileThunk(userId))
+            dispatch(getFollowData(userId))
+        }
+    }
+
     return(
        <>
-       <FollowersDisplayModal />
-       <FollowingDisplayModal />
+        {userSession.id == userId ? '' : <div>{followers && Object.values(followers).filter(follow => follow.id === userSession.id).length > 0 ? <button onClick={unfollow}>Unfollow</button> : <button onClick={follow}>Follow</button> }</div>}
+        <FollowersDisplayModal />
+        <FollowingDisplayModal />
         <h2>{userProfile?.profile?.username}</h2>
             <img src={userProfile?.profile?.profile_image_url} alt='image-here'/>
             <p>Followers: {userProfile?.follower_count}</p>

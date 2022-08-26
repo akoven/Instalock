@@ -7,12 +7,12 @@ class UserFollower(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     follower_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
-    # user = db.relationship("User", back_populates="")
-    # follower = db.relationship("User", back_populates="")
+    # user = db.relationship("User", back_populates="following", foreign_keys=[user_id])
+    # follower = db.relationship("User", back_populates="followers", foreign_keys=[follower_id])
 
     def to_dict(self):
         return {
             "id": self.id,
             "user": self.user_id,
-            "follower_id": self.follower_id
+            "follower_id": self.follower_id,
         }
