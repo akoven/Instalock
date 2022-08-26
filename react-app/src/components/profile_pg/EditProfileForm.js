@@ -8,7 +8,7 @@ import './editProfile.css';
 const EditProfileForm = () =>{
     const dispatch = useDispatch();
     const history = useHistory();
-    // const {userId} = useParams();
+    const {userId} = useParams();
     const currentUser = useSelector(state => state.session.user);
     const userProfile = useSelector(state => state.profile);
 
