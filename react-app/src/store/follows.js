@@ -36,6 +36,7 @@ export const removeFollowThunk = (followId) => async dispatch => {
 
     if (res.ok) {
         dispatch(removeFollow(followId))
+        return true
     }
 }
 
@@ -51,8 +52,8 @@ export default function reducer (state = {}, action) {
             let newState = {...state}
             if (newState.followers[action.followId]) {
                 delete newState.followers[action.followId]
-            }
-            if (newState.following[action.followId]) {
+            } else {
+            // if (newState.following[action.followId]) {
                 delete newState.following[action.followId]
             }
             return newState

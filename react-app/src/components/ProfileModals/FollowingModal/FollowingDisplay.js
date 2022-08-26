@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux"
 import { NavLink } from "react-router-dom"
+import RemoveFollowerModal from "../RemoveFollowerModal"
 
 function FollowingDisplay({ onClick }) {
     const following = useSelector(state => Object.entries(state.follows.following))
@@ -15,15 +16,22 @@ function FollowingDisplay({ onClick }) {
                     let followed = follow[1]
                     return (
                     <div className="follower-item">
-                        <NavLink to={`/profile/${followed.id}`}>
+                        <NavLink onClick={onClick} to={`/profile/${followed.id}`} className="follower-link">
                             <div className="follow-display-profpic-container">
-                                <img src={followed.profile_image_url} alt="ProfilePic" />
+                            {followed.profile_image_url ? (
+                                <img className='user-post-image' src={followed.profile_image_url} alt="" />
+                                ) : (
+                                <img src="https://img.icons8.com/plumpy/24/000000/user-male-circle.png" alt="Profile"/>
+                                )
+                            }
                             </div>
+                        </NavLink>
+                        <NavLink onClick={onClick} to={`/profile/${followed.id}`} className="follower-link">
                             <div>
                                 <div>{followed.username}</div>
                             </div>
                         </NavLink>
-                        {/* <RemoveFollower /> */}
+                        <RemoveFollowerModal follower={followed} followId={follow[0]} />
                     </div>
                 )})}
             </div>

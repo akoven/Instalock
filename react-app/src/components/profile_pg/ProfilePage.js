@@ -27,7 +27,7 @@ const ProfilePage = () => {
     useEffect(() =>{
         dispatch(getFollowData(userId))
         dispatch(getProfileThunk(userId))
-    }, [dispatch, userSession])
+    }, [dispatch])
 
 
     return(

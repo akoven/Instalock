@@ -1,17 +1,21 @@
 import { useDispatch, useSelector } from "react-redux"
-import { removeFollowThunk } from "../../../store/follows";
+import { useParams } from "react-router-dom";
+import { getFollowData, removeFollowThunk } from "../../../store/follows";
 import { getProfileThunk } from "../../../store/profile";
 
 
 function RemoveFollower({ follower, followId, onClick }) {
     const dispatch = useDispatch();
+    const { userId } = useParams();
 
     const onDelete = async (followId) => {
         const success = await dispatch(removeFollowThunk(followId))
 
         if (success) {
-            dispatch(getProfileThunk())
+            dispatch(getProfileThunk(userId))
+            dispatch(getFollowData(userId))
         }
+        onClick()
     }
 
     return (
@@ -25,7 +29,7 @@ function RemoveFollower({ follower, followId, onClick }) {
                 }
                 <h2>Remove follower?</h2>
             </div>
-            <div onClick={onDelete(followId)} >Remove</div>
+            <div onClick={() => onDelete(followId)}>Remove</div>
             <div onClick={onClick} >Cancel</div>
         </div>
     )
