@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { createComment, getComments } from '../../store/comment';
-import './CommentForm.css';
+// import './CommentForm.css';
 
 const CommentForm = ({ post }) => {
 const [commentContent, setCommentContent] = useState('');
-const [errorValidators, setErrorValidators] = useState('');
+// const [errorValidators, setErrorValidators] = useState('');
 const updateComment = (e) => setCommentContent(e.target.value);
 
 const dispatch = useDispatch()
 const userSession = useSelector(state => state.session.user)
 
 
-let errors = [];
+// let errors = [];
 
   const commentSubmit = async(e) => {
     e.preventDefault();
@@ -23,12 +23,12 @@ let errors = [];
     }
 
     let newComment = await dispatch(createComment(data))
-    if(commentContent.length === 0){
-      errors.push('Your comment needs at least one character')
-      setErrorValidators(errors);
-    }
+    // if(commentContent.length === 0){
+    //   errors.push('Your comment needs at least one character')
+    //   setErrorValidators(errors);
+    // }
 
-    if(newComment.id && errors.length !== 0){
+    if(newComment.id){
       dispatch(getComments(post.id))
     }
     setCommentContent('')
@@ -37,7 +37,7 @@ let errors = [];
 
   return (
     <form className="comment-form" onSubmit={commentSubmit}>
-      <ul>{errorValidators.map(error =><li>{error}</li>)}</ul>
+      {/* <ul>{errorValidators.map(error =><li>{error}</li>)}</ul> */}
         <input type="text"
            value={commentContent}
            onChange={updateComment}
