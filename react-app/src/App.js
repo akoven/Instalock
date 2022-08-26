@@ -15,7 +15,6 @@ import EditProfileForm from "./components/profile_pg/EditProfileForm";
 import Feed from "./components/Feed";
 import "./index.css";
 import { Link } from "react-router-dom";
-import EditPostModal from './components/SinglePostComponents/EditPostModal';
 import CreatePostForm from "./components/SinglePostComponents/CreatePostModal/CreatePostForm";
 
 function App() {
