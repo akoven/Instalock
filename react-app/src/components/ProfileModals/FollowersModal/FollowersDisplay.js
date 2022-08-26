@@ -1,10 +1,20 @@
-import { useSelector } from "react-redux"
-import { NavLink } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux"
+import { NavLink, useParams } from "react-router-dom"
 import RemoveFollowerModal from "../RemoveFollowerModal"
+import { getProfileThunk } from "../../../store/profile";
+import { getFollowData } from "../../../store/follows";
 
 function FollowersDisplay({ onClick }) {
+    const dispatch = useDispatch();
     const followers = useSelector(state => Object.entries(state.follows.followers))
-    const userProfile = useSelector(state => state.profile.profile)
+    const user = useSelector(state => state.session.user)
+    const { userId } = useParams();
+
+    const handleClick = (userId) => {
+        onClick()
+        dispatch(getProfileThunk(userId))
+        dispatch(getFollowData(userId))
+    }
 
     return (
         <div className="followers-display-container">
@@ -17,7 +27,7 @@ function FollowersDisplay({ onClick }) {
                     let follower = follow[1]
                     return (
                     <div className="follower-item">
-                        <NavLink onClick={onClick} to={`/profile/${follower.id}`} className="follower-link">
+                        <NavLink onClick={() => handleClick(follower.id)} to={`/profile/${follower.id}`} className="follower-link">
                             <div className="follow-display-profpic-container">
                             {follower.profile_image_url ? (
                                 <img className='user-post-image' src={follower.profile_image_url} alt="" />
@@ -27,12 +37,12 @@ function FollowersDisplay({ onClick }) {
                             }
                             </div>
                         </NavLink>
-                        <NavLink onClick={onClick} to={`/profile/${follower.id}`} className="follower-link">
+                        <NavLink onClick={() => handleClick(follower.id)} to={`/profile/${follower.id}`} className="follower-link">
                             <div>
                                 <div>{follower.username}</div>
                             </div>
                         </NavLink>
-                        <RemoveFollowerModal follower={follower} followId={follow[0]} />
+                        {user.id == userId && <RemoveFollowerModal follower={follower} followId={follow[0]} />}
                     </div>
                 )})}
             </div>
