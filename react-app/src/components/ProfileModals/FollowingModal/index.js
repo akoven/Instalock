@@ -10,7 +10,7 @@ function FollowingDisplayModal() {
 
     return (
         <>
-        <div className='following-button' onClick={() => setShowModal(true)}>{`${followingCount}`} following</div>
+        <div className='following-button' onClick={() => setShowModal(true)}>following</div>
         {showModal && (
             <Modal onClose={() => setShowModal(false)}>
                 <FollowingDisplay onClick={() => setShowModal(false)} />
