@@ -38,6 +38,8 @@ def profile_info(user_id):
 def edit_profile(user_id):
 
     edited_profile = ProfileEditForm()
+    print("*************************HELLO FROM THE BACKEND****************************")
+    print(edited_profile)
     edited_profile['csrf_token'].data = request.cookies['csrf_token']
 
     profile = User.query.get(user_id)
@@ -45,7 +47,6 @@ def edit_profile(user_id):
     if not profile:
         return '404: the object you are looking for is not available'
 
-    # print('NEW PROFILE: ',edited_profile)
 
     username = edited_profile.data['username']
     website = edited_profile.data['website']
@@ -53,6 +54,8 @@ def edit_profile(user_id):
     email = edited_profile.data['email']
     phone = edited_profile.data['phone_number']
     gender = edited_profile.data['gender']
+
+    print("**************************USERNAME**************************************: ", profile.username)
 
     profile.username = username
     profile.website =  website
@@ -63,4 +66,5 @@ def edit_profile(user_id):
 
     print('PROFILE FROM BACKEND: ',profile)
     db.session.commit()
+    print('***********************PROFILE*****************************')
     return profile.to_dict()

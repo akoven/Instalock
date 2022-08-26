@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, useHistory } from "react-router-dom";
-import { editProfileParams } from "../../store/profile";
+import { useParams, useHistory, NavLink } from "react-router-dom";
+import { editProfileParams, deleteProfile } from "../../store/profile";
+import './editProfile.css';
+// import './unnamed.jpg' ;
 
 const EditProfileForm = () =>{
     const dispatch = useDispatch();
@@ -34,18 +36,34 @@ const EditProfileForm = () =>{
             history.push(`/profile/${currentUser.id}`);
         }
         else{
-            console.log(payload)
+
+            console.log('PAYLOAD ',payload)
             console.log('something went wrong')
-            console.log(currentUser.id)
+            console.log('userId: ', currentUser.id)
         }
     }
 
     return(
-        <div>
+        <>
+        <div className="side-bar">
+                <ul>
+                    <li><NavLink to={`/profile/edit/${userId}`}>Edit Profile</NavLink></li>
+                    {/* <li>test</li>
+                    <li>test</li>
+                    <li>test</li> */}
+                </ul>
+        </div>
+        <div className="main-form">
+            <div className="profile-header">
+                <div className="image">
+                    <img src='https://www.slashfilm.com/img/gallery/14-shows-like-rick-morty-that-are-worth-your-time/intro-1628182486.webp' alt="image-here" />
+                </div>
+                {currentUser.username}
+            </div>
             <form onSubmit={handleSubmit}>
-                <div>
+                <div className="username">
                     <label>
-                        Username
+                        <span className="user-label"> Username</span>
                         <input
                         type="string"
                         value={username?username:''}
@@ -53,27 +71,27 @@ const EditProfileForm = () =>{
                         required/>
                     </label>
                 </div>
-                <div>
+                <div className="website">
+                    <span className="website-label">Website</span>
                     <label>
-                        Website
                         <input
                         type="string"
                         value={website?website:''}
                         onChange={e => setWebsite(e.target.value)}/>
                     </label>
                 </div>
-                <div>
+                <div className="bio">
                     <label>
-                        Bio
+                        <span className="bio-label">Bio</span>
                         <textarea
                         type="text"
                         value={bio?bio:''}
                         onChange={e => setBio(e.target.value)}/>
                 </label>
                 </div>
-                <div>
+                <div className="email">
                     <label>
-                        Email
+                        <span className="email-label">Email</span>
                         <input
                         type="string"
                         value={email?email:''}
@@ -81,9 +99,9 @@ const EditProfileForm = () =>{
                         required/>
                     </label>
                 </div>
-                <div>
+                <div className="phone">
                     <label>
-                        Phone Number
+                        <span className="phone-label">Phone Number</span>
                         <input
                         type = "string"
                         value={phoneNumber?phoneNumber:''}
@@ -91,38 +109,54 @@ const EditProfileForm = () =>{
                         />
                     </label>
                 </div>
-                <div>
+                <div className="gender">
                     <label>
-                        Gender
-                        <input
-                        type="radio"
-                        value={"Female"}
-                        onChange={e => setGender(e.target.value)}
-                        checked={gender === "Female" ? "checked":""}
-                        />Female
-                        <input
-                        type="radio"
-                        value={"Male"}
-                        onChange={e => setGender(e.target.value)}
-                        checked={gender === "Male" ? "checked":""}
-                        />Male
-                        <input
-                        type="radio"
-                        value={"Custom"}
-                        onChange={e => setGender(e.target.value)}
-                        checked={gender === "Custom" ? "checked":""}
-                        />Custom
-                        <input
-                        type="radio"
-                        value={"Prefer not to say"}
-                        onChange={e => setGender(e.target.value)}
-                        checked={gender === "Prefer not to say" ? "checked":""}
-                        />Prefer not to say
+                        <span className="gender-label">Gender</span>
+                        <span className="Female">
+                            <input
+                            type="radio"
+                            value={"Female"}
+                            onChange={e => setGender(e.target.value)}
+                            checked={gender === "Female" ? "checked":""}
+                            />Female
+                        </span>
+                        <span className="Male">
+                            <input
+                            type="radio"
+                            value={"Male"}
+                            onChange={e => setGender(e.target.value)}
+                            checked={gender === "Male" ? "checked":""}
+                            />Male
+                        </span>
+                        <span className="Custom">
+                            <input
+                            type="radio"
+                            value={"Custom"}
+                            onChange={e => setGender(e.target.value)}
+                            checked={gender === "Custom" ? "checked":""}
+                            />Custom
+                        </span>
+                        <span className="anonymous">
+                            <input
+                            type="radio"
+                            value={"Prefer not to say"}
+                            onChange={e => setGender(e.target.value)}
+                            checked={gender === "Prefer not to say" ? "checked":""}
+                            />Prefer not to say
+                        </span>
                     </label>
                 </div>
-                <button type="submit">Submit</button>
+                <div>
+                    <span className="submit-and-delete-buttons">
+                        <button type="submit"><div className="submit">Submit</div></button>
+                        <button onClick={() => deleteProfile(currentUser.id)} disabled={true}><div className="delete">Delete</div></button>
+                    </span>
+                    {/* <span className="delete-button">
+                    </span> */}
+                </div>
             </form>
         </div>
+        </>
     )
 }
 
