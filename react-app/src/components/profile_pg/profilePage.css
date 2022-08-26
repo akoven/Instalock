@@ -1,4 +1,4 @@
-.profile-username{
+/* .profile-username{
     display: flex;
     margin-left: 500px;
     margin-bottom: 10px;
@@ -27,4 +27,70 @@
 .biography{
     margin-left: 500px;
     font-size: 105%;
+} */
+.pp-username{
+    font-size: 30px;
+}
+.profile-top-section{
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid rgba(167, 167, 167, 0.391);
+    padding-bottom: 100px;
+    margin-top: 60px;
+    /* max-width: 1200px; */
+
+}
+.pp-user-image{
+    width: 150px;
+    border-radius: 999px;
+}
+.profile-page-user-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    font-size: 25px;
+    margin-left: 40px;
+}
+.user-info-text{
+    color: rgba(0, 0, 0, 0.653);
+    font-size: 20px;
+
+}
+.pp-num-posts-and-followings{
+    display: flex;
+    justify-content: space-between;
+    width: 350px;
+
+}
+.pp-user-bio{
+    color: rgba(0, 0, 0, 0.727);
+    font-size: 20px;
+}
+.pp-user-post-image{
+    width: 250px;
+    height: 250px;
+    object-fit: fill;
+}
+.pp-user-post{
+    width: 250px;
+    height: 250px;
+    object-fit: fill;
+    /* background-color: black; */
+    margin-left: 20px;
+}
+.pp-user-post-display{
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: center;
+    align-items: center;
+    padding-top: 30px;
+    /* margin-top: 200px; */
+    width: 900px;
+    margin: 0 auto;
+}
+.pp-post-display-header{
+    text-align: center;
+    margin-top: 10px;
 }
