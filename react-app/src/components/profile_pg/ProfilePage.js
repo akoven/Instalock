@@ -74,31 +74,33 @@ const ProfilePage = () => {
     console.dir(ProfilePage)
     // console.log(userProfile.posts.length)
     return(
-       <div className="profile-main-container">
-        <div className="profile-top-section">
-            <div className="profile-page-user-image">
-                {userProfile.profile.profile_image_url ? (
-                    <img className='pp-user-image' src={userProfile.profile.profile_image_url} alt="" />
-                  ) : (
-                    <img className='pp-user-image' src="https://i.imgur.com/vF8FTS2.png" alt="Profile"/>
-                  )
-                  }
-            </div>
-            <div className="profile-page-user-info">
-                <div className="pp-username">{userProfile?.profile?.username}</div>
-                <div className="pp-num-posts-and-followings">
-                    <div className="pp-num-posts">{userProfile.posts.length} <span className='user-info-text'>Posts</span></div>
-                    <div className='followers'>{userProfile?.follower_count} <span className='user-info-text'>Followers</span></div>
-                    <div className='following'>{userProfile?.following_count} <span className='user-info-text'>Following</span></div>
+
+        <div className="profile-main-container">
+            <div className="profile-top-section">
+                <div className="profile-page-user-image">
+                    {userProfile?.profile?.profile_image_url ? (
+                        <img className='pp-user-image' src={userProfile?.profile?.profile_image_url} alt="" />
+                    ) : (
+                        <img className='pp-user-image' src="https://i.imgur.com/vF8FTS2.png" alt="Profile"/>
+                    )
+                    }
                 </div>
-                <div className="pp-user-bio">{userProfile?.profile?.bio}</div>
+                <div className="profile-page-user-info">
+                    <div className="pp-username">{userProfile?.profile?.username}</div>
+                    <div className="pp-num-posts-and-followings">
+                        <div className="pp-num-posts">{userProfile?.posts?.length} <span className='user-info-text'>Posts</span></div>
+                        <div className='followers'><span className='user-info-text'><FollowersDisplayModal /></span></div>
+                        <div className='following'><span className='user-info-text'><FollowingDisplayModal /></span></div>
+                    </div>
+                    <div className="pp-user-bio">{userProfile?.profile?.bio}</div>
+
+                </div>
+            </div>
+            <p className='pp-post-display-header'>POSTS</p>
+            <div className="pp-user-post-display">
+                {postImages?.map(image => <div className='pp-user-post'><img className='pp-user-post-image' src={image.image_url} alt=""/></div>)}
             </div>
         </div>
-        <p className='pp-post-display-header'>POSTS</p>
-        <div className="pp-user-post-display">
-            {postImages.map(image => <div className='pp-user-post'><img className='pp-user-post-image' src={image.image_url} alt=""/></div>)}
-        </div>
-       </div>
     )
 }
 // {userSession.id == userId ? '' : <div>{followers && Object.values(followers).filter(follow => follow.id === userSession.id).length > 0 ? <button onClick={unfollow}>Unfollow</button> : <button onClick={follow}>Follow</button> }</div>}
