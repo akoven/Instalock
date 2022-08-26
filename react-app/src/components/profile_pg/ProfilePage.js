@@ -61,7 +61,7 @@ const ProfilePage = () => {
     const follow = async () => {
         const payload = {
             user_id: userSession.id,
-            follower_id: userProfile.profile.id
+            follower_id:  userProfile.profile.id
         }
 
         const success = await dispatch(addFollowThunk(payload))
