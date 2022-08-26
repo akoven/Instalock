@@ -88,8 +88,8 @@ const ProfilePage = () => {
                     <div className="pp-username">{userProfile?.profile?.username}</div>
                     <div className="pp-num-posts-and-followings">
                         <div className="pp-num-posts">{userProfile?.posts?.length} <span className='user-info-text'>Posts</span></div>
-                        <div className='followers'>{userProfile?.follower_count} <span className='user-info-text'>Followers</span></div>
-                        <div className='following'>{userProfile?.following_count} <span className='user-info-text'>Following</span></div>
+                        <div className='followers'><span className='user-info-text'><FollowersDisplayModal /></span></div>
+                        <div className='following'><span className='user-info-text'><FollowingDisplayModal /></span></div>
                     </div>
                     <div className="pp-user-bio">{userProfile?.profile?.bio}</div>
                 </div>
