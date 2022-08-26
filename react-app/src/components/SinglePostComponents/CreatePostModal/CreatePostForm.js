@@ -14,52 +14,52 @@ function CreatePostForm({ post, onClick }) {
   const [showModal, setShowModal] = useState(true);
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
-  const validations = () => {
-    let errors = [];
-    if (!caption) errors.push("Please enter a caption");
-    if (!imageUrl) errors.push("Please enter an image URL");
-    if (caption.length > 30)
-      errors.push("Character limit of 30 has been reached.");
-    // if (imageUrl.length > 255)
-    //   errors.push(
-    //     "Please include a different image URL that is less than 255 characters"
-    //   );
-    return errors;
-  };
-
   useEffect(() => {
-    
-  })
+    const newErrors = [];
+    if (caption.length > 30) {
+      newErrors.push("Caption character limit of 30 exceeded");
+    }
+    if (imageUrl.length > 255) {
+      newErrors.push("Image URL character limit of 255 exceeded.");
+    }
+    if (!caption) {
+      newErrors.push("Caption is required!");
+    }
+    if (!imageUrl) {
+      newErrors.push("Image URL is required!");
+    }
+
+    if (newErrors.length) {
+      setErrors(newErrors);
+    } else {
+      setErrors([]);
+    }
+  }, [caption, imageUrl]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrors([]);
     const payload = {
       user_id: user.id,
       caption: caption,
       image_url: imageUrl,
     };
 
-    const validationErrors = validations();
-    if (validationErrors.length > 0) {
-      setErrors(validationErrors);
-      return;
-    }
     onClick();
-    return dispatch(createPost(payload))
-      .then(async (res) => {
-        setSubmitSuccess(true);
-      })
-      .then(setShowModal(false))
-      .catch(async (res) => {
-        const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
-      });
+    // return dispatch(createPost(payload))
+    //   .then(async (res) => {
+    //     setSubmitSuccess(true);
+    //   })
+    //   .then(setShowModal(false))
+    //   .catch(async (res) => {
+    //     const data = await res.json();
+    //     if (data && data.errors) setErrors(data.errors);
+    //   });
 
-    // let updatedPost = await dispatch(createPost(payload));
-    // if (updatedPost) {
-    //   history.push(`/`);
-    // }
+    let updatedPost = await dispatch(createPost(payload));
+    if (updatedPost) {
+      history.push(`/`);
+      onClick();
+    }
   };
 
   return (
@@ -103,11 +103,11 @@ function CreatePostForm({ post, onClick }) {
               <div>{user.username}</div>
             </div>
             <form className="create-post-form" onSubmit={handleSubmit}>
-              {errors ?? (
-                <ul>
-                  {errors.map((error, idx) => (
-                    <li key={idx}>{error}</li>
-                  ))}
+              {errors.length > 0 && (
+                <ul className="create-post-form-errors">
+                  {errors.map((error) => {
+                    return <li>{`${error}`}</li>;
+                  })}
                 </ul>
               )}
               <div>
