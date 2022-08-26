@@ -34,8 +34,8 @@ const ProfilePage = () => {
     useEffect(() =>{
         dispatch(getFollowData(userId))
         dispatch(getProfileThunk(userId))
-        console.log('user posts: ',userProfile.posts)
-        console.log('user post images: ', Object.values(userProfile.posts))
+        // console.log('user posts: ',userProfile.posts)
+        // console.log('user post images: ',userProfile.posts[0].image_url)
     }, [dispatch])
 
 
@@ -77,13 +77,13 @@ const ProfilePage = () => {
         {userSession.id == userId ? '' : <div>{followers && Object.values(followers).filter(follow => follow.id === userSession.id).length > 0 ? <button onClick={unfollow}>Unfollow</button> : <button onClick={follow}>Follow</button> }</div>}
         <FollowersDisplayModal />
         <FollowingDisplayModal />
-        <h2>{userProfile?.profile?.username}</h2>
-            <img src={userProfile?.profile?.profile_image_url} alt='image-here'/>
-            {/* <p>Followers: {userProfile?.follower_count}</p>
-            <p>Following: {userProfile?.following_count}</p> */}
-            <p>{userProfile?.profile?.website}</p>
-            <p>{userProfile?.profile?.bio}</p>
-            <button onClick={() => history.push(`/profile/edit/${userSession.id}`)}>Edit my profile</button>
+        <img className='profile-img' src='https://www.slashfilm.com/img/gallery/14-shows-like-rick-morty-that-are-worth-your-time/intro-1628182486.webp' alt='image-here'/>
+        <p className='profile-username'>{userProfile?.profile?.username} <span><button  className='edit-profile-button' onClick={() => history.push(`/profile/edit/${userSession.id}`)}>Edit profile</button></span></p>
+            {/* <p className='followers'>Followers: {userProfile?.follower_count}</p>
+            <p className='following'>Following: {userProfile?.following_count}</p> */}
+            <p className='website-url'>{userProfile?.profile?.website}</p>
+            <p className='biography'>{userProfile?.profile?.bio}</p>
+            {postImages.map(image =><div><img className='postImgs' src={image.image_url} /></div>)}
        </>
     )
 }
