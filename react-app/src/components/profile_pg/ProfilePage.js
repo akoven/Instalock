@@ -71,8 +71,7 @@ const ProfilePage = () => {
             dispatch(getFollowData(userId))
         }
     }
-    console.dir(ProfilePage)
-    // console.log(userProfile.posts.length)
+    console.log(userProfile)
     return(
 
         <div className="profile-main-container">
@@ -88,9 +87,23 @@ const ProfilePage = () => {
                 <div className="profile-page-user-info">
                     <div className="pp-username">{userProfile?.profile?.username}</div>
                     <div className="pp-num-posts-and-followings">
-                        <div className="pp-num-posts">{userProfile?.posts?.length} <span className='user-info-text'>Posts</span></div>
-                        <div className='followers'><span className='user-info-text'><FollowersDisplayModal /></span></div>
-                        <div className='following'><span className='user-info-text'><FollowingDisplayModal /></span></div>
+                        <div className="pp-num-posts">{userProfile?.posts?.length} <span className='user-info-text'>posts</span></div>
+                        <div className="followers-div">
+                            <div className='followers'>
+                                {userProfile.follower_count}
+                            </div>
+                            <div className='user-info-text'>
+                                <FollowersDisplayModal />
+                            </div>
+                        </div>
+                        <div className="followers-div">
+                            <div className='followers'>
+                                {userProfile.following_count}
+                            </div>
+                            <div className='user-info-text'>
+                                <FollowingDisplayModal />
+                            </div>
+                        </div>
                     </div>
                     <div className="pp-user-bio">{userProfile?.profile?.bio}</div>
 
