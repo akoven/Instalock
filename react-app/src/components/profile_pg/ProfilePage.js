@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { getProfileThunk } from '../../store/profile';
@@ -17,7 +17,7 @@ const ProfilePage = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const { userId } = useParams();
-    const [ isFollowing, setIsFollowing ] = useState(false)
+    // const [ isFollowing, setIsFollowing ] = useState(false)
 
     const postImages = userProfile.posts;
     const postImgArr = Object.values(postImages||{});
