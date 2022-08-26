@@ -79,8 +79,8 @@ const ProfilePage = () => {
         <FollowingDisplayModal />
         <h2>{userProfile?.profile?.username}</h2>
             <img src={userProfile?.profile?.profile_image_url} alt='image-here'/>
-            <p>Followers: {userProfile?.follower_count}</p>
-            <p>Following: {userProfile?.following_count}</p>
+            {/* <p>Followers: {userProfile?.follower_count}</p>
+            <p>Following: {userProfile?.following_count}</p> */}
             <p>{userProfile?.profile?.website}</p>
             <p>{userProfile?.profile?.bio}</p>
             <button onClick={() => history.push(`/profile/edit/${userSession.id}`)}>Edit my profile</button>
