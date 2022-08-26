@@ -6,8 +6,9 @@ import PostOptionsModal from "../SinglePostComponents/PostOptionsModal";
 import { useState } from "react";
 import "./posts.css"
 import { addLikeThunk, getPostLikesThunk, removeLikeThunk } from "../../store/likes";
-import { getComments } from "../../store/comment";
+import { deleteComment, getComments } from "../../store/comment";
 import CommentForm from "../CommentForm";
+
 const PostDetail = () => {
     const dispatch = useDispatch();
     let { postId } = useParams();
@@ -16,27 +17,35 @@ const PostDetail = () => {
     console.log(post)
     const user = useSelector(state => state.session.user)
     const likes = useSelector(state => state.likes)
-    const [ isLiked, setIsLiked ] = useState(() => {
-        let result = false
-        Object.values(likes).forEach(like => {
-            if (like.user.id === user.id) {
-                result = true
-                return
-            }
-        })
-        return result
-    })
+    // const [ isLiked, setIsLiked ] = useState(() => {
+    //     let result = false
+    //     Object.values(likes).forEach(like => {
+    //         if (like.user.id === user.id) {
+    //             result = true
+    //             return
+    //         }
+    //     })
+    //     return result
+    // })
+    const [ isLiked, setIsLiked ] = useState(false)
 
     // const [showEditForm, setShowEditForm] = useState(false);
 
     useEffect(() => {
         dispatch(getPosts(postId))
         dispatch(getPostLikesThunk(postId))
-    }, [dispatch])
-    useEffect(() => {
         dispatch(getComments(postId))
+    }, [dispatch])
 
-    }, [dispatch]);
+    useEffect(() => {
+        console.log(likes, "likes")
+        Object.values(likes).forEach(like => {
+            if (like.user.id === user.id) {
+                setIsLiked(true)
+                return
+            }
+        })
+    }, [likes])
 
     const comments = useSelector(state => state.comments)
 
@@ -65,6 +74,12 @@ const PostDetail = () => {
         setIsLiked(false)
     }
 
+    const handleDel = async (commentId) => {
+        console.log('before dispatch')
+        await dispatch(deleteComment(commentId, postId))
+        dispatch(getComments(postId))
+        console.log('after dispatch')
+    }
     return (
         <div className="post-details-container">
             <div className="left-details">
@@ -72,21 +87,21 @@ const PostDetail = () => {
             </div>
             <div className="right-details">
                 <div className="top-right-details">
-
-                        <NavLink to={`/profile/${post?.user.id}`} >
+                        <NavLink to={`/profile/${post?.user?.id}`} >
                         {post?.user?.profile_image_url ? (
                             <img className='user-post-image' src={post.user.profile_image_url} alt="" />
                         ) : (
                             <img src="https://img.icons8.com/plumpy/24/000000/user-male-circle.png" alt="Profile"/>
                             )
                         }
-                        
+
                         <div className="post-details-username">{post?.user?.username}</div>
                         </NavLink>
                         <PostOptionsModal post={post} />
                 </div>
                     <div className="post-details-caption">{post?.caption}</div>
                 <div className="middle-right-details">
+                    {postsComments.length < 1 && (<div className="no-comments-message">Be the first to comment!</div>)}
                     {post && post.display_comments && postsComments && postsComments.map((comment) => (
                         <div className="comment-users-info">
                             <div className="comment-user-details">
@@ -102,6 +117,9 @@ const PostDetail = () => {
                                     {comment?.user?.username}
                                 </div>
                               <div className="comment-content">{comment?.content}</div>
+                              {comment.user.id === user.id && (
+                                <img onClick={() => handleDel(comment.id)} className="comment-del-btn" src="https://img.icons8.com/glyph-neue/15/000000/delete.png" alt=""/>
+                              )}
                             </div>
                             <div className="comment-likes-section">
                                 <div className="likes-info">{comment?.likes} likes</div>
@@ -113,7 +131,7 @@ const PostDetail = () => {
                 <div className="bottom-right-details">
                     <div className="post-likes-section">
                         <div className="like-post-btn">
-                        {!isLiked ? <i onClick={addLikePost} className="fa-regular fa-heart fa-xl"></i> : <i style={{'color': '#ED4956'}} onClick={removeLikePost} class="fa-solid fa-heart fa-xl"></i>}
+                        {likes && !isLiked ? <i onClick={addLikePost} className="fa-regular fa-heart fa-xl"></i> : <i style={{'color': '#ED4956'}} onClick={removeLikePost} class="fa-solid fa-heart fa-xl"></i>}
                         </div>
                         <div className="number-post-likes">
                             {Object.keys(likes)?.length} likes
