@@ -4,12 +4,14 @@ import { useHistory, useParams } from 'react-router-dom';
 import { getProfileThunk } from '../../store/profile';
 import FollowersDisplayModal from '../ProfileModals/FollowersModal';
 import FollowingDisplayModal from '../ProfileModals/FollowingModal';
+import './profilePage.css';
 import { addFollowThunk, getFollowData } from '../../store/follows';
 import { removeFollowThunk } from '../../store/follows';
 
 const ProfilePage = () => {
 
     const userSession = useSelector(state => state.session.user)
+    // const userPosts = useSelector(state => state.posts)
     const userProfile = useSelector(state => state.profile);
     const followers = useSelector(state => state.follows.followers)
     const dispatch = useDispatch();
@@ -17,6 +19,8 @@ const ProfilePage = () => {
     const { userId } = useParams();
     const [ isFollowing, setIsFollowing ] = useState(false)
 
+    const postImages = userProfile.posts;
+    const postImgArr = Object.values(postImages||{});
     // useEffect(() =>{
     //     if(userSession){
     //         (async () =>{
@@ -30,7 +34,10 @@ const ProfilePage = () => {
     useEffect(() =>{
         dispatch(getFollowData(userId))
         dispatch(getProfileThunk(userId))
+        console.log('user posts: ',userProfile.posts)
+        console.log('user post images: ', Object.values(userProfile.posts))
     }, [dispatch])
+
 
 
     const unfollow = async () => {
@@ -77,7 +84,6 @@ const ProfilePage = () => {
             <p>{userProfile?.profile?.website}</p>
             <p>{userProfile?.profile?.bio}</p>
             <button onClick={() => history.push(`/profile/edit/${userSession.id}`)}>Edit my profile</button>
-
        </>
     )
 }
