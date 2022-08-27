@@ -61,7 +61,7 @@ const LoginForm = () => {
           />
         </div>
           <button className='login-form-btn' type='submit'>Login</button>
-          <button className='demo-login-btn'onClick={() => {dispatch(demoLogin())}}>Demo Login</button>
+          <button className='demo-login-btn'type="button" onClick={() => {dispatch(demoLogin())}}>Demo Login</button>
 
 
       </form>

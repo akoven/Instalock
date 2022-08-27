@@ -57,14 +57,14 @@ const NavBar = () => {
     // </nav>
     <nav className="nav-home">
       <div className="nav-logo">
-        <Link exact to="/">
+        <Link to="/">
           <img className="logo-img" src="https://i.imgur.com/w6gGyUO.jpeg" alt="Our Logo Here" />
         </Link>
       </div>
       {/* <h2 className='nav-header'>Instagram</h2> */}
       <ul className="nav-right">
         <li>
-          <NavLink to="/" exact={true} activeClassName="active">
+          <NavLink to="/" activeClassName="active">
             <img
               src="https://img.icons8.com/material/24/000000/home--v5.png"
               alt="Home"
