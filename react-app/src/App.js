@@ -43,11 +43,11 @@ function App() {
         <Route path="/sign-up" exact={true}>
           <SignUpForm />
         </Route>
-        <Route exact path="/posts/:postId">
+        <Route path="/posts/:postId" exact={true}>
           <NavBar />
           <PostDetails />
         </Route>
-        <Route exact path="/posts/create/new">
+        <Route path="/posts/create/new" exact={true}>
           <NavBar />
           <CreatePostForm />
         </Route>
