@@ -57,7 +57,7 @@ const EditProfileForm = () =>{
         <div className="main-form">
             <div className="profile-header">
                 <div className="profile-img">
-                    {userProfile.profile.profile_image_url ? (
+                    {userProfile?.profile?.profile_image_url ? (
                         <img className='profileEdit-image' src={userProfile.profile.profile_image_url} alt="" />
                       ) : (
                         <img className='profileEdit-image' src="https://i.imgur.com/vF8FTS2.png" alt="Profile"/>
