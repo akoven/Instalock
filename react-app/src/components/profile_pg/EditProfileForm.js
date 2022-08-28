@@ -60,18 +60,18 @@ const EditProfileForm = () =>{
             <div className="profile-header">
                 <div className="profile-img">
                     {userProfile?.profile?.profile_image_url ? (
-                        <img className='profileEdit-image' src={userProfile.profile.profile_image_url} alt="" />
+                        <img className='profileEdit-image' src={profileImageUrl ? profileImageUrl : ''} alt="" />
                       ) : (
                         <img className='profileEdit-image' src="https://i.imgur.com/vF8FTS2.png" alt="Profile"/>
                       )
                       }
                 </div>
-                {currentUser.username}
+                <div className="profile-edit-username">{username}</div>
             </div>
-            <form onSubmit={handleSubmit}>
+            <form className="edit-profile-form" onSubmit={handleSubmit}>
                 <div className="username-edit">
-                    <label>
-                        <span className="user-label"> Username</span>
+                    <label>Username
+                        {/* <span className="user-label"> Username</span> */}
                         <input
                         type="string"
                         value={username ? username : ''}
@@ -80,8 +80,8 @@ const EditProfileForm = () =>{
                     </label>
                 </div>
                 <div className="profile-image-edit">
-                    <label>
-                        <span className="profile-image-label"> Profile Image</span>
+                    <label>Profile Image
+                        {/* <span className="profile-image-label">Profile Image</span> */}
                         <input
                         type="string"
                         value={profileImageUrl ? profileImageUrl : ''}
@@ -90,8 +90,8 @@ const EditProfileForm = () =>{
                     </label>
                 </div>
                 <div className="website-edit">
-                    <span className="website-label">Website</span>
-                    <label>
+                    <label>Website
+                    {/* <span className="website-label">Website</span> */}
                         <input
                         type="string"
                         value={website?website:''}
@@ -99,8 +99,8 @@ const EditProfileForm = () =>{
                     </label>
                 </div>
                 <div className="bio-edit">
-                    <label>
-                        <span className="bio-label">Bio</span>
+                    <label>Bio
+                        {/* <span className="bio-label">Bio</span> */}
                         <textarea
                         type="text"
                         value={bio?bio:''}
@@ -108,8 +108,8 @@ const EditProfileForm = () =>{
                 </label>
                 </div>
                 <div className="email-edit">
-                    <label>
-                        <span className="email-label">Email</span>
+                    <label>Email
+                        {/* <span className="email-label">Email</span> */}
                         <input
                         type="string"
                         value={email?email:''}
@@ -118,8 +118,8 @@ const EditProfileForm = () =>{
                     </label>
                 </div>
                 <div className="phone-edit">
-                    <label>
-                        <span className="phone-label">Phone Number</span>
+                    <label>Phone Number
+                        {/* <span className="phone-label">Phone Number</span> */}
                         <input
                         type = "string"
                         value={phoneNumber?phoneNumber:''}
@@ -128,40 +128,35 @@ const EditProfileForm = () =>{
                     </label>
                 </div>
                 <div className="gender-edit">
-                    <label>
-                        <span className="gender-label">Gender</span>
-                        <span className="Female">
+
+                    <label>Gender
                             <input
                             type="radio"
                             value={"Female"}
                             onChange={e => setGender(e.target.value)}
                             checked={gender === "Female" ? "checked":""}
                             />Female
-                        </span>
-                        <span className="Male">
+
                             <input
                             type="radio"
                             value={"Male"}
                             onChange={e => setGender(e.target.value)}
                             checked={gender === "Male" ? "checked":""}
                             />Male
-                        </span>
-                        <span className="Custom">
+
                             <input
                             type="radio"
                             value={"Custom"}
                             onChange={e => setGender(e.target.value)}
                             checked={gender === "Custom" ? "checked":""}
                             />Custom
-                        </span>
-                        <span className="anonymous">
+
                             <input
                             type="radio"
                             value={"Prefer not to say"}
                             onChange={e => setGender(e.target.value)}
                             checked={gender === "Prefer not to say" ? "checked":""}
                             />Prefer not to say
-                        </span>
                     </label>
                 </div>
                 <div>
