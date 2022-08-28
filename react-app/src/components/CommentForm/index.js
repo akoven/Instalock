@@ -29,10 +29,9 @@ let errors = [];
       setErrorValidators(errors);
     }
 
-    // if(newComment.id && errorValidators.length !== 0){
-      dispatch(getComments(post.id))
-      dispatch(getPostsThunk())
-    // }
+    dispatch(getComments(post.id))
+    dispatch(getPostsThunk())
+
     setCommentContent('')
     return newComment
   }

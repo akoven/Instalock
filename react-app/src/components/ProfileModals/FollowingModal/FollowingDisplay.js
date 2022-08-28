@@ -20,7 +20,7 @@ function FollowingDisplay({ onClick }) {
         <div className="following-display-container">
             <div className="following-display-top">
                 <div>Following</div>
-                <i onClick={onClick} class="fa-solid fa-xmark"></i>
+                <i onClick={onClick} className="fa-solid fa-xmark"></i>
             </div>
             <div className="following-display-bottom">
                 {following && following.map(follow => {
