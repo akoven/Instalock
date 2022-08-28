@@ -16,7 +16,7 @@ a {
 }
 .post-container{
   margin: 0px auto;
-  width: 472px;
+  width: 40vw;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -42,7 +42,7 @@ a {
 }
 
 .post-image-container {
-  width: 470px;
+  width: 40vw - 1px; /* this works?!? */
 }
 
 .post-image-container > img {

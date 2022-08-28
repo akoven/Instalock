@@ -85,7 +85,7 @@ const NavBar = () => {
         <li>
           <button className="nav-bar-button" onClick={openMenu}>
             {user.profile_image_url ? (
-              <img src={user.profile_image_url} alt="profile-pic"/>
+              <img  className="user-post-image" src={user.profile_image_url} alt="profile-pic"/>
             ) : (
 
               <img className="user-post-image"
