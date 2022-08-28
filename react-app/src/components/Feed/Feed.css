@@ -39,6 +39,7 @@ a {
 }
 .user-post-image{
   /* object-position: cover; */
+  border-radius: 100%;
 }
 
 .post-image-container {

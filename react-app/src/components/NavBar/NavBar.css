@@ -31,6 +31,7 @@
   text-align: start;
   justify-content: space-between;
   align-items: center;
+  height: 0px;
 }
 
 .dropdown {
