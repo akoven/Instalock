@@ -9,3 +9,4 @@ class ProfileEditForm(FlaskForm):
     email = StringField("Email", validators=[DataRequired()])
     phone_number = StringField("Phone Number")
     gender = RadioField("Gender")
+    profile_image_url = StringField("Profile Image URL")

@@ -18,6 +18,7 @@ const EditProfileForm = () =>{
     const [email, setEmail] = useState(userProfile?.profile?.email)
     const [phoneNumber, setPhoneNumber] = useState(userProfile?.profile?.phone_number)
     const [gender, setGender] = useState(userProfile?.profile?.gender)
+    const [profileImageUrl, setProfileImageUrl] = useState(userProfile?.profile?.profile_image_url)
 
     const handleSubmit = async e =>{
         e.preventDefault();
@@ -27,7 +28,8 @@ const EditProfileForm = () =>{
             bio,
             email,
             phoneNumber,
-            gender
+            gender,
+            profile_image_url: profileImageUrl
         }
 
         const editedProfile = await dispatch(editProfileParams(payload, currentUser.id));
@@ -67,17 +69,27 @@ const EditProfileForm = () =>{
                 {currentUser.username}
             </div>
             <form onSubmit={handleSubmit}>
-                <div className="username">
+                <div className="username-edit">
                     <label>
                         <span className="user-label"> Username</span>
                         <input
                         type="string"
-                        value={username?username:''}
+                        value={username ? username : ''}
                         onChange={e => setUsername(e.target.value)}
                         required/>
                     </label>
                 </div>
-                <div className="website">
+                <div className="profile-image-edit">
+                    <label>
+                        <span className="profile-image-label"> Profile Image</span>
+                        <input
+                        type="string"
+                        value={profileImageUrl ? profileImageUrl : ''}
+                        onChange={e => setProfileImageUrl(e.target.value)}
+                        required/>
+                    </label>
+                </div>
+                <div className="website-edit">
                     <span className="website-label">Website</span>
                     <label>
                         <input
@@ -86,7 +98,7 @@ const EditProfileForm = () =>{
                         onChange={e => setWebsite(e.target.value)}/>
                     </label>
                 </div>
-                <div className="bio">
+                <div className="bio-edit">
                     <label>
                         <span className="bio-label">Bio</span>
                         <textarea
@@ -95,7 +107,7 @@ const EditProfileForm = () =>{
                         onChange={e => setBio(e.target.value)}/>
                 </label>
                 </div>
-                <div className="email">
+                <div className="email-edit">
                     <label>
                         <span className="email-label">Email</span>
                         <input
@@ -105,7 +117,7 @@ const EditProfileForm = () =>{
                         required/>
                     </label>
                 </div>
-                <div className="phone">
+                <div className="phone-edit">
                     <label>
                         <span className="phone-label">Phone Number</span>
                         <input
@@ -115,7 +127,7 @@ const EditProfileForm = () =>{
                         />
                     </label>
                 </div>
-                <div className="gender">
+                <div className="gender-edit">
                     <label>
                         <span className="gender-label">Gender</span>
                         <span className="Female">

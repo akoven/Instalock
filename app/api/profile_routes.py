@@ -54,6 +54,8 @@ def edit_profile(user_id):
     email = edited_profile.data['email']
     phone = edited_profile.data['phone_number']
     gender = edited_profile.data['gender']
+    profile_image_url = edited_profile.data['profile_image_url']
+
 
     print("**************************USERNAME**************************************: ", profile.username)
 
@@ -63,6 +65,7 @@ def edit_profile(user_id):
     profile.email = email
     profile.phone = phone
     profile.gender = gender
+    profile.profile_image_url = profile_image_url
 
     print('PROFILE FROM BACKEND: ',profile)
     db.session.commit()
