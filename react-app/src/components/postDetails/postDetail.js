@@ -121,10 +121,10 @@ const PostDetail = () => {
                                 <img onClick={() => handleDel(comment.id)} className="comment-del-btn" src="https://img.icons8.com/glyph-neue/15/000000/delete.png" alt=""/>
                               )}
                             </div>
-                            <div className="comment-likes-section">
+                            {/* <div className="comment-likes-section">
                                 <div className="likes-info">{comment?.likes} likes</div>
-                                {/* <i className="fa-regular fa-heart"></i> */}
-                            </div>
+                                <i className="fa-regular fa-heart"></i>
+                            </div> */}
                         </div>
                     ))}
                 </div>
