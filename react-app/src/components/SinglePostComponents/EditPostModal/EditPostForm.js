@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { updatePostThunk } from '../../../store/post'
@@ -8,7 +9,9 @@ function EditPostForm({ post, onClick }) {
     const history = useHistory()
     const [ caption, setCaption ] = useState(post?.caption)
     const [ imageUrl, setImageUrl ] = useState(post?.image_url)
+    const [errorValidators, setErrorValidators] = useState([]);
     const user = useSelector(state => state.session.user)
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -44,7 +47,7 @@ function EditPostForm({ post, onClick }) {
                             {post?.user?.profile_image_url ? (
                                 <img className='user-post-image' src={post.user.profile_image_url} alt="" />
                             ) : (
-                                <img src="https://img.icons8.com/plumpy/24/000000/user-male-circle.png" alt="Profile"/>
+                                <img className='user-post-image' src="https://i.imgur.com/vF8FTS2.png" alt="Profile"/>
                                 )
                             }
                             <div className='user-post-username'>{post.user.username}</div>
@@ -54,19 +57,18 @@ function EditPostForm({ post, onClick }) {
                                 placeholder='Write a caption...'
                                 value={caption}
                                 onChange={e => setCaption(e.target.value)}
-                                minlength="20"
-                                maxlength="2200"
                                 required
                             />
                         </div>
-                        <div className="image-url-edit">
+                        {/* <div className="image-url-edit">
                             <input
                                 type='text'
                                 placeholder="Image URL here..."
                                 value={imageUrl}
                                 onChange={e => setImageUrl(e.target.value)}
                             />
-                        </div>
+                            <p>Image Url</p>
+                        </div> */}
                     </form>
                 </div>
             </div>

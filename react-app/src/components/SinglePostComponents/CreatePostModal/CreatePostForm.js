@@ -7,10 +7,12 @@ import "./CreatePost.css";
 function CreatePostForm({ post, onClick }) {
   const dispatch = useDispatch();
   const history = useHistory();
-  const [caption, setCaption] = useState(post?.caption);
-  const [imageUrl, setImageUrl] = useState(post?.image_url);
+  const [caption, setCaption] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
   const user = useSelector((state) => state.session.user);
   const [errors, setErrors] = useState([]);
+
+
 
   useEffect(() => {
     const newErrors = [];
@@ -20,7 +22,7 @@ function CreatePostForm({ post, onClick }) {
     if (imageUrl?.length > 255) {
       newErrors.push("Image URL character limit of 255 exceeded.");
     }
-    if (!imageUrl) {
+    if (!imageUrl || !isImage(imageUrl)) {
       newErrors.push("Image URL is required!");
     }
     if (!caption) {
@@ -60,6 +62,32 @@ function CreatePostForm({ post, onClick }) {
     }
   };
 
+  function isImage(url) {
+    return /\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url);
+  }
+
+  // let file;
+  // function previewFile() {
+  //   let fileInput = document.querySelector('input[type=file]');
+  //   const preview = document.querySelector('.test-img');
+  //   file = fileInput?.files[0]
+
+
+  //     const reader = new FileReader();
+
+  //     reader.addEventListener("load", () => {
+  //       // convert image file to base64 string
+  //       preview.src = reader.result;
+  //       setImageUrl(preview.src)
+  //     }, false);
+
+  //     if (file) {
+  //       reader.readAsDataURL(file);
+  //     }
+  // }
+
+
+
   return (
     <>
       <div className="create-post-form-container">
@@ -73,6 +101,7 @@ function CreatePostForm({ post, onClick }) {
               onClick={handleSubmit}
               className="create-post"
               type="submit"
+              disabled={errors.length > 0}
             >
               Share
             </button>
@@ -80,9 +109,10 @@ function CreatePostForm({ post, onClick }) {
         </div>
         <div className="create-img-container">
           <img
-            className="preview-image"
+            // className="preview-image"
+            // className="test-img"
             src={imageUrl}
-            alt="Your Image Will Load Here!"
+            alt="Your image Will Load Here!"
           />
           <div className="post-form">
             <div className="user-post-info">
@@ -93,8 +123,8 @@ function CreatePostForm({ post, onClick }) {
                   alt=""
                 />
               ) : (
-                <img
-                  src="https://img.icons8.com/plumpy/24/000000/user-male-circle.png"
+                <img className='user-post-image'
+                  src="https://i.imgur.com/vF8FTS2.png"
                   alt="Profile"
                 />
               )}
@@ -111,9 +141,11 @@ function CreatePostForm({ post, onClick }) {
               <div>
                 <label>Image:</label>
                 <input
+                  // type="file"
                   type="text"
                   placeholder="Image URL here..."
                   value={imageUrl}
+                  // onChange={() => previewFile()}
                   onChange={(e) => setImageUrl(e.target.value)}
                   required
                 />
