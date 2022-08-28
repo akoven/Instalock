@@ -64,6 +64,10 @@
   width: 50%;
   object-fit: fill;
 }
+/* .preview-image[alt]{
+  background-image: url("https://github.com/jmartinezsal/Culturegram/blob/main/react-app/src/images/not-found.png?raw=true");
+  display: none;
+} */
 
 .caption-div {
     margin-left: 10px;

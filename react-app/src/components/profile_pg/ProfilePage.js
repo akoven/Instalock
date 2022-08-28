@@ -71,6 +71,9 @@ const ProfilePage = () => {
             dispatch(getFollowData(userId))
         }
     }
+    const profilePostClick = (id) => {
+        history.push(`/posts/${id}`)
+    }
     console.log(userProfile)
     return(
 
@@ -86,6 +89,7 @@ const ProfilePage = () => {
                 </div>
                 <div className="profile-page-user-info">
                     <div className="pp-username">{userProfile?.profile?.username}</div>
+                    {/* <p className='profile-username'>{userProfile?.profile?.username} <span><button  className='edit-profile-button' onClick={() => history.push(`/profile/edit/${userSession.id}`)}>Edit profile</button></span></p> */}
                     <div className="pp-num-posts-and-followings">
                         <div className="pp-num-posts">{userProfile?.posts?.length} <span className='user-info-text'>posts</span></div>
                         <div className="followers-div">
@@ -111,7 +115,9 @@ const ProfilePage = () => {
             </div>
             <p className='pp-post-display-header'>POSTS</p>
             <div className="pp-user-post-display">
-                {postImages?.map(image => <div className='pp-user-post'><img className='pp-user-post-image' src={image.image_url} alt=""/></div>)}
+                {postImages?.map(image => <div onClick={() => profilePostClick(image.id)} className='pp-user-post'>
+                    <img className='pp-user-post-image' src={image.image_url} alt=""/>
+                    </div>)}
             </div>
         </div>
     )

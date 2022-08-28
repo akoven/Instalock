@@ -1,33 +1,4 @@
-/* .profile-username{
-    display: flex;
-    margin-left: 500px;
-    margin-bottom: 10px;
-    font-weight: lighter;
-    font-size: 40px;
 
-}
-
-.profile-img{
-    border-radius: 50%;
-    height: 150px;
-    width: 150px;
-    margin-top: 25px;
-    margin-left: 200px;
-}
-
-.edit-profile-button{
-    margin-left: 30px;
-    font-weight: bold;
-    font-size: 15px;
-    border: 1px solid rgba(167, 167, 167, 0.391);
-    padding: 8px;
-    border-radius: 5px;
-}
-
-.biography{
-    margin-left: 500px;
-    font-size: 105%;
-} */
 .pp-username{
     font-size: 30px;
 }
@@ -37,7 +8,6 @@
     border-bottom: 1px solid rgba(167, 167, 167, 0.391);
     padding-bottom: 100px;
     margin-top: 60px;
-    /* max-width: 1200px; */
 
 }
 .pp-user-image{
@@ -72,8 +42,8 @@
     width: 250px;
     height: 250px;
     object-fit: fill;
-    /* background-color: black; */
     margin-left: 20px;
+    cursor: pointer;
 }
 .pp-user-post-display{
     display: flex;
@@ -82,7 +52,6 @@
     justify-content: center;
     align-items: center;
     padding-top: 30px;
-    /* margin-top: 200px; */
     width: 900px;
     margin: 0 auto;
 }
@@ -100,6 +69,9 @@
     color: rgba(0, 0, 0, 0.653);
     font-size: 20px;
 }
+.user-info-text:not(span){
+    cursor: pointer;
+}
 .followers-button{
     margin-top: 5px;
     margin-left: 5px;
@@ -110,6 +82,5 @@
 
 }
 .followers{
-    /* margin-left: 20px; */
     margin-top: 1px;
 }

@@ -1,6 +1,6 @@
 .edit-post-container{
     /* min-width: 800px; */
-    height: 350px;
+    /* height: 300px; */
 }
 .edit-post-form-container {
     width: 740px;
@@ -31,6 +31,9 @@
     color: #0095F6;
     font-size: 16px;
 }
+.edit-post-submit-button[disabled]{
+    color: #0094f68f;
+}
 .main-edit-container{
     display: flex;
 }
@@ -60,7 +63,7 @@
     font-size: 20px;
     margin-top: 30px;
     font-weight: lighter;
-    height: 203px;
+    height: 100px;
     scrollbar-width: 3px;
 }
 .user-post-username{
@@ -68,5 +71,9 @@
     font-weight: 700;
 }
 .image-url-edit{
-    /* margin-top: 150px; */
+    display: flex;
+    align-items: center;
+}
+.image-url-edit > p{
+    margin-left: 10px;
 }
