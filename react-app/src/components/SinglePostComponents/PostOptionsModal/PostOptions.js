@@ -30,6 +30,14 @@ function PostOptions({ post, onClick }) {
         }
     }
 
+    const copyLink = (post) => {
+        let copiedLink = `https://insta-lock.herokuapp.com/posts/${post.id}`
+
+        navigator.clipboard.writeText(copiedLink)
+
+        alert('Copied the text ' + copiedLink)
+    }
+
     return (
         <div className='post-options-container'>
         {user && user.id == post.user.id ? (
@@ -44,7 +52,7 @@ function PostOptions({ post, onClick }) {
             <>
             <div>Unfollow</div>
             <div className='give-me-a-border' onClick={goToPost}>Go to post</div>
-            <div>Copy link</div>
+            <div onClick={() => copyLink(post)}>Copy link</div>
             <div>Cancel</div>
             </>
         )}

@@ -105,7 +105,7 @@ const NavBar = () => {
                 Profile
               </Link>
               <Link
-                to="/profile/edit/:user.id"
+                to={`/profile/edit/${user.id}`}
                 className="dropdown"
                 style={{ textDecoration: "none" }}
               >

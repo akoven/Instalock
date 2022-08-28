@@ -97,17 +97,21 @@ const removeLikePost = async (isLiked, likes) => {
             <div className='post-user-username'>{post.user.username}</div>
             <div className="like-button">
               <div className="posts-likes">{post.likes} likes</div>
-              {likes && !isLiked ? <i onClick={() => addLikePost(post, isLiked)} className="fa-regular fa-heart fa-xl"></i> : <i style={{'color': '#ED4956'}} onClick={() => removeLikePost(isLiked, likes)} class="fa-solid fa-heart fa-xl"></i>}
+              {likes && !isLiked ? <i onClick={() => addLikePost(post, isLiked)} className="fa-regular fa-heart fa-xl"></i> : <i style={{'color': '#ED4956'}} onClick={() => removeLikePost(isLiked, likes)} className="fa-solid fa-heart fa-xl"></i>}
             </div>
             </div>
             <div className="post-user-caption">{post.caption}</div>
-            <NavLink to={`/posts/${post.id}`}>
-              <div className="posts-comments">View all {post?.comments?.length} comment(s)</div>
-            </NavLink>
-            {post && post.display_comments && <div className="post-lower">
-            <CommentForm post={post} />
-          </div>}
-        </div>
+            {post && post.display_comments && (
+              <>
+              <NavLink to={`/posts/${post.id}`}>
+                <div className="posts-comments">View all {post?.comments?.length} comment(s)</div>
+              </NavLink>
+              <div className="post-lower">
+                <CommentForm post={post} />
+              </div>
+              </>
+            )}
+          </div>
       )})}
     </div>
   )

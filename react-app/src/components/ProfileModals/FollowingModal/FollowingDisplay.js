@@ -20,28 +20,30 @@ function FollowingDisplay({ onClick }) {
         <div className="following-display-container">
             <div className="following-display-top">
                 <div>Following</div>
-                <i onClick={onClick} class="fa-solid fa-xmark"></i>
+                <i onClick={onClick} className="fa-solid fa-xmark"></i>
             </div>
             <div className="following-display-bottom">
                 {following && following.map(follow => {
                     let followed = follow[1]
                     return (
                     <div className="follower-item">
-                        <NavLink onClick={() => handleClick(followed.id)} to={`/profile/${followed.id}`} className="follower-link">
-                            <div className="follow-display-profpic-container">
-                            {followed.profile_image_url ? (
-                                <img className='user-post-image' src={followed.profile_image_url} alt="" />
-                                ) : (
-                                <img src="https://img.icons8.com/plumpy/24/000000/user-male-circle.png" alt="Profile"/>
-                                )
-                            }
-                            </div>
-                        </NavLink>
-                        <NavLink onClick={() => handleClick(followed.id)} to={`/profile/${followed.id}`} className="follower-link">
-                            <div>
-                                <div>{followed.username}</div>
-                            </div>
-                        </NavLink>
+                        <div className="follower-info">
+                            <NavLink onClick={() => handleClick(followed.id)} to={`/profile/${followed.id}`} className="follower-link">
+                                <div className="follow-display-profpic-container">
+                                {followed.profile_image_url ? (
+                                    <img className='user-post-image' src={followed.profile_image_url} alt="" />
+                                    ) : (
+                                    <img src="https://i.imgur.com/vF8FTS2.png" alt="Profile"/>
+                                    )
+                                }
+                                </div>
+                            </NavLink>
+                            <NavLink onClick={() => handleClick(followed.id)} to={`/profile/${followed.id}`} className="follower-link">
+                                <div>
+                                    <div>{followed.username}</div>
+                                </div>
+                            </NavLink>
+                        </div>
                         {user.id == userId && <RemoveFollowerModal follower={followed} followId={follow[0]} />}
                     </div>
                 )})}

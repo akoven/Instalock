@@ -20,17 +20,21 @@ function RemoveFollower({ follower, followId, onClick }) {
 
     return (
         <div className="remove-follower-container">
-            <div className="remove-follower-title">
-                {follower.profile_image_url ? (
-                    <img className='user-post-image' src={follower.profile_image_url} alt="" />
-                    ) : (
-                    <img src="https://img.icons8.com/plumpy/24/000000/user-male-circle.png" alt="Profile"/>
-                    )
-                }
-                <h2>Remove follower?</h2>
+            <div className="remove-follower-head">
+                <div className="remove-follower-pic-container">
+                    {follower.profile_image_url ? (
+                        <img className='user-post-image' src={follower.profile_image_url} alt="" />
+                        ) : (
+                        <img src="https://i.imgur.com/vF8FTS2.png" alt="Profile"/>
+                        )
+                    }
+                </div>
+                <div className="remove-follower-header">
+                    <h2>Remove follower?</h2>
+                </div>
             </div>
-            <div onClick={() => onDelete(followId)}>Remove</div>
-            <div onClick={onClick} >Cancel</div>
+            <div className="remove-follower-option-button remove" onClick={() => onDelete(followId)}>Remove</div>
+            <div className="remove-follower-option-button cancel" onClick={onClick} >Cancel</div>
         </div>
     )
 }
