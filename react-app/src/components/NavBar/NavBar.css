@@ -33,11 +33,6 @@
   align-items: center;
 }
 
-.dropdown {
-  font-size: 15px;
-  color: black;
-}
-
 .logout-button {
   background: none;
 	color: inherit;
@@ -56,7 +51,7 @@
   background-color: white;
   display: flex;
   flex-direction: column;
-  border-radius: 20px;
+  border-radius: 10px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   z-index: 1000;
 }
@@ -65,10 +60,20 @@
   font-size: 14px;
   padding: 8px 16px;
   height: 28px;
-  width: 170px;
+  /* width: 170px; */
   display: flex;
   align-items: center;
   justify-content: flex-start;
+}
+
+.dropdown {
+  font-size: 15px;
+  width: 100%;
+  color: black;
+}
+
+.dropdown:active {
+  background-color: #e8e4e4;
 }
 
 .logout-div {
