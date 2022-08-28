@@ -15,12 +15,12 @@ function DeletePost({ post, onClick }) {
 
     return (
         <div className="delete-post">
-            <div>
+            <div className="delete-head">
                 <h3>Delete post?</h3>
                 <div>Are you sure you want to delete this post?</div>
             </div>
-            <div onClick={onDelete}>Delete</div>
-            <div onClick={onClick}>Cancel</div>
+            <div className="delete-option delete-button" onClick={onDelete}>Delete</div>
+            <div className="delete-option cancel" onClick={onClick}>Cancel</div>
         </div>
     )
 }
