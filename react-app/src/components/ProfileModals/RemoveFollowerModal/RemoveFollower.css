@@ -1,0 +1,56 @@
+.remove-follower-button {
+    width: 70px;
+    height: 30px;
+    border: 1px solid #DBDBDB;
+    border-radius: 4px;
+    font-size: 15px;
+}
+
+.remove-follower-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 350px;
+}
+
+.remove-follower-head {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+}
+
+.remove-follower-pic-container {
+    width: 88px;
+    height: 88px;
+    margin-bottom: 15px;
+}
+
+.remove-follower-pic-container > img {
+    width: 100%;
+    height: 100%;
+}
+
+.remove-follower-option-button {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid #DBDBDB;
+}
+
+.remove {
+    color: #ED4956;
+    font-weight: bold;
+}
+
+.cancel {
+    border-radius: 0 0 10px 10px;
+}
+
+.remove-follower-option-button:active {
+    background-color: #e8e4e4;
+}

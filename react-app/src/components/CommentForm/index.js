@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { createComment, getComments } from '../../store/comment';
+import { getPostsThunk } from '../../store/post';
 import './CommentForm.css';
 
 const CommentForm = ({ post }) => {
@@ -28,9 +29,9 @@ let errors = [];
       setErrorValidators(errors);
     }
 
-    if(newComment.id && errorValidators.length !== 0){
-      dispatch(getComments(post.id))
-    }
+    dispatch(getComments(post.id))
+    dispatch(getPostsThunk())
+
     setCommentContent('')
     return newComment
   }

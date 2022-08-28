@@ -85,7 +85,10 @@ const ProfilePage = () => {
                     }
                 </div>
                 <div className="profile-page-user-info">
-                    <div className="pp-username">{userProfile?.profile?.username}</div>
+                    <div className='pp-user-follow'>
+                        <div className="pp-username">{userProfile?.profile?.username}</div>
+                        {userSession.id == userId ? '' : <div>{followers && Object.values(followers).filter(follow => follow.id === userSession.id).length > 0 ? <button className="unfollow-button" onClick={unfollow}>Unfollow</button> : <button className='follow-button' onClick={follow}>Follow</button> }</div>}
+                    </div>
                     <div className="pp-num-posts-and-followings">
                         <div className="pp-num-posts">{userProfile?.posts?.length} <span className='user-info-text'>posts</span></div>
                         <div className="followers-div">
