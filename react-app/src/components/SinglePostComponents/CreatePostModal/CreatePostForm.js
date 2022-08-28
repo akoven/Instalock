@@ -108,7 +108,7 @@ function CreatePostForm({ post, onClick }) {
           </div>
         </div>
         <div className="create-img-container">
-          <img
+          <img className="img-container"
             // className="preview-image"
             // className="test-img"
             src={imageUrl}
