@@ -99,7 +99,7 @@ const NavBar = () => {
               {/* <i className="fas fa-bars nav_bars_icon"></i> */}
               <Link
                 to={`/profile/${user.id}`}
-                className="dropdown"
+                className="dropdown top-option"
                 style={{ textDecoration: "none" }}
               >
                 Profile
@@ -118,7 +118,7 @@ const NavBar = () => {
               >
                 Switch Accounts
               </Link> */}
-              <div className="logout-div">
+              <div className="dropdown logout-div cancel">
                 <LogoutButton />
               </div>
             </div>

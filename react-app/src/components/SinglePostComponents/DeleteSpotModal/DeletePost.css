@@ -2,3 +2,30 @@
     width: 100%;
     border-bottom: 1px solid #DBDBDB;
 }
+
+.delete-head {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+}
+
+.delete-option {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid #DBDBDB;
+}
+
+.delete-button {
+    color: #ED4956;
+    font-weight: bold;
+}
+
+
+.delete-option:active {
+    background-color: #e8e4e4;
+}
