@@ -31,6 +31,7 @@
 .pp-username{
     font-size: 30px;
 }
+
 .profile-top-section{
     display: flex;
     justify-content: center;
@@ -40,10 +41,39 @@
     /* max-width: 1200px; */
 
 }
+
 .pp-user-image{
     width: 150px;
     border-radius: 999px;
 }
+
+.pp-user-follow {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.follow-button {
+    width: 90px;
+    height: 30px;
+    background-color: #0095F6 ;
+    border-radius: 5px;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.unfollow-button {
+    width: 90px;
+    height: 30px;
+    border: 1px solid #DBDBDB;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
 .profile-page-user-info{
     display: flex;
     flex-direction: column;
@@ -63,18 +93,25 @@
     color: rgba(0, 0, 0, 0.727);
     font-size: 20px;
 }
+
 .pp-user-post-image{
     width: 250px;
     height: 250px;
     object-fit: fill;
 }
+
 .pp-user-post{
     width: 250px;
     height: 250px;
-    object-fit: fill;
     /* background-color: black; */
     margin-left: 20px;
 }
+
+.pp-user-post > img {
+    height: 100%;
+    object-fit: cover;
+}
+
 .pp-user-post-display{
     display: flex;
     flex-wrap: wrap;
@@ -86,6 +123,7 @@
     width: 900px;
     margin: 0 auto;
 }
+
 .pp-post-display-header{
     text-align: center;
     margin-top: 10px;
@@ -96,19 +134,22 @@
     align-items: center;
     padding-bottom: 23px;
 }
+
 .user-info-text{
     color: rgba(0, 0, 0, 0.653);
     font-size: 20px;
 }
+
 .followers-button{
     margin-top: 5px;
     margin-left: 5px;
 }
+
 .following-button{
     margin-top: 5px;
     margin-left: 5px;
-
 }
+
 .followers{
     /* margin-left: 20px; */
     margin-top: 1px;
