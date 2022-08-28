@@ -27,21 +27,23 @@ function FollowersDisplay({ onClick }) {
                     let follower = follow[1]
                     return (
                     <div className="follower-item">
-                        <NavLink onClick={() => handleClick(follower.id)} to={`/profile/${follower.id}`} className="follower-link">
-                            <div className="follow-display-profpic-container">
-                            {follower.profile_image_url ? (
-                                <img className='user-post-image' src={follower.profile_image_url} alt="" />
-                                ) : (
-                                <img src="https://img.icons8.com/plumpy/24/000000/user-male-circle.png" alt="Profile"/>
-                                )
-                            }
-                            </div>
-                        </NavLink>
-                        <NavLink onClick={() => handleClick(follower.id)} to={`/profile/${follower.id}`} className="follower-link">
-                            <div>
-                                <div>{follower.username}</div>
-                            </div>
-                        </NavLink>
+                        <div className="follower-info">
+                            <NavLink onClick={() => handleClick(follower.id)} to={`/profile/${follower.id}`} className="follower-link">
+                                <div className="follow-display-profpic-container">
+                                {follower.profile_image_url ? (
+                                    <img className='user-post-image' src={follower.profile_image_url} alt="" />
+                                    ) : (
+                                    <img src="https://i.imgur.com/vF8FTS2.png" alt="Profile"/>
+                                    )
+                                }
+                                </div>
+                            </NavLink>
+                            <NavLink onClick={() => handleClick(follower.id)} to={`/profile/${follower.id}`} className="follower-link">
+                                <div>
+                                    <div>{follower.username}</div>
+                                </div>
+                            </NavLink>
+                        </div>
                         {user.id == userId && <RemoveFollowerModal follower={follower} followId={follow[0]} />}
                     </div>
                 )})}

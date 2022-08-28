@@ -26,15 +26,33 @@
 
 .follower-item {
     width: 383px;
-    height: 46px;
+    height: 60px;
     padding-top: 7px;
     padding-bottom: 7px;
     padding-left: 10px;
     padding-right: 15px;
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
 
-.follower-link {
+.follower-info {
+    display: flex;
+    flex-direction: row;
+}
 
+.follower-info > a {
+    display: flex;
+    align-items: center;
+}
+
+.follow-display-profpic-container {
+    width: 44px;
+    height: 44px;
+    margin-right: 10px;
+}
+
+.follow-display-profpic-container > img {
+    width: 100%;
+    height: 100%;
 }
