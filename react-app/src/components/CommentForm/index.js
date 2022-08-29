@@ -40,9 +40,11 @@ let errors = [];
     <form className="comment-form" onSubmit={commentSubmit}>
       <ul>{errorValidators.map(error =><li>{error}</li>)}</ul>
         <input type="text"
+        className='comment-input'
            value={commentContent}
            onChange={updateComment}
-           placeholder='Add a comment' />
+           placeholder='Add a comment'
+           required />
     <button type="submit">Post</button>
   </form>
   )

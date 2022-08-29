@@ -19,10 +19,7 @@ function CreatePostForm({ post, onClick }) {
     if (caption?.length > 2200) {
       newErrors.push("Caption character limit of 2200 exceeded.");
     }
-    if (imageUrl?.length > 255) {
-      newErrors.push("Image URL character limit of 255 exceeded.");
-    }
-    if (!imageUrl || !isImage(imageUrl)) {
+    if (!imageUrl) {
       newErrors.push("Image URL is required!");
     }
     if (!caption) {
@@ -61,10 +58,6 @@ function CreatePostForm({ post, onClick }) {
       onClick();
     }
   };
-
-  function isImage(url) {
-    return /\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url);
-  }
 
   // let file;
   // function previewFile() {
@@ -108,12 +101,14 @@ function CreatePostForm({ post, onClick }) {
           </div>
         </div>
         <div className="create-img-container">
-          <img className="img-container"
-            // className="preview-image"
-            // className="test-img"
-            src={imageUrl}
-            alt="Your image Will Load Here!"
-          />
+          <div className="img-container">
+            <img className="create-post-preview"
+              // className="preview-image"
+              // className="test-img"
+              src={imageUrl}
+              alt="Your image Will Load Here!"
+            />
+          </div>
           <div className="post-form">
             <div className="user-post-info">
               {user.profile_image_url ? (

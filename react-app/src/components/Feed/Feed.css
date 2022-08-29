@@ -27,7 +27,13 @@ a {
   margin-top: 30px;
   background-color: white;
 }
+
+.post-top > a {
+  display: flex;
+  align-items: center;
+}
 .user-post-info{
+  height: 100%;
   display: flex;
   align-items: center;
 }
@@ -39,7 +45,10 @@ a {
 }
 .user-post-image{
   /* object-position: cover; */
+  width: 30px;
+  height: 30px;
   border-radius: 100%;
+  object-fit: cover;
 }
 
 .post-image-container {
@@ -59,6 +68,7 @@ a {
   align-items: center;
   margin-left: 10px;
   margin-right: 10px;
+  margin-bottom: 8px;
   height: 40px;
 
 }
@@ -118,13 +128,13 @@ a {
   /* top: 50%; */
 }
 .comment-form > input{
-  width: 88%;
-  height: 50px;
+  width: 80%;
+  height: 40px;
   border-radius: 10px;
   border: none;
   outline: none;
   margin-left: 10px;
 }
 .user-post-image{
-  width: 24px;
+
 }

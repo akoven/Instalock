@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory, NavLink } from "react-router-dom";
 import { editProfileParams, deleteProfile } from "../../store/profile";
+import { authenticate } from "../../store/session";
 import './editProfile.css';
 // import './unnamed.jpg' ;
 
@@ -12,13 +13,13 @@ const EditProfileForm = () =>{
     const currentUser = useSelector(state => state.session.user);
     const userProfile = useSelector(state => state.profile);
 
-    const [username, setUsername] = useState(userProfile?.profile?.username)
-    const [website, setWebsite] = useState(userProfile?.profile?.website)
-    const [bio, setBio] = useState(userProfile?.profile?.bio)
-    const [email, setEmail] = useState(userProfile?.profile?.email)
-    const [phoneNumber, setPhoneNumber] = useState(userProfile?.profile?.phone_number)
-    const [gender, setGender] = useState(userProfile?.profile?.gender)
-    const [profileImageUrl, setProfileImageUrl] = useState(userProfile?.profile?.profile_image_url)
+    const [username, setUsername] = useState(currentUser?.username)
+    const [website, setWebsite] = useState(currentUser?.website)
+    const [bio, setBio] = useState(currentUser?.bio)
+    const [email, setEmail] = useState(currentUser?.email)
+    const [phoneNumber, setPhoneNumber] = useState(currentUser?.phone_number)
+    const [gender, setGender] = useState(currentUser?.gender)
+    const [profileImageUrl, setProfileImageUrl] = useState(currentUser?.profile_image_url)
 
     const handleSubmit = async e =>{
         e.preventDefault();
@@ -36,6 +37,7 @@ const EditProfileForm = () =>{
 
         if(editedProfile){
             history.push(`/profile/${currentUser.id}`);
+
         }
         else{
 
@@ -43,6 +45,7 @@ const EditProfileForm = () =>{
             console.log('something went wrong')
             console.log('userId: ', currentUser.id)
         }
+        dispatch(authenticate())
     }
     // <div className="side-bar">
     //             <ul>
@@ -59,7 +62,7 @@ const EditProfileForm = () =>{
         <div className="main-form">
             <div className="profile-header">
                 <div className="profile-img">
-                    {userProfile?.profile?.profile_image_url ? (
+                    {currentUser?.profile_image_url ? (
                         <img className='profileEdit-image' src={profileImageUrl ? profileImageUrl : ''} alt="" />
                       ) : (
                         <img className='profileEdit-image' src="https://i.imgur.com/vF8FTS2.png" alt="Profile"/>
@@ -86,7 +89,7 @@ const EditProfileForm = () =>{
                         type="string"
                         value={profileImageUrl ? profileImageUrl : ''}
                         onChange={e => setProfileImageUrl(e.target.value)}
-                        required/>
+                        />
                     </label>
                 </div>
                 <div className="website-edit">

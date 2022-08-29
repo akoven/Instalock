@@ -1,3 +1,7 @@
+.edit-post-button:active {
+    background-color: #e8e4e4;
+}
+
 .edit-post-container{
     /* min-width: 800px; */
     /* height: 300px; */
