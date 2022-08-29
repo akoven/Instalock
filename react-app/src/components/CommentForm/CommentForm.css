@@ -1,3 +1,7 @@
 ul{
     list-style-type: none;
 }
+
+.comment-input {
+    width: 250px;
+}

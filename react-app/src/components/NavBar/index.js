@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Link } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
 import "./NavBar.css";
 import CreatePostModal from "../SinglePostComponents/CreatePostModal";
+import { getProfileThunk } from "../../store/profile";
 // import 'instalock_logo.jpg' from '../../images/instalock_logo.jpg'
 
 const NavBar = () => {
+  const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const user = useSelector(state => state.session.user)
   const openMenu = () => {
@@ -18,6 +20,10 @@ const NavBar = () => {
 
   })
 
+  const grabUserProfile = async (userId) => {
+    await dispatch(getProfileThunk(userId))
+  }
+
   useEffect(() => {
     if (!showMenu) return;
     const closeMenu = () => {
@@ -28,33 +34,6 @@ const NavBar = () => {
   }, [showMenu]);
   // console.log(user)
   return (
-    // <nav className='nav-home'>
-    //   <ul>
-    //     <li>
-    //       <NavLink to='/' exact={true} activeClassName='active'>
-    //         Home
-    //       </NavLink>
-    //     </li>
-    //     <li>
-    //       <NavLink to='/login' exact={true} activeClassName='active'>
-    //         Login
-    //       </NavLink>
-    //     </li>
-    //     <li>
-    //       <NavLink to='/sign-up' exact={true} activeClassName='active'>
-    //         Sign Up
-    //       </NavLink>
-    //     </li>
-    //     <li>
-    //       <NavLink to='/users' exact={true} activeClassName='active'>
-    //         Users
-    //       </NavLink>
-    //     </li>
-    //     <li>
-    //       <LogoutButton />
-    //     </li>
-    //   </ul>
-    // </nav>
     <nav className="nav-home">
       <div className="nav-logo">
         <Link to="/">
@@ -72,12 +51,6 @@ const NavBar = () => {
           </NavLink>
         </li>
         <li>
-          {/* <NavLink exact to="/posts/create/new">
-            <img
-              src="https://img.icons8.com/ios/24/000000/plus-2-math.png"
-              alt="Create"
-            />
-          </NavLink> */}
           <div className="create-post-modal-div">
             <CreatePostModal />
           </div>
@@ -105,6 +78,7 @@ const NavBar = () => {
                 Profile
               </Link>
               <Link
+                onClick={() => grabUserProfile(user.id)}
                 to={`/profile/edit/${user.id}`}
                 className="dropdown"
                 style={{ textDecoration: "none" }}

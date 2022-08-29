@@ -14,7 +14,9 @@
 
 .pp-user-image{
     width: 150px;
+    height: 150px;
     border-radius: 999px;
+    object-fit: cover;
 }
 
 .pp-user-follow {

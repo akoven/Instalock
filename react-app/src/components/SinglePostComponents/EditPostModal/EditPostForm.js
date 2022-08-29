@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { updatePostThunk } from '../../../store/post'
 
+
 function EditPostForm({ post, onClick }) {
     const dispatch = useDispatch()
     const history = useHistory()
@@ -26,6 +27,7 @@ function EditPostForm({ post, onClick }) {
         if (updatedPost) {
             history.push(`/posts/${post.id}`)
         }
+
         onClick() // close the modal
     }
     // console.log(post)

@@ -9,7 +9,7 @@ function DeletePostModal({ post }) {
 
     return (
         <>
-        <div className='delete-post-button' onClick={() => setShowModal(true)}>Delete</div>
+        <div className='delete-post-button top-option' onClick={() => setShowModal(true)}>Delete</div>
         {showModal && (
             <Modal onClose={() => setShowModal(false)}>
                 <DeletePost post={post} onClick={() => setShowModal(false)} />

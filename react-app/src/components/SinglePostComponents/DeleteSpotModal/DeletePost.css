@@ -1,6 +1,12 @@
+.delete-post-button:active {
+    background-color: #e8e4e4;
+}
+
 .delete-post-button {
     width: 100%;
     border-bottom: 1px solid #DBDBDB;
+    color: #ED4956;
+    font-weight: bold;
 }
 
 .delete-head {

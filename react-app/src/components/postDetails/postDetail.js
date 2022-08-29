@@ -116,15 +116,11 @@ const PostDetail = () => {
                                 <div className="comment-user-name">
                                     {comment?.user?.username}
                                 </div>
-                              <div className="comment-content">{comment?.content}</div>
-                              {comment.user.id === user.id && (
-                                <img onClick={() => handleDel(comment.id)} className="comment-del-btn" src="https://img.icons8.com/glyph-neue/15/000000/delete.png" alt=""/>
-                              )}
                             </div>
-                            {/* <div className="comment-likes-section">
-                                <div className="likes-info">{comment?.likes} likes</div>
-                                <i className="fa-regular fa-heart"></i>
-                            </div> */}
+                                <div className="comment-content">{comment?.content}</div>
+                                {comment.user.id === user.id && (
+                                    <img onClick={() => handleDel(comment.id)} className="comment-del-btn" src="https://img.icons8.com/glyph-neue/15/000000/delete.png" alt=""/>
+                                )}
                         </div>
                     ))}
                 </div>
