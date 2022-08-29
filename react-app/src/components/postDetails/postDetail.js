@@ -106,8 +106,8 @@ const PostDetail = () => {
                         <div className="comment-users-info">
                             <div className="comment-user-details">
                                 <div>
-                                {post?.user?.profile_image_url ? (
-                                    <img className='user-post-image' src={post.user.profile_image_url} alt="" />
+                                {comment?.user?.profile_image_url ? (
+                                    <img className='user-post-image' src={comment.user.profile_image_url} alt="" />
                                 ) : (
                                     <img className="user-post-image" src="https://i.imgur.com/vF8FTS2.png" alt="Profile"/>
                                     )
