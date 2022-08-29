@@ -52,7 +52,7 @@ Instalock is a full stack application that is inspired by Instagram, an online s
 ![image](https://user-images.githubusercontent.com/98150408/187090770-f42869cc-dcc0-4cee-a937-2a5ce4ee99d2.png)
 
 
-*Possible Features in The Future:
+* Possible Features in The Future:
    * Dragging an image file into our image container to render a preview image.
    * Account settings such as Direct Messaging and Privacy and security features.
 
