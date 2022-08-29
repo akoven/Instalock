@@ -17,7 +17,7 @@ Instalock is a full stack application that is inspired by Instagram, an online s
 * CSS
 * HTML
 
-##Current Features:
+## Current Features:
 
 * Demo User 
    * With a click of a button, you are able to access Instalock's feed as a demo user. You are then given the option to like and comment on other user's posts as well as create your own. 
