@@ -16,6 +16,7 @@ Instalock is a full stack application that is inspired by Instagram, an online s
 * Heroku
 * CSS
 * HTML
+* Dockerfile
 
 ## Current Features:
 
