@@ -1,144 +1,80 @@
-/* .side-bar{
+.edit-profile-page{
+    padding-top: 30px;
     display: flex;
     flex-direction: column;
-    width: 100px;
-    height: 630px;
-    margin-left: 70px;
-    margin-top: 25px;
-    border: 1px solid rgba(167, 167, 167, 0.391);
-    position: absolute;
-    border-right: 0.5px solid rgba(167, 167, 167, 0.391);
-    background-color: rgb(255, 255, 255);
-    border-radius: 5px;
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
-    font-weight: bold;
-
-
-}
-
-ul{
-    list-style-type: none;
-}
-
-li{
-    margin-left: 8px;
-    margin-top: 3px
-}
-
-input{
- height: 25px;
- width: auto;
-} */
-
-.main-form{
-    /* background-color: fuchsia; */
-    background-color: rgba(243, 243, 243, 0.39);
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* justify-content: center; */
-    /* align-items: center; */
-    /* margin-top: 25px; */
-    border: 1px solid rgba(167, 167, 167, 0.391);
-
-
-}
-
-.profile-header{
-    position: absolute;
-    display: flex;
-    /* margin: 0 auto; */
-    /* width: 100%; */
-    /* justify-content: center; */
     align-items: center;
-    /* margin-top: 10px; */
-    /* padding: 0 auto; */
-    /* margin-left: 70px; */
-    padding-top: 30px;
-    left: 34.2vw;
+    margin-left: 200px;
+    margin-right: 200px;
+    border-left: 1px solid rgba(185, 183, 183, 0.407);
+    border-right: 1px solid rgba(185, 183, 183, 0.407);
+}
+.profileEdit-image{
+    width: 90px;
+    border-radius: 100%;
+}
+.edit-profile-upper{
+    width: 370px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+}
+.edit-profile-upper > *{
+    margin: 0 40px;
+}
+.edit-profile-img{
+    /* padding-right: 20px; */
 }
 .profile-edit-username{
-    padding-left: 15px;
+    /* padding-left: 20px; */
+    min-width: 150px;
 }
-.profile-header > * {
-    margin-left: 20px;
-    width: 100%;
+.edit-profile-lower > form{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.edit-profile-lower > form > div{
+    display: flex;
+    width: 330px;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 13vh;
+    /* background-color: blue; */
+}
+.edit-profile-lower > form > div > p{
+
+    text-align: right;
+    /* border: 1px solid black; */
+    width: 30%;
+    font-weight: 600;
+}
+.edit-profile-lower > form > div > input, textarea{
+    /* height: 200px; */
+    /* background-color: brown; */
+    border: 1px solid rgb(185, 183, 183);
+    border-radius: 5px;
+    /* padding-left: 5px; */
+    /* padding-right: 5px; */
+    padding: 5px;
+    resize: vertical;
 }
 
-.image{
-    margin-right: 20px;
+input[type=radio]{
+    margin: 10px;
 }
-
-
-
-button{
-    border: none;
-}
-.Female,.Male,.Custom{
-    /* margin-right: 15px */
-}
-
-.submit{
+.edit-profile-submit{
     background-color: rgb(69,142,255);
     border-color:  rgb(69,142,255);
     padding: 10px;
     padding-left: 10px;
+    margin-left: 155px;
     border-radius: 5px;
     color: white;
     font-weight: bold;
     box-shadow: none;
+    border: none;
+    width: 70px;
+    margin-bottom: 40px;
 
-}
-
-/* .delete{
-    background-color: rgb(251,57,88);
-    border-color: rgb(251,57,88);
-    padding: 10px;
-    border-radius: 5px;
-    color: white;
-    font-weight: bold;
-    margin-left: 300px;
-} */
-
-.profileEdit-image{
-    width: 50px;
-    height: 50px;
-    /* margin-right: 10px; */
-    border-radius: 100%;
-    object-fit: cover;
-}
-
-
-.edit-profile-form{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    height: 100vh;
-    margin-top: 70px;
-
-}
-.edit-profile-form > div > label {
-    /* background-color: blue; */
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    /* flex-direction: column; */
-    /* text-align: left; */
-    width: 35vw;
-    /* margin-right: 130px; */
-    margin-top: 40px;
-}
-.edit-profile-form > div > label > input, textarea{
-    /* margin-left: 50px; */
-    margin-left: 25px;
-    width: 70%;
-}
-.gender-edit{
-    /* margin-left: 50px; */
-    margin-left: 25px;
-    /* width: 100%; */
-}
-.gender-edit > label > input{
-    border: 1px solid black;
 }

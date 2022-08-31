@@ -4,7 +4,7 @@ Welcome to Instalock, our clone of Instagram!
 
 Instalock is a full stack application that is inspired by Instagram, an online social media platform that allows people to share their experience with others through photos. 
 
-## Technology Used :
+## Technologies Used :
 * Javascript
 * Flask
 * React
@@ -16,8 +16,9 @@ Instalock is a full stack application that is inspired by Instagram, an online s
 * Heroku
 * CSS
 * HTML
+* Dockerfile
 
-##Current Features:
+## Current Features:
 
 * Demo User 
    * With a click of a button, you are able to access Instalock's feed as a demo user. You are then given the option to like and comment on other user's posts as well as create your own. 
@@ -52,7 +53,7 @@ Instalock is a full stack application that is inspired by Instagram, an online s
 ![image](https://user-images.githubusercontent.com/98150408/187090770-f42869cc-dcc0-4cee-a937-2a5ce4ee99d2.png)
 
 
-*Possible Features in The Future:
+* Possible Features in The Future:
    * Dragging an image file into our image container to render a preview image.
    * Account settings such as Direct Messaging and Privacy and security features.
 

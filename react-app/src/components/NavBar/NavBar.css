@@ -31,7 +31,11 @@
   text-align: start;
   justify-content: space-between;
   align-items: center;
-  height: 0px;
+  /* height: 0px; */
+  background-color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
 
 .logout-button {
