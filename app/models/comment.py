@@ -1,4 +1,3 @@
-from turtle import back
 from .db import db
 
 class Comment(db.Model):
