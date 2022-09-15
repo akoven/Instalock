@@ -11,6 +11,7 @@ import "./Feed.css"
 import { getFollowData } from '../../store/follows'
 import PostOptionsModal from '../SinglePostComponents/PostOptionsModal'
 import { addLikeThunk, removeLikeThunk } from '../../store/likes'
+import DeveloperInfo from '../DeveloperInfo/DeveloperInfo'
 
 const Feed = () => {
 
@@ -60,7 +61,8 @@ const removeLikePost = async (isLiked, likes) => {
 
   return (
     <div className='feed'>
-      {posts.map(post => {
+      <DeveloperInfo />
+      <div className='posts-container'>{posts.map(post => {
         let isLiked = false
         let likes = post.like_list
         Object.values(likes).forEach(like => {
@@ -113,6 +115,7 @@ const removeLikePost = async (isLiked, likes) => {
             )}
           </div>
       )})}
+      </div>
     </div>
   )
 }

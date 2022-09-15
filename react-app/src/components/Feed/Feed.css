@@ -10,13 +10,12 @@ a {
 }
 
 .feed{
-
   background-color: rgba(243, 243, 243, 0.39);
   padding-top: 20px;
 }
 .post-container{
   margin: 0px auto;
-  width: 40vw;
+  width: 40%;
   height: 100%;
   display: flex;
   flex-direction: column;
