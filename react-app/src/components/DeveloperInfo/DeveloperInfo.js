@@ -16,8 +16,8 @@ function DeveloperInfo() {
                 </div>
                 <div className="dev-info">
                     <a href='https://www.linkedin.com/in/thomasanton1224/' target='_blank'>
-                        <div className='dev-logo' >
-                            <img src='https://i.imgur.com/Lmo3dsG.png' alt='linked-in logo'/>
+                        <div className='dev-logo-li' >
+                            <img src='https://i.imgur.com/fG0GKuR.png' alt='linked-in logo'/>
                         </div>
                     </a>
                     <a href='https://github.com/tanton1224' target='_blank'>
@@ -30,17 +30,17 @@ function DeveloperInfo() {
             <div className='dev-info-box'>
                 <div className="dev-title-info">
                     <div className="dev-photo-container">
-                        <img src="https://i.imgur.com/vLoGlZ2.jpg" alt="Dev Profile Picture" />
+                        <img src="https://i.imgur.com/vGgyK4n.jpg" alt="Dev Profile Picture" />
                     </div>
                     <div className='dev-name'>Waseem Alame</div>
                 </div>
                 <div className="dev-info">
-                    <a href='https://www.linkedin.com/in/thomasanton1224/' target='_blank'>
-                        <div className='dev-logo' >
-                            <img src='https://i.imgur.com/Lmo3dsG.png' alt='linked-in logo'/>
+                    <a href='https://www.linkedin.com/in/waseemalame/' target='_blank'>
+                        <div className='dev-logo-li' >
+                            <img src='https://i.imgur.com/fG0GKuR.png' alt='linked-in logo'/>
                         </div>
                     </a>
-                    <a href='https://github.com/tanton1224' target='_blank'>
+                    <a href='https://github.com/Waseemalame' target='_blank'>
                         <div className='dev-logo' >
                             <img src='https://i.imgur.com/ElHz1vI.png' alt='github logo'/>
                         </div>
@@ -56,8 +56,8 @@ function DeveloperInfo() {
                 </div>
                 <div className="dev-info">
                     <a href='https://www.linkedin.com/in/calvin-lieu-3049b4228/' target='_blank'>
-                        <div className='dev-logo' >
-                            <img src='https://i.imgur.com/Lmo3dsG.png' alt='linked-in logo'/>
+                        <div className='dev-logo-li' >
+                            <img src='https://i.imgur.com/fG0GKuR.png' alt='linked-in logo'/>
                         </div>
                     </a>
                     <a href='https://github.com/calvinlieu' target='_blank'>
@@ -70,17 +70,17 @@ function DeveloperInfo() {
             <div className='dev-info-box'>
                 <div className="dev-title-info">
                     <div className="dev-photo-container">
-                        <img src="https://i.imgur.com/vLoGlZ2.jpg" alt="Dev Profile Picture" />
+                        <img src="https://www.kindpng.com/picc/m/52-526237_avatar-profile-hd-png-download.png" alt="Dev Profile Picture" />
                     </div>
                     <div className='dev-name'>Attiya Kovenburg</div>
                 </div>
                 <div className="dev-info">
-                    <a href='https://www.linkedin.com/in/thomasanton1224/' target='_blank'>
-                        <div className='dev-logo' >
-                            <img src='https://i.imgur.com/Lmo3dsG.png' alt='linked-in logo'/>
+                    <a href='https://www.linkedin.com/in/attiya-kovenburg-166201129/' target='_blank'>
+                        <div className='dev-logo-li' >
+                            <img src='https://i.imgur.com/fG0GKuR.png' alt='linked-in logo'/>
                         </div>
                     </a>
-                    <a href='https://github.com/tanton1224' target='_blank'>
+                    <a href='https://github.com/akoven' target='_blank'>
                         <div className='dev-logo' >
                             <img src='https://i.imgur.com/ElHz1vI.png' alt='github logo'/>
                         </div>

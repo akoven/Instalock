@@ -63,3 +63,14 @@
     border-radius: 50%;
     object-fit: cover;
 }
+
+.dev-logo-li {
+    width: 25px;
+    height: 25px;
+}
+
+.dev-logo-li > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
