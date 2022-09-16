@@ -17,12 +17,14 @@ function DeveloperInfo() {
                 <div className="dev-info">
                     <a href='https://www.linkedin.com/in/thomasanton1224/' target='_blank'>
                         <div className='dev-logo-li' >
-                            <img src='https://i.imgur.com/fG0GKuR.png' alt='linked-in logo'/>
+                            {/* <i class="fa-brands fa-xl fa-linkedin"></i> */}
+                            <i class="fa-brands fa-xl fa-linkedin"></i>
                         </div>
                     </a>
                     <a href='https://github.com/tanton1224' target='_blank'>
                         <div className='dev-logo' >
-                            <img src='https://i.imgur.com/ElHz1vI.png' alt='github logo'/>
+                            {/* <i class="fa-brands fa-square-github"></i> */}
+                            <i class="fa-brands fa-xl fa-github"></i>
                         </div>
                     </a>
                 </div>
@@ -37,12 +39,12 @@ function DeveloperInfo() {
                 <div className="dev-info">
                     <a href='https://www.linkedin.com/in/waseemalame/' target='_blank'>
                         <div className='dev-logo-li' >
-                            <img src='https://i.imgur.com/fG0GKuR.png' alt='linked-in logo'/>
+                            <i class="fa-brands fa-xl fa-linkedin"></i>
                         </div>
                     </a>
                     <a href='https://github.com/Waseemalame' target='_blank'>
                         <div className='dev-logo' >
-                            <img src='https://i.imgur.com/ElHz1vI.png' alt='github logo'/>
+                            <i class="fa-brands fa-xl fa-github"></i>
                         </div>
                     </a>
                 </div>
@@ -57,12 +59,12 @@ function DeveloperInfo() {
                 <div className="dev-info">
                     <a href='https://www.linkedin.com/in/calvin-lieu-3049b4228/' target='_blank'>
                         <div className='dev-logo-li' >
-                            <img src='https://i.imgur.com/fG0GKuR.png' alt='linked-in logo'/>
+                            <i class="fa-brands fa-xl fa-linkedin"></i>
                         </div>
                     </a>
                     <a href='https://github.com/calvinlieu' target='_blank'>
                         <div className='dev-logo' >
-                            <img src='https://i.imgur.com/ElHz1vI.png' alt='github logo'/>
+                            <i class="fa-brands fa-xl fa-github"></i>
                         </div>
                     </a>
                 </div>
@@ -77,12 +79,12 @@ function DeveloperInfo() {
                 <div className="dev-info">
                     <a href='https://www.linkedin.com/in/attiya-kovenburg-166201129/' target='_blank'>
                         <div className='dev-logo-li' >
-                            <img src='https://i.imgur.com/fG0GKuR.png' alt='linked-in logo'/>
+                            <i class="fa-brands fa-xl fa-linkedin"></i>
                         </div>
                     </a>
                     <a href='https://github.com/akoven' target='_blank'>
                         <div className='dev-logo' >
-                            <img src='https://i.imgur.com/ElHz1vI.png' alt='github logo'/>
+                            <i class="fa-brands fa-xl fa-github"></i>
                         </div>
                     </a>
                 </div>
