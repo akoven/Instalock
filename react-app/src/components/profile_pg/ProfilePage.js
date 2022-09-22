@@ -11,31 +11,19 @@ import { removeFollowThunk } from '../../store/follows';
 const ProfilePage = () => {
 
     const userSession = useSelector(state => state.session.user)
-    // const userPosts = useSelector(state => state.posts)
     const userProfile = useSelector(state => state.profile);
     const followers = useSelector(state => state.follows.followers)
     const dispatch = useDispatch();
     const history = useHistory();
     const { userId } = useParams();
-    // const [ isFollowing, setIsFollowing ] = useState(false)
 
     const postImages = userProfile.posts;
     const postImgArr = Object.values(postImages||{});
-    // useEffect(() =>{
-    //     if(userSession){
-    //         (async () =>{
-    //             const response = await fetch(`/api/profile/${userId}`)
-    //             const profile_data = await response.json();
-    //             setUserProfile(profile_data)
-    //         })();
-    //     }
-    // }, [userId])
+
 
     useEffect(() =>{
         dispatch(getFollowData(userId))
         dispatch(getProfileThunk(userId))
-        // console.log('user posts: ',userProfile.posts)
-        // console.log('user post images: ',userProfile.posts[0].image_url)
     }, [dispatch])
 
 
@@ -45,7 +33,6 @@ const ProfilePage = () => {
 
         Object.entries(followers).forEach(follower => {
             if (follower[1].id === userSession.id) {
-                // console.log("inside the if")
                 followId = Number(follower[0])
             }
         })
@@ -74,7 +61,7 @@ const ProfilePage = () => {
     const profilePostClick = (id) => {
         history.push(`/posts/${id}`)
     }
-    console.log(userProfile)
+
     return(
 
         <div className="profile-main-container">

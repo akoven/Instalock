@@ -70,7 +70,6 @@ const removeLikePost = async (isLiked, likes) => {
               isLiked = true
               return
           }
-        console.log(isLiked)
       })
         return (
         <div id={post.id} className='post-container' key={post.id}>

@@ -30,7 +30,7 @@ function EditPostForm({ post, onClick }) {
 
         onClick() // close the modal
     }
-    // console.log(post)
+
     return (
         <div className="edit-post-container">
             <div className="edit-post-top-bar">
