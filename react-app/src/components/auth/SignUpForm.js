@@ -52,7 +52,7 @@ const SignUpForm = () => {
           <p className='signup-text'>Sign up to see photos and videos from your friends.</p>
         <div>
           {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
+            <div key={ind}>{error.split(":")[1]}</div>
           ))}
         </div>
         <div>
@@ -89,7 +89,6 @@ const SignUpForm = () => {
             onChange={updateRepeatPassword}
             value={repeatPassword}
             placeholder="Confirm Password"
-            required={true}
           ></input>
         </div>
         <button className='signup-btn' type='submit'>Sign Up</button>

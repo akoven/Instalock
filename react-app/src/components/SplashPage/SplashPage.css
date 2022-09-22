@@ -2,6 +2,11 @@ body{
   background-color: rgba(243, 243, 243, 0.39);
 
 }
+
+.logo-login-form {
+  margin-bottom: 20px;
+}
+
 .splash-image{
   display: flex;
   background-image: url("./1dc085cdb87d.png");
@@ -149,8 +154,20 @@ body{
   justify-content: center;
   align-items: center;
 }
+
 .login-subform > a{
   margin-left: .2em;
   list-style: none;
   text-decoration: none;
+}
+
+.image-slider {
+  position: absolute;
+  top: 26px;
+  z-index: 1;
+  right: 12.5%;
+}
+
+.splash-container {
+  position: relative;
 }
