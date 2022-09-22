@@ -35,7 +35,7 @@ export const getFollowData = (userId) => async dispatch => {
 }
 
 export const addFollowThunk = (payload) => async dispatch => {
-    // console.log(payload, "payload")
+
     const res = await fetch(`/api/followers/`, {
         method: 'POST',
         headers: { "Content-Type": "application/json" },

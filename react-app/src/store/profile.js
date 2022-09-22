@@ -19,10 +19,10 @@ export const delProfile = (user) => ({
 
 export const getProfileThunk = (userId) => async dispatch =>{
     const response = await fetch(`/api/profile/${userId}`);
-    // console.log('RESPONSE:', response)
+
     if(response.ok){
         const userProfile = await response.json();
-        // console.log('USER PROFILE:',userProfile)
+
         dispatch(getProfile(userProfile))
     }
 }
@@ -46,7 +46,7 @@ export const editProfileParams = (userProfile, userId) => async dispatch =>{
         body: JSON.stringify(userProfile)
         // body: userProfileData
     });
-    // console.log('RESPONSE:', response)
+
     if(response.ok){
         const editedProfile = await response.json();
         dispatch(editProfile(editedProfile));

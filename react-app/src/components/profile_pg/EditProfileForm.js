@@ -37,13 +37,6 @@ const EditProfileForm = () =>{
 
         if(editedProfile){
             history.push(`/profile/${currentUser.id}`);
-
-        }
-        else{
-
-            console.log('PAYLOAD ',payload)
-            console.log('something went wrong')
-            console.log('userId: ', currentUser.id)
         }
         dispatch(authenticate())
     }

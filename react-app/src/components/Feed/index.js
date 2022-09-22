@@ -16,6 +16,7 @@ import DeveloperInfo from '../DeveloperInfo/DeveloperInfo'
 const Feed = () => {
 
   const posts = useSelector(state => Object.values(state.posts))
+  const reversedPosts = posts.reverse()
   const user = useSelector(state => state.session.user)
   // const [ isLiked, setIsLiked ] = useState(false)
 
@@ -62,7 +63,7 @@ const removeLikePost = async (isLiked, likes) => {
   return (
     <div className='feed'>
       <DeveloperInfo />
-      <div className='posts-container'>{posts.map(post => {
+      <div className='posts-container'>{reversedPosts.map(post => {
         let isLiked = false
         let likes = post.like_list
         Object.values(likes).forEach(like => {
@@ -70,7 +71,6 @@ const removeLikePost = async (isLiked, likes) => {
               isLiked = true
               return
           }
-        console.log(isLiked)
       })
         return (
         <div id={post.id} className='post-container' key={post.id}>
