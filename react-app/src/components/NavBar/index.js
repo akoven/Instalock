@@ -10,19 +10,17 @@ import { getProfileThunk } from "../../store/profile";
 const NavBar = () => {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
-  const user = useSelector(state => state.session.user)
+  const user = useSelector((state) => state.session.user);
   const openMenu = () => {
     if (showMenu) return;
     setShowMenu(true);
   };
 
-  useEffect(() => {
-
-  })
+  useEffect(() => {});
 
   const grabUserProfile = async (userId) => {
-    await dispatch(getProfileThunk(userId))
-  }
+    await dispatch(getProfileThunk(userId));
+  };
 
   useEffect(() => {
     if (!showMenu) return;
@@ -37,7 +35,11 @@ const NavBar = () => {
     <nav className="nav-home">
       <div className="nav-logo">
         <Link to="/">
-          <img className="logo-img" src="https://i.imgur.com/w6gGyUO.jpeg" alt="Our Logo Here" />
+          <img
+            className="logo-img"
+            src="https://i.imgur.com/w6gGyUO.jpeg"
+            alt="Our Logo Here"
+          />
         </Link>
       </div>
       {/* <h2 className='nav-header'>Instagram</h2> */}
@@ -58,10 +60,14 @@ const NavBar = () => {
         <li>
           <button className="nav-bar-button" onClick={openMenu}>
             {user.profile_image_url ? (
-              <img  className="user-post-image" src={user.profile_image_url} alt="profile-pic"/>
+              <img
+                className="user-post-image"
+                src={user.profile_image_url}
+                alt="profile-pic"
+              />
             ) : (
-
-              <img className="user-post-image"
+              <img
+                className="user-post-image"
                 src="https://i.imgur.com/vF8FTS2.png"
                 alt="Profile"
               />
@@ -71,6 +77,7 @@ const NavBar = () => {
             <div className="menu">
               {/* <i className="fas fa-bars nav_bars_icon"></i> */}
               <Link
+                onClick={() => grabUserProfile(user.id)}
                 to={`/profile/${user.id}`}
                 className="dropdown top-option"
                 style={{ textDecoration: "none" }}

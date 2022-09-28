@@ -47,7 +47,7 @@ def update_post(post_id):
     post = Post.query.get(post_id)
 
     if not post:
-        return "Error 404: The post you're looking for couldn't be found"
+        return "The post you're looking for couldn't be found", 404
 
     updated_post = PostForm()
 
@@ -68,8 +68,8 @@ def update_post(post_id):
 def post_comments(post_id):
     comments = Comment.query.filter(Comment.post_id == post_id ).all()
 
-    if not comments:
-        return "Error 404: The comments you're looking for couldn't be found"
+    # if not comments:
+    #     return "The comments you're looking for couldn't be found", 404
 
     response = [comment.to_dict() for comment in comments]
     res = { "comments": response }
@@ -81,7 +81,7 @@ def single_post(post_id):
     post = Post.query.get(post_id)
 
     if not post:
-        return "Error 404: The post you're looking for couldn't be found"
+        return "The post you're looking for couldn't be found", 404
 
     return post.to_dict()
 
@@ -119,7 +119,7 @@ def delete_post(post_id):
     post = Post.query.get(post_id)
 
     if not post:
-        return "Error 404: The post you're looking for couldn't be found"
+        return "The post you're looking for couldn't be found", 404
 
     # if current_user.id == post.user.id:
     #     post = Post.query.get(post_id)
