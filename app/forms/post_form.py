@@ -6,6 +6,6 @@ from wtforms.validators import DataRequired
 
 class PostForm(FlaskForm):
   user_id = IntegerField("User_id", validators=[DataRequired()])
-  image_url = StringField("Image_url", validators=[DataRequired()])
+  image = StringField("Image", validators=[DataRequired()])
   caption = StringField("Caption", validators=[DataRequired()])
   display_comments = BooleanField("Display comments")
