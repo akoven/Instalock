@@ -13,6 +13,7 @@ class Post(db.Model):
     user = db.relationship("User", back_populates="posts")
     comments = db.relationship("Comment", back_populates="post", cascade="all, delete-orphan")
     like_list = db.relationship("Like", back_populates="post", cascade="all, delete-orphan")
+    images = db.relationship("Image", back_populates="post", cascade="all, delete-orphan")
 
 
     def to_dict(self):

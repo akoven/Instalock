@@ -10,6 +10,10 @@ function CreatePostForm({ post, onClick }) {
   const [caption, setCaption] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const user = useSelector((state) => state.session.user);
+
+  const [image, setImage] = useState(null);
+  const [imageLoading, setImageLoading] = useState(false);
+  const [imagePreview, setImagePreview] = useState('');
   const [errors, setErrors] = useState([]);
 
 
@@ -19,9 +23,9 @@ function CreatePostForm({ post, onClick }) {
     if (caption?.length > 2200) {
       newErrors.push("Caption character limit of 2200 exceeded.");
     }
-    if (!imageUrl) {
-      newErrors.push("Image URL is required!");
-    }
+    // if (!imageUrl) {
+    //   newErrors.push("Image URL is required!");
+    // }
     if (!caption) {
       newErrors.push("Caption is required!");
     }
@@ -33,12 +37,18 @@ function CreatePostForm({ post, onClick }) {
     }
   }, [caption, imageUrl]);
 
+  useEffect(() => {
+    console.log(image)
+  }, [image]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // const formData = new FormData();
+    // formData.append("image", image);
     const payload = {
       user_id: user.id,
       caption: caption,
-      image_url: imageUrl,
+      image,
     };
 
     onClick();
@@ -79,7 +89,12 @@ function CreatePostForm({ post, onClick }) {
   //     }
   // }
 
-
+  const updateFiles = (e) => {
+    e.stopPropagation()
+    const file = e.target.files[0];
+    setImage(file);
+    return
+  }
 
   return (
     <>
@@ -100,6 +115,18 @@ function CreatePostForm({ post, onClick }) {
             </button>
           </div>
         </div>
+<<<<<<< HEAD
+        {imagePreview ? (
+          <div className="create-img-container">
+            <div className="img-container">
+              <img className="create-post-preview"
+                src={imagePreview}
+                alt=""
+                />
+              <div onClick={() => setImagePreview('')} className="remove-image">X</div>
+            </div>
+            <div className="post-form">
+=======
         <div className="create-img-container">
           <div className="img-container">
             <img className="create-post-preview"
@@ -108,54 +135,62 @@ function CreatePostForm({ post, onClick }) {
             />
           </div>
           <div className="post-form">
+>>>>>>> main
             <div className="user-post-info">
               {user.profile_image_url ? (
                 <img
-                  className="user-post-image"
-                  src={user.profile_image_url}
-                  alt=""
+                className="user-post-image"
+                src={user.profile_image_url}
+                alt=""
                 />
               ) : (
                 <img className='user-post-image'
-                  src="https://i.imgur.com/vF8FTS2.png"
-                  alt="Profile"
+                src="https://i.imgur.com/vF8FTS2.png"
+                alt="Profile"
                 />
               )}
               <div>{user.username}</div>
             </div>
-            <form className="create-post-form" onSubmit={handleSubmit}>
-              {errors && (
-                <ul className="create-post-form-errors">
-                  {errors.map((error) => {
-                    return <li>{`${error}`}</li>;
-                  })}
-                </ul>
-              )}
-              <div>
-                <label>Image:</label>
-                <input
-                  // type="file"
-                  type="text"
-                  placeholder="Image URL here..."
-                  value={imageUrl}
-                  // onChange={() => previewFile()}
-                  onChange={(e) => setImageUrl(e.target.value)}
-                  required
-                />
-              </div>
-              <div className="caption-div">
-                <label>Caption:</label>
-                <input
-                  type="textarea"
-                  placeholder="Write a caption..."
-                  value={caption}
-                  onChange={(e) => setCaption(e.target.value)}
-                  required
-                />
-              </div>
-            </form>
+              <form className="create-post-form" onSubmit={handleSubmit}>
+                {errors && (
+                  <ul className="create-post-form-errors">
+                    {errors.map((error) => {
+                      return <li>{`${error}`}</li>;
+                    })}
+                  </ul>
+                )}
+
+                <div className="caption-div">
+                  <label>Caption:</label>
+                  <input
+                    type="textarea"
+                    placeholder="Write a caption..."
+                    value={caption}
+                    onChange={(e) => setCaption(e.target.value)}
+                    required
+                    />
+                </div>
+              </form>
+            </div>
           </div>
-        </div>
+          ) : (
+            <div className="image-input-div">
+              <label className='one-label' htmlFor="upload-image-input">
+                <div className="img-icon-and-button">
+                  <img className="upload-img-icon" src="https://i.imgur.com/ZMKDt54.png" alt="" />
+                  <div className="image-upload-button">Select from computer</div>
+                </div>
+
+                <input
+                id="upload-image-input"
+                type="file"
+                onChange={ (e) => {
+                  updateFiles(e)
+                  setImagePreview(URL.createObjectURL(e.target.files[0]))
+                }} />
+              </label>
+            </div>
+          )}
       </div>
     </>
   );

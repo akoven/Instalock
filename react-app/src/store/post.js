@@ -46,9 +46,10 @@ const deletePost = (postId) => {
 
 //Create A Post
 export const createPost = (data) => async (dispatch) => {
+    console.log('hihdsfiashdfiasdhfi')
     const {
         caption,
-        image_url,
+        image,
         user_id
     } = data
 
@@ -56,8 +57,7 @@ export const createPost = (data) => async (dispatch) => {
 
     formData.append('caption', caption)
     formData.append('user_id', user_id)
-    formData.append('image_url', image_url)
-
+    formData.append('image', image)
     const response = await fetch(`/api/posts/`, {
         method: 'POST',
         body: formData
