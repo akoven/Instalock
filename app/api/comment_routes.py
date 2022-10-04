@@ -8,7 +8,6 @@ comment_routes = Blueprint("comments", __name__, url_prefix="/comments")
 
 @comment_routes.route("/<comment_id>", methods=["PUT"])
 def edit_comment(comment_id):
-    #TODO check if user logged in is comment author
 
     comment_form = CommentForm()
     comment_form['csrf_token'].data = request.cookies['csrf_token']

@@ -103,8 +103,6 @@ function CreatePostForm({ post, onClick }) {
         <div className="create-img-container">
           <div className="img-container">
             <img className="create-post-preview"
-              // className="preview-image"
-              // className="test-img"
               src={imageUrl}
               alt="Your image Will Load Here!"
             />
