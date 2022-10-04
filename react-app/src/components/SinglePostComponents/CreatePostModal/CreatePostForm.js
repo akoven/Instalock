@@ -115,6 +115,7 @@ function CreatePostForm({ post, onClick }) {
             </button>
           </div>
         </div>
+<<<<<<< HEAD
         {imagePreview ? (
           <div className="create-img-container">
             <div className="img-container">
@@ -125,6 +126,16 @@ function CreatePostForm({ post, onClick }) {
               <div onClick={() => setImagePreview('')} className="remove-image">X</div>
             </div>
             <div className="post-form">
+=======
+        <div className="create-img-container">
+          <div className="img-container">
+            <img className="create-post-preview"
+              src={imageUrl}
+              alt="Your image Will Load Here!"
+            />
+          </div>
+          <div className="post-form">
+>>>>>>> main
             <div className="user-post-info">
               {user.profile_image_url ? (
                 <img
