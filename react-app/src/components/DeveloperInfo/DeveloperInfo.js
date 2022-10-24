@@ -83,7 +83,7 @@ function DeveloperInfo() {
         <div className="dev-title-info">
           <div className="dev-photo-container">
             <img
-              src="https://www.kindpng.com/picc/m/52-526237_avatar-profile-hd-png-download.png"
+              src="https://imgur.com/a/n4SPVV5"
               alt="Dev Profile Picture"
             />
           </div>
