@@ -83,7 +83,7 @@ function DeveloperInfo() {
         <div className="dev-title-info">
           <div className="dev-photo-container">
             <img
-              src="https://imgur.com/a/n4SPVV5"
+              src="https://i.imgur.com/j0pVWpF.jpg"
               alt="Dev Profile Picture"
             />
           </div>
