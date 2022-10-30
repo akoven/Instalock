@@ -1,15 +1,21 @@
 .dev-info-container {
     width: 300px;
     height: 340px;
-    padding: 10px;
-    position: fixed;
-    top: 110px;
-    left: 71%;
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-    border: 1px solid rgba(167, 167, 167, 0.391);
+    /* padding: 10px; */
+    /* position: fixed; */
+    /* top: 110px; */
+    /* left: 71%; */
+    /* display: flex; */
+    /* flex-direction: column; */
+    background-color: transparent;
+    /* border: 1px solid rgba(167, 167, 167, 0.391); */
     border-radius: 5px;
+    margin-top: 30px;
+    margin-left: 1em;
+
+}
+.dev-info-container > h3{
+    padding-left: 10px;
 }
 
 .dev-info-box {

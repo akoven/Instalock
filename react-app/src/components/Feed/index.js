@@ -62,7 +62,9 @@ const removeLikePost = async (isLiked, likes) => {
 
   return (
     <div className='feed'>
-      <DeveloperInfo />
+      <div className='feed-devinfo-container'>
+        <DeveloperInfo />
+      </div>
       <div className='posts-container'>{reversedPosts.map(post => {
         let isLiked = false
         let likes = post.like_list
