@@ -79,7 +79,7 @@ const PostDetail = () => {
                         {post?.user?.profile_image_url ? (
                             <img className='user-post-image' src={post.user.profile_image_url} alt="" />
                         ) : (
-                            <img className="user-post-image" src="https://i.imgur.com/vF8FTS2.png" alt="Profile"/>
+                            <img className="user-post-image" src="https://i.imgur.com/f906ONQ.jpg" alt="Profile"/>
                             )
                         }
 
@@ -97,7 +97,7 @@ const PostDetail = () => {
                                 {comment?.user?.profile_image_url ? (
                                     <img className='user-post-image' src={comment.user.profile_image_url} alt="" />
                                 ) : (
-                                    <img className="user-post-image" src="https://i.imgur.com/vF8FTS2.png" alt="Profile"/>
+                                    <img className="user-post-image" src="https://i.imgur.com/f906ONQ.jpg" alt="Profile"/>
                                     )
                                 }
                                 </div>

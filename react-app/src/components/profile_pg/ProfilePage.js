@@ -70,7 +70,7 @@ const ProfilePage = () => {
                     {userProfile?.profile?.profile_image_url ? (
                         <img className='pp-user-image' src={userProfile?.profile?.profile_image_url} alt="" />
                     ) : (
-                        <img className='pp-user-image' src="https://i.imgur.com/vF8FTS2.png" alt="Profile"/>
+                        <img className='pp-user-image' src="https://i.imgur.com/f906ONQ.jpg" alt="Profile"/>
                     )
                     }
                 </div>

@@ -68,7 +68,7 @@ const NavBar = () => {
             ) : (
               <img
                 className="user-post-image"
-                src="https://i.imgur.com/vF8FTS2.png"
+                src="https://i.imgur.com/f906ONQ.jpg"
                 alt="Profile"
               />
             )}
