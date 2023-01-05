@@ -1,12 +1,12 @@
-from .db import db
+from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 class Comment(db.Model):
     __tablename__ = 'comments'
 
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String(2200), nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    post_id = db.Column(db.Integer, db.ForeignKey('posts.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
+    post_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('posts.id')), nullable=False)
     likes = db.Column(db.Integer, default=0)
 
     post = db.relationship("Post", back_populates="comments")
