@@ -4,8 +4,8 @@ class UserFollower(db.Model):
     __tablename__ = 'user_followers'
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    follower_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
+    follower_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
 
     # user = db.relationship("User", back_populates="following", foreign_keys=[user_id])
     # follower = db.relationship("User", back_populates="followers", foreign_keys=[follower_id])
