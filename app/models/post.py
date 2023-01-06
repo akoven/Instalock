@@ -5,7 +5,7 @@ class Post(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     caption = db.Column(db.String(2200), nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     likes = db.Column(db.Integer, default=0)
     image_url = db.Column(db.String, nullable=False)
     display_comments = db.Column(db.Boolean, default=True)
